@@ -16,3 +16,11 @@ $(document).ready(function () {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('.menu');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('show');
+});
+
