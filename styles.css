@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+header h1,
+header h2 {
+  margin: 0;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav li {
+  margin: 0 0.5em;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+section {
+  margin: 2em 0;
+}
+
+section h2 {
+  margin-top: 0;
+  font-size: 2em;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+section p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+section li {
+  margin: 0.5em 0;
+}
+
+section a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  transition: border-bottom-color 0.2s;
+}
+
+section a:hover {
+  border-bottom-color: #0077c9;
+}
+
+.project-image {
+  max-width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-description {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin: 1em 0;
+}
+
+.skill-badge {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  padding: 0.25em 0.5em;
+  border-radius: 0.5em;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0.5em 0.5em 0.5em 0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.skills-list .skill {
+  width: calc(50% - 0.5em);
+  margin-bottom: 1em;
+}
+
+.skills-list .skill h3 {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.5em 0;
+}
+
+.skills-list .skill p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
