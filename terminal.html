@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammad's Portfolio</title>
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    padding: 0;
+    margin: 0;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    display: none;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.popup-btn {
+    background-color: lime;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.terminal {
+    border: 2px solid white;
+    padding: 10px;
+    width: 100vw;
+    height: calc(100vh - 40px);
+    overflow: auto;
+    box-sizing: border-box;
+    position: relative;
+    display: none; 
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: none; 
+}
+
+.input {
+    color: lime;
+}
+
+.output {
+    color: white;
+}
+</style>
+</head>
+<body>
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <p>Welcome to Mohammad's Portfolio!</p>
+        <p>Do you want to enter the real website or continue to the terminal?</p>
+        <button class="popup-btn" onclick="closePopup(true)">Terminal</button>
+        <button class="popup-btn" onclick="closePopup(false)">Website</button>
+    </div>
+</div>
+<div class="terminal" id="terminal">
+    <div class="output">guest@Mohammad.page ~ % Welcome to Mohammad's Portfolio Terminal</div>
+</div>
+<div class="input-container">
+    <div class="input">guest@Mohammad.page ~ % <span id="input-text"></span></div>
+    <input type="text" id="command" autofocus style="border: none; background: none; color: lime; outline: none; flex: 1;">
+</div>
+<script>
+const terminal = document.getElementById('terminal');
+const commandInput = document.getElementById('command');
+const inputText = document.getElementById('input-text');
+
+function addInput(input) {
+    const newInput = document.createElement('div');
+    newInput.classList.add('input');
+    newInput.textContent = `guest@Mohammad.page ~ % ${input}`;
+    terminal.appendChild(newInput);
+}
+
+function addOutput(output) {
+    const newOutput = document.createElement('div');
+    newOutput.classList.add('output');
+    newOutput.innerHTML = output; 
+    terminal.appendChild(newOutput);
+}
+
+addInput('help');
+
+const commands = {
+    help: 'Available commands: about, skills, projects, contact, pic, clear, ls, cd, joke',
+    about: 'mohammad is a passionate software developer.',
+    skills: 'HTML, CSS, JavaScript, React, Node.js, etc.',
+    projects: 'Check out Mohammad\'s latest projects on GitHub.',
+    contact: 'You can reach Mohammad at contact@mohammad.page',
+    ls: 'You have nothing in this directory. It\'s empty!',
+    cd: 'You\'re already at the root of Mohammad\'s portfolio. Nowhere to go!',
+    joke: 'sorry, no joking here:( (but you can type "pic" for some ASCII art!!!)',
+    clear: ''
+};
+
+function processInput(input) {
+    const command = input.trim().toLowerCase();
+    addInput(command);
+    if (command === 'help') {
+        addOutput(commands.help);
+    } else if (command === 'about') {
+        addOutput(commands.about);
+    } else if (command === 'skills') {
+        addOutput(commands.skills);
+    } else if (command === 'projects') {
+        addOutput(commands.projects);
+    } else if (command === 'contact') {
+        addOutput(commands.contact);
+    } else if (command === 'ls') {
+        addOutput(commands.ls);
+    } else if (command === 'cd') {
+        addOutput(commands.cd);
+    } else if (command === 'joke') {
+        addOutput(commands.joke);
+    } else if (command === 'pic') {
+        fetch('ascii.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch ASCII art.');
+                }
+                return response.text();
+            })
+            .then(data => addOutput(data))
+            .catch(error => addOutput('Error fetching ASCII art: ' + error.message));
+    } else if (command === 'clear') {
+        terminal.innerHTML = '';
+    } else {
+        addOutput('Command not found. Type "help" for available commands.');
+    }
+}
+
+function closePopup(isTerminal) {
+    const popup = document.getElementById('popup');
+    const terminalDiv = document.getElementById('terminal');
+    const inputContainer = document.querySelector('.input-container');
+    
+    if (isTerminal) {
+        popup.style.display = 'none';
+        terminalDiv.style.display = 'block';
+        inputContainer.style.display = 'flex';
+    } else {
+        window.location.href = 'website/index.html'; 
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'block';
+});
+
+commandInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const input = commandInput.value.trim();
+        processInput(input);
+        commandInput.value = '';
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+});
+</script>
+</body>
+</html>
