@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Playlists - Mohammad Jafari</title>
+    <meta name="description" content="Mohammad Jafari's curated Spotify playlists and music collections.">
+    <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        ::selection {
+            background: rgba(0, 102, 204, 0.15);
+            color: #0066cc;
+        }
+        
+        ::-moz-selection {
+            background: rgba(0, 102, 204, 0.15);
+            color: #0066cc;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            line-height: 1.65;
+            color: #2c2c2c;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .content {
+            margin-top: 5vh;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        h1, h2 {
+            font-weight: normal;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            letter-spacing: -0.01em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid transparent;
+        }
+        
+        a:hover {
+            border-bottom: 1px solid #0066cc;
+        }
+        
+        a:focus {
+            outline: 2px solid rgba(0, 102, 204, 0.3);
+            outline-offset: 2px;
+            border-radius: 1px;
+        }
+        
+        .nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav a {
+            padding: 4px 8px;
+            margin: 0 2px;
+            border-radius: 2px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .nav a:hover {
+            background-color: rgba(0, 102, 204, 0.05);
+            border-bottom: 1px solid transparent;
+        }
+        
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .playlist-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1;
+        }
+        
+        .playlist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .playlist-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .playlist-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .playlist-cover:hover {
+            transform: scale(1.02);
+        }
+        
+        .playlist-cover.loading {
+            opacity: 0.7;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.4; }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-link {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="links.html">Links</a>
+    </nav>
+
+    <div class="content">
+        <h1>Spotify Playlists</h1>
+        
+        <p>I believe in the power of music to bring people together. Here are some of my playlists.</p>
+
+        <div class="playlist-grid" id="playlist-grid">
+        </div>
+
+        <div class="back-link">
+            <p><a href="links.html">← Back to links</a></p>
+        </div>
+    </div>
+
+    <script>
+        const MY_PLAYLISTS = [
+            '1yobC3D2VTxe02LapcyJld', // Mo's Core
+            '0nenVcxWt26KhKrcklulUS', // 80s Gems  
+            '6pvhcPB0KE1cDh9LnPQ9Kt'  // My life
+        ];
+
+        function createPlaylistCard(playlistId) {
+            const spotifyUrl = `https://open.spotify.com/playlist/${playlistId}`;
+            
+            return `
+                <div class="playlist-card">
+                    <a href="${spotifyUrl}" class="playlist-link" target="_blank" rel="noopener noreferrer">
+                        <img src="https://via.placeholder.com/300x300/1ed760/000000?text=Loading..." 
+                             alt="Playlist" 
+                             class="playlist-cover loading" 
+                             data-playlist-id="${playlistId}">
+                    </a>
+                </div>
+            `;
+        }
+
+        async function loadPlaylistCover(playlistId) {
+            const img = document.querySelector(`[data-playlist-id="${playlistId}"]`);
+            const spotifyUrl = `https://open.spotify.com/playlist/${playlistId}`;
+            
+            try {
+                const oembedUrl = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
+                const response = await fetch(oembedUrl);
+                const data = await response.json();
+                
+                if (data.thumbnail_url) {
+                    const newImg = new Image();
+                    newImg.onload = () => {
+                        img.src = data.thumbnail_url;
+                        img.classList.remove('loading');
+                    };
+                    newImg.src = data.thumbnail_url;
+                }
+            } catch (error) {
+                console.log('Could not load cover for:', playlistId);
+                img.src = 'https://via.placeholder.com/300x300/1ed760/000000?text=Playlist';
+                img.classList.remove('loading');
+            }
+        }
+
+        function initializePlaylists() {
+            const grid = document.getElementById('playlist-grid');
+            
+            grid.innerHTML = MY_PLAYLISTS.map(createPlaylistCard).join('');
+            
+            MY_PLAYLISTS.forEach(loadPlaylistCover);
+        }
+        
+        document.addEventListener('DOMContentLoaded', initializePlaylists);
+    </script>
+</body>
+</html> 
