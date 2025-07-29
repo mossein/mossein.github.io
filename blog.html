@@ -5,24 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Jafari's Blog</title>
     <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        ::selection {
+            background: rgba(0, 102, 204, 0.15);
+            color: #0066cc;
+        }
+        
+        ::-moz-selection {
+            background: rgba(0, 102, 204, 0.15);
+            color: #0066cc;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: Georgia, 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.65;
+            color: #2c2c2c;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
         h1, h2 {
             font-weight: normal;
+            letter-spacing: -0.02em;
         }
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
+            letter-spacing: -0.03em;
         }
         h2 {
             font-size: 1.8em;
             margin-top: 30px;
+            letter-spacing: -0.01em;
         }
         .post {
             margin-bottom: 40px;
@@ -39,27 +61,67 @@
         a {
             color: #0066cc;
             text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid transparent;
         }
+        
         a:hover {
-            text-decoration: underline;
+            border-bottom: 1px solid #0066cc;
         }
+        
+        a:focus {
+            outline: 2px solid rgba(0, 102, 204, 0.3);
+            outline-offset: 2px;
+            border-radius: 1px;
+        }
+        
         .nav {
+            text-align: center;
             margin-bottom: 20px;
+        }
+        
+        .nav a {
+            padding: 4px 8px;
+            margin: 0 2px;
+            border-radius: 2px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .nav a:hover {
+            background-color: rgba(0, 102, 204, 0.05);
+            border-bottom: 1px solid transparent;
+        }
+        
+        .content {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <a href="index.html">Home</a> | <a href="#">Blog</a>
+        <a href="index.html">Home</a> | <a href="#">Blog</a> | <a href="links.html">Links</a>
     </nav>
 
-    <h1>Mohammad Jafari's Blog</h1>
-    
-    <div class="post">
-        <h2>The Future of AI in B2B Customer Research</h2>
-        <p class="date">August 28, 2024</p>
-        <p>As we continue to develop AI-powered solutions for B2B customer research at Aucure, I've been reflecting on the transformative potential of these technologies...</p>
-        <a href="blog-post-1.html">Read more</a>
+    <div class="content">
+        <h1>Mohammad Jafari's Blog</h1>
+        
+        <div class="post">
+            <h2>The Future of AI in B2B Customer Research</h2>
+            <p class="date">August 28, 2024</p>
+            <p>As we continue to develop AI-powered solutions for B2B customer research at Aucure, I've been reflecting on the transformative potential of these technologies...</p>
+            <a href="blog-post-1.html">Read more</a>
+        </div>
     </div>
 </body>
 </html>
