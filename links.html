@@ -202,6 +202,6 @@
             </div>
         </div>
     </div>
-    <script>(function(){var r=document.documentElement;var t=localStorage.getItem('theme');if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){t='dark'}if(t==='dark'){r.classList.add('dark')}var b=document.getElementById('theme-toggle');function u(){var d=r.classList.toggle('dark');localStorage.setItem('theme',d?'dark':'light');b.textContent=d?'☀︎':'☾'}if(b){b.textContent=r.classList.contains('dark')?'☀︎':'☾';b.addEventListener('click',u)}})();</script>
+    <script>(function(){var r=document.documentElement;var t=localStorage.getItem('theme');if(t==='dark'){r.classList.add('dark')}var b=document.getElementById('theme-toggle');function u(){var d=r.classList.toggle('dark');localStorage.setItem('theme',d?'dark':'light');b.textContent=d?'☀︎':'☾'}if(b){b.textContent=r.classList.contains('dark')?'☀︎':'☾';b.addEventListener('click',u)}})();</script>
 </body>
 </html> 
