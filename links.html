@@ -91,6 +91,7 @@
             outline-offset: 2px;
             border-radius: 1px;
         }
+        .theme-toggle{position:fixed;top:12px;right:12px;width:34px;height:34px;border:none;border-radius:999px;background:#fff;color:#222;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;line-height:1;transition:background-color .2s ease,color .2s ease;z-index:1000}.theme-toggle:hover{}.dark body{background:#0b0d10;color:#e6e6e6}.dark a{color:#66b2ff}.dark a:hover{border-bottom-color:#66b2ff}.dark .nav a:hover{background-color:rgba(102,178,255,.08)}.dark ::selection{background:rgba(102,178,255,.2);color:#66b2ff}.dark .theme-toggle{background:#14171a;color:#e6e6e6;border:none}
         
         .nav {
             text-align: center;
@@ -158,6 +159,7 @@
     <nav class="nav">
         <a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="#">Links</a>
     </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☾</button>
 
     <div class="content">
         <h1>Links</h1>
@@ -200,5 +202,6 @@
             </div>
         </div>
     </div>
+    <script>(function(){var r=document.documentElement;var t=localStorage.getItem('theme');if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){t='dark'}if(t==='dark'){r.classList.add('dark')}var b=document.getElementById('theme-toggle');function u(){var d=r.classList.toggle('dark');localStorage.setItem('theme',d?'dark':'light');b.textContent=d?'☀︎':'☾'}if(b){b.textContent=r.classList.contains('dark')?'☀︎':'☾';b.addEventListener('click',u)}})();</script>
 </body>
 </html> 
