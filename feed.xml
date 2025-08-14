@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Mohammad Jafari Blog</title>
+    <link>https://www.mohammad.page/</link>
+    <description>Articles on AI, product, and engineering by Mohammad Jafari.</description>
+    <item>
+      <title>From Calls to Clarity: Shipping Insight Podcasts at Retellio</title>
+      <link>https://www.mohammad.page/blog-post-2.html</link>
+      <guid>https://www.mohammad.page/blog-post-2.html</guid>
+      <pubDate>Thu, 14 Aug 2025 00:00:00 GMT</pubDate>
+      <description>How Retellio turns long customer calls into short, insight-rich podcasts delivered where teams work; integrating with Salesforce, HubSpot, Gong, and Zoom.</description>
+    </item>
+    <item>
+      <title>The Future of AI in B2B Customer Research</title>
+      <link>https://www.mohammad.page/blog-post-1.html</link>
+      <guid>https://www.mohammad.page/blog-post-1.html</guid>
+      <pubDate>Wed, 28 Aug 2024 00:00:00 GMT</pubDate>
+      <description>Reflections on the evolving role of AI in B2B customer research and where it's heading.</description>
+    </item>
+  </channel>
+</rss>
+
+
