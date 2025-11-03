@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <link rel="preload" as="image" href="404.jpeg">
     <style>
         .content { margin-top: 20vh; text-align: center; }
         .code { font-size: 4rem; letter-spacing: 0.06em; margin-bottom: 10px; cursor: pointer; }
@@ -21,6 +22,9 @@
         .egg { display: none; margin-top: 12px; color: #999; font-size: 0.9em; }
         @keyframes wobble { 0% { transform: translateX(0); } 25% { transform: translateX(-2px) rotate(-0.5deg); } 50% { transform: translateX(2px) rotate(0.5deg); } 75% { transform: translateX(-1px) rotate(-0.3deg); } 100% { transform: translateX(0); } }
         .code.wobble { animation: wobble 450ms ease-in-out 1; }
+        .page-bg { position: fixed; inset: 0; z-index: 0; background: url('404.jpeg') center / cover no-repeat; opacity: 0.3; pointer-events: none; }
+        .dark .page-bg { opacity: 0.35; }
+        body, .content { position: relative; z-index: 1; }
     </style>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://www.google-analytics.com">
@@ -34,6 +38,8 @@
             <a href="links.html">Links</a>
         </nav>
     </noscript>
+
+    <div class="page-bg" aria-hidden="true"></div>
 
     <main class="content" role="main">
         <div class="code">404</div>

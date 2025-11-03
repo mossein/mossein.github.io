@@ -95,6 +95,8 @@ a:focus {
     align-items: center;
     gap: 12px;
     margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
 }
 
 .nav a {
@@ -123,7 +125,7 @@ a:focus {
     height: 34px;
     border: none;
     border-radius: 999px;
-    background: #ffffff;
+    background: rgba(255,255,255,0.35);
     color: #222222;
     display: inline-flex;
     align-items: center;
@@ -133,6 +135,10 @@ a:focus {
     line-height: 1;
     transition: background-color 0.2s ease, color 0.2s ease;
     z-index: 1000;
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12), inset 0 1px 1px rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.6);
 }
 
 .content {
@@ -177,11 +183,7 @@ a:focus {
     color: #66b2ff;
 }
 
-.dark .theme-toggle {
-    background: #14171a;
-    color: #e6e6e6;
-    border: none;
-}
+.dark .theme-toggle { background: rgba(0,0,0,0.35); color: #e6e6e6; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 18px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.08); }
 
 .hl { position: relative; display: inline; padding: 0 2px; background-image: linear-gradient(180deg, rgba(0,0,0,0) 58%, rgba(255,243,133,.78) 58%); background-repeat: no-repeat; background-size: 100% 100%; border-radius: 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; transform: rotate(-0.2deg); }
 .dark .hl { background-image: linear-gradient(180deg, rgba(0,0,0,0) 58%, rgba(130,110,10,.65) 58%); }
