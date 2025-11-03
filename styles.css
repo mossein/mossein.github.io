@@ -104,18 +104,22 @@ a:focus {
     border-radius: 6px;
     transition: background-color 0.2s ease, color 0.2s ease;
     color: #111111;
+    border-bottom: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav a:hover {
     background-color: rgba(0, 0, 0, 0.06);
-    border-bottom: 1px solid transparent;
+    border-bottom: 0;
 }
 
 .nav a[aria-current="page"] {
     font-weight: 600;
     background-color: rgba(0, 0, 0, 0.08);
-    border-bottom: 1px solid transparent;
+    border-bottom: 0;
 }
+
+.nav a:focus { outline: none; }
 
 .theme-toggle {
     position: fixed;
@@ -169,8 +173,8 @@ a:focus {
     border-bottom-color: #66b2ff;
 }
 
-.dark .nav a { color: #ffffff; }
-.dark .nav a:hover { background-color: rgba(255, 255, 255, 0.12); }
+.dark .nav a { color: #ffffff; border-bottom: 0; }
+.dark .nav a:hover { background-color: rgba(255, 255, 255, 0.12); border-bottom-color: transparent; }
 
 .dark .nav a[aria-current="page"] { background-color: rgba(255, 255, 255, 0.18); }
 

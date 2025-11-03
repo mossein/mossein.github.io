@@ -23,9 +23,9 @@
   nav.className = "nav";
   nav.setAttribute("aria-label", "Primary");
   var links = [
-    { href: "index.html", label: "Home" },
-    { href: "blog.html", label: "Blog" },
-    { href: "links.html", label: "Links" },
+    { href: "index.html", label: "home" },
+    { href: "blog.html", label: "blog" },
+    { href: "links.html", label: "links" },
   ];
   var path = location.pathname.split("/").pop() || "index.html";
   for (var i = 0; i < links.length; i++) {
