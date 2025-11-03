@@ -21,12 +21,12 @@
     <meta property="og:description" content="Reflections on the evolving role of AI in B2B customer research and where it's heading.">
     <meta property="og:url" content="https://www.mohammad.page/blog-post-1.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://mohammad.page/A7CD3391-7F05-40E0-9806-38E7EBB0ABE1.jpeg">
+    <meta property="og:image" content="https://mohammad.page/portrait.jpeg.jpeg">
     <meta property="og:site_name" content="Mohammad Jafari">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Future of AI in B2B Customer Research">
     <meta name="twitter:description" content="Reflections on the evolving role of AI in B2B customer research and where it's heading.">
-    <meta name="twitter:image" content="https://mohammad.page/A7CD3391-7F05-40E0-9806-38E7EBB0ABE1.jpeg">
+    <meta name="twitter:image" content="https://mohammad.page/portrait.jpeg.jpeg">
     <style>
         * {
             -webkit-font-smoothing: antialiased;
@@ -86,22 +86,10 @@
             border-radius: 1px;
         }
         
-        .nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .nav a {
-            padding: 4px 8px;
-            margin: 0 2px;
-            border-radius: 2px;
-            transition: background-color 0.2s ease;
-        }
-        
-        .nav a:hover {
-            background-color: rgba(0, 102, 204, 0.05);
-            border-bottom: 1px solid transparent;
-        }
+        .nav {display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:24px}
+        .nav a{padding:6px 10px;border-radius:6px;transition:background-color .2s ease,color .2s ease}
+        .nav a:hover{background-color:rgba(0,102,204,.06);border-bottom:1px solid transparent}
+        .nav a[aria-current="page"]{font-weight:600;background-color:rgba(0,102,204,.08);border-bottom:1px solid transparent}
         
         .content {
             animation: fadeIn 0.6s ease-out;
@@ -124,13 +112,11 @@
         .dark .nav a:hover{background-color:rgba(102,178,255,.08)}
         .dark ::selection{background:rgba(102,178,255,.2);color:#66b2ff}
         .dark .theme-toggle{background:#14171a;color:#e6e6e6;border:none}
+        .dark .nav a[aria-current="page"]{background-color:rgba(102,178,255,.12)}
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="links.html">Links</a>
-    </nav>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☾</button>
+    <site-nav></site-nav>
 
     <div class="content">
         <article>
@@ -149,7 +135,7 @@
                 "@type": "WebPage",
                 "@id": "https://www.mohammad.page/blog-post-1.html"
               },
-              "image": "https://mohammad.page/A7CD3391-7F05-40E0-9806-38E7EBB0ABE1.jpeg",
+              "image": "https://mohammad.page/portrait.jpeg.jpeg",
               "description": "Reflections on the evolving role of AI in B2B customer research and where it's heading."
             }
             </script>
@@ -189,6 +175,6 @@
         
         <p><a href="blog.html">← Back to blog</a></p>
     </div>
-    <script>(function(){var r=document.documentElement;var t=localStorage.getItem('theme');if(t==='dark'){r.classList.add('dark')}var b=document.getElementById('theme-toggle');function u(){var d=r.classList.toggle('dark');localStorage.setItem('theme',d?'dark':'light');b.textContent=d?'☀︎':'☾'}if(b){b.textContent=r.classList.contains('dark')?'☀︎':'☾';b.addEventListener('click',u)}})();</script>
+    <script src="nav.js" defer></script>
 </body>
 </html>
