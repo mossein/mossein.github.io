@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <link rel="preload" as="image" href="404.jpeg">
     <style>
         .content { margin-top: 20vh; text-align: center; }
         .code { font-size: 4rem; letter-spacing: 0.06em; margin-bottom: 10px; cursor: pointer; }
@@ -25,6 +24,7 @@
         .page-bg { position: fixed; inset: 0; z-index: 0; background: url('404.jpeg') center / cover no-repeat; opacity: 0.3; pointer-events: none; }
         .dark .page-bg { opacity: 0.35; }
         body, .content { position: relative; z-index: 1; }
+        @media (prefers-reduced-data: reduce) { .page-bg { background-image: none; } }
     </style>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://www.google-analytics.com">
