@@ -101,16 +101,17 @@ a:focus {
     padding: 6px 10px;
     border-radius: 6px;
     transition: background-color 0.2s ease, color 0.2s ease;
+    color: #111111;
 }
 
 .nav a:hover {
-    background-color: rgba(0, 102, 204, 0.06);
+    background-color: rgba(0, 0, 0, 0.06);
     border-bottom: 1px solid transparent;
 }
 
 .nav a[aria-current="page"] {
     font-weight: 600;
-    background-color: rgba(0, 102, 204, 0.08);
+    background-color: rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid transparent;
 }
 
@@ -162,13 +163,10 @@ a:focus {
     border-bottom-color: #66b2ff;
 }
 
-.dark .nav a:hover {
-    background-color: rgba(102, 178, 255, 0.08);
-}
+.dark .nav a { color: #ffffff; }
+.dark .nav a:hover { background-color: rgba(255, 255, 255, 0.12); }
 
-.dark .nav a[aria-current="page"] {
-    background-color: rgba(102, 178, 255, 0.12);
-}
+.dark .nav a[aria-current="page"] { background-color: rgba(255, 255, 255, 0.18); }
 
 .dark img {
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
@@ -183,6 +181,54 @@ a:focus {
     background: #14171a;
     color: #e6e6e6;
     border: none;
+}
+
+.hl { position: relative; display: inline; padding: 0 2px; background-image: linear-gradient(180deg, rgba(0,0,0,0) 58%, rgba(255,243,133,.78) 58%); background-repeat: no-repeat; background-size: 100% 100%; border-radius: 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; transform: rotate(-0.2deg); }
+.dark .hl { background-image: linear-gradient(180deg, rgba(0,0,0,0) 58%, rgba(255,230,92,.75) 58%); }
+
+.experience-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 8px;
+}
+
+.experience-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #eaeaea;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 12px;
+    row-gap: 4px;
+}
+
+.experience-list li:last-child {
+    border-bottom: none;
+}
+
+.experience-list .role { font-weight: 600; letter-spacing: -0.01em; }
+.experience-list .dates {
+    color: #666;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+.experience-list .summary { grid-column: 1 / -1; margin-top: 2px; color: #555; font-size: 0.96em; }
+
+.dark .experience-list li {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark .experience-list .dates {
+    color: rgba(255, 255, 255, 0.7);
+}
+.dark .experience-list .summary { color: rgba(255, 255, 255, 0.72); }
+
+@media (max-width: 640px) {
+    .experience-list li {
+        grid-template-columns: 1fr;
+    }
+    .experience-list .dates {
+        margin-top: 2px;
+    }
 }
 
 
