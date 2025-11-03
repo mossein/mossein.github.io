@@ -151,7 +151,7 @@ a:focus {
 }
 
 .dark body {
-    background: #0b0d10;
+    background: #000000;
     color: #e6e6e6;
 }
 
@@ -184,7 +184,7 @@ a:focus {
 }
 
 .hl { position: relative; display: inline; padding: 0 2px; background-image: linear-gradient(180deg, rgba(0,0,0,0) 58%, rgba(255,243,133,.78) 58%); background-repeat: no-repeat; background-size: 100% 100%; border-radius: 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; transform: rotate(-0.2deg); }
-.dark .hl { background-image: linear-gradient(180deg, rgba(0,0,0,0) 58%, rgba(255,230,92,.75) 58%); }
+.dark .hl { background-image: linear-gradient(180deg, rgba(0,0,0,0) 58%, rgba(130,110,10,.65) 58%); }
 
 .experience-list {
     list-style: none;
