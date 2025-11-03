@@ -11,142 +11,65 @@
     </script>
     <link rel="canonical" href="https://www.mohammad.page/links.html">
     <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://www.google-analytics.com">
     <meta property="og:title" content="Links - Mohammad Jafari">
     <meta property="og:description" content="Links to Mohammad Jafari's social profiles, playlists, and creative work.">
     <meta property="og:url" content="https://www.mohammad.page/links.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://mohammad.page/portrait.jpeg.jpeg">
+    <meta property="og:image" content="https://mohammad.page/portrait.jpeg">
     <meta property="og:site_name" content="Mohammad Jafari">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Links - Mohammad Jafari">
     <meta name="twitter:description" content="Links to Mohammad Jafari's social profiles, playlists, and creative work.">
-    <meta name="twitter:image" content="https://mohammad.page/portrait.jpeg.jpeg">
+    <meta name="twitter:image" content="https://mohammad.page/portrait.jpeg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links - Mohammad Jafari</title>
     <meta name="description" content="Links to Mohammad Jafari's social profiles, playlists, and creative work.">
     <style>
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        ::selection {
-            background: rgba(0, 102, 204, 0.15);
-            color: #0066cc;
-        }
-        
-        ::-moz-selection {
-            background: rgba(0, 102, 204, 0.15);
-            color: #0066cc;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            line-height: 1.65;
-            color: #2c2c2c;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
         .content {
-            margin-top: 10vh; 
+            margin-top: 10vh;
         }
-        h1, h2 {
-            font-weight: normal;
-            letter-spacing: -0.02em;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            letter-spacing: -0.03em;
-        }
-        h2 {
-            font-size: 1.8em;
-            margin-top: 30px;
-            letter-spacing: -0.01em;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid transparent;
-        }
-        
-        a:hover {
-            border-bottom: 1px solid #0066cc;
-        }
-        
-        a:focus {
-            outline: 2px solid rgba(0, 102, 204, 0.3);
-            outline-offset: 2px;
-            border-radius: 1px;
-        }
-        .theme-toggle{position:fixed;top:12px;right:12px;width:34px;height:34px;border:none;border-radius:999px;background:#fff;color:#222;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;line-height:1;transition:background-color .2s ease,color .2s ease;z-index:1000}.theme-toggle:hover{}.dark body{background:#0b0d10;color:#e6e6e6}.dark a{color:#66b2ff}.dark a:hover{border-bottom-color:#66b2ff}.dark .nav a:hover{background-color:rgba(102,178,255,.08)}.dark ::selection{background:rgba(102,178,255,.2);color:#66b2ff}.dark .theme-toggle{background:#14171a;color:#e6e6e6;border:none}.dark .nav a[aria-current="page"]{background-color:rgba(102,178,255,.12)}
-        
-        .nav {display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:24px}
-        .nav a{padding:6px 10px;border-radius:6px;transition:background-color .2s ease,color .2s ease}
-        .nav a:hover{background-color:rgba(0,102,204,.06);border-bottom:1px solid transparent}
-        .nav a[aria-current="page"]{font-weight:600;background-color:rgba(0,102,204,.08);border-bottom:1px solid transparent}
         .link-section {
             margin-bottom: 30px;
         }
-        .content {
-            animation: fadeIn 0.6s ease-out;
-        }
-        
         .link-item {
             margin-bottom: 10px;
             padding: 8px 0;
             transition: transform 0.2s ease;
             border-radius: 3px;
         }
-        
         .link-item:hover {
             transform: translateX(3px);
         }
-        
         .link-item a {
             display: inline-block;
             padding: 5px 0;
         }
-        
         .link-description {
             color: #666;
             font-size: 0.9em;
             margin-left: 10px;
             transition: color 0.2s ease;
         }
-        
         .link-item:hover .link-description {
             color: #555;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
 <body>
     <site-nav></site-nav>
+    <noscript>
+        <nav class="nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="links.html" aria-current="page">Links</a>
+        </nav>
+    </noscript>
 
-    <div class="content">
+    <main class="content">
         <h1>Links</h1>
         
         <p>Here are some places you can find me around the web:</p>
@@ -186,7 +109,7 @@
                 <span class="link-description">Thoughts and updates</span>
             </div>
         </div>
-    </div>
+    </main>
     <script src="nav.js" defer></script>
 </body>
 </html> 
