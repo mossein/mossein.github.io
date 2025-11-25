@@ -107,4 +107,96 @@
   });
   updatePortrait();
   host.replaceWith(nav, btn);
+
+  var grain = document.createElement("div");
+  grain.className = "grain";
+  grain.setAttribute("aria-hidden", "true");
+  document.body.appendChild(grain);
+
+  var blob = document.createElement("div");
+  blob.className = "cursor-blob";
+  document.body.appendChild(blob);
+  var blobX = 0, blobY = 0, targetX = 0, targetY = 0;
+  document.addEventListener("mousemove", function(e) {
+    targetX = e.clientX;
+    targetY = e.clientY;
+  });
+  function animateBlob() {
+    blobX += (targetX - blobX) * 0.08;
+    blobY += (targetY - blobY) * 0.08;
+    blob.style.left = blobX + "px";
+    blob.style.top = blobY + "px";
+    requestAnimationFrame(animateBlob);
+  }
+  animateBlob();
+
+  var reveals = document.querySelectorAll(".reveal");
+  if (reveals.length > 0 && "IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    reveals.forEach(function(el) { observer.observe(el); });
+  }
+
+  var greeting = document.getElementById("greeting");
+  if (greeting) {
+    var hour = new Date().getHours();
+    var text = "hi";
+    if (hour >= 5 && hour < 12) text = "good morning";
+    else if (hour >= 12 && hour < 17) text = "good afternoon";
+    else if (hour >= 17 && hour < 21) text = "good evening";
+    greeting.textContent = text + ", i'm mo.";
+  }
+
+  var progress = document.createElement("div");
+  progress.className = "scroll-progress";
+  progress.setAttribute("aria-hidden", "true");
+  document.body.appendChild(progress);
+  function updateProgress() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+    progress.style.transform = "scaleX(" + scrollPercent + ")";
+  }
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
+
+  var toast = document.createElement("div");
+  toast.className = "copy-toast";
+  toast.textContent = "copied to clipboard";
+  document.body.appendChild(toast);
+  var emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+  emailLinks.forEach(function(link) {
+    link.classList.add("email-link");
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      var email = link.href.replace("mailto:", "");
+      navigator.clipboard.writeText(email).then(function() {
+        toast.classList.add("show");
+        setTimeout(function() {
+          toast.classList.remove("show");
+        }, 2000);
+      });
+    });
+  });
+
+  var moons = ["☾", "☽", "◐", "◑", "●", "○"];
+  var moonIndex = 0;
+  var footer = document.querySelector("footer");
+  if (footer && footer.textContent.includes("☾")) {
+    var html = footer.innerHTML;
+    footer.innerHTML = html.replace("☾", '<span class="moon-toggle">☾</span>');
+    var moonEl = footer.querySelector(".moon-toggle");
+    if (moonEl) {
+      moonEl.addEventListener("click", function() {
+        moonIndex = (moonIndex + 1) % moons.length;
+        moonEl.textContent = moons[moonIndex];
+      });
+    }
+  }
 })();

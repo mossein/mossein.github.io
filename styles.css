@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap');
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -37,15 +39,25 @@ h2 {
 }
 
 h1 {
+  font-family: 'Fraunces', Georgia, serif;
   font-size: 2.5em;
   margin-bottom: 10px;
   letter-spacing: -0.03em;
+  font-optical-sizing: auto;
 }
 
 h2 {
+  font-family: 'Fraunces', Georgia, serif;
   font-size: 1.8em;
   margin-top: 30px;
   letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+.personal-note {
+  color: #666;
+  font-style: italic;
+  margin-top: -5px;
 }
 
 p {
@@ -74,10 +86,39 @@ a {
   text-decoration: none;
   transition: all 0.2s ease;
   border-bottom: 1px solid transparent;
+  position: relative;
+}
+
+a:not(.nav a)::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: -2px;
+  bottom: -2px;
+  background: radial-gradient(ellipse at center, rgba(0, 102, 204, 0.12), transparent 70%);
+  border-radius: 4px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: -1;
+}
+
+a:not(.nav a):hover::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 a:hover {
   border-bottom: 1px solid #0066cc;
+}
+
+.dark a:not(.nav a)::before {
+  background: radial-gradient(ellipse at center, rgba(102, 178, 255, 0.15), transparent 70%);
+}
+
+.watercolor a:not(.nav a)::before {
+  background: radial-gradient(ellipse at center, rgba(59, 110, 169, 0.12), transparent 70%);
 }
 
 a:focus {
@@ -163,6 +204,51 @@ a:focus {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.stagger { opacity: 0; transform: translateY(16px); animation: staggerIn 0.5s ease-out forwards; }
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+@keyframes staggerIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.dark .grain {
+  opacity: 0.04;
+}
+
+.watercolor .grain {
+  opacity: 0.035;
 }
 
 .dark body {
@@ -650,4 +736,215 @@ a:focus {
 
 .watercolor .theme-toggle:active {
   transform: rotate(-6deg) scale(0.98);
+}
+
+.dark .personal-note {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.watercolor .personal-note {
+  color: #6b6e72;
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+  text-align: center;
+  font-size: 0.85em;
+  color: #888;
+}
+
+.dark footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.watercolor footer {
+  border-top-color: rgba(31, 36, 40, 0.08);
+  color: #8b8e92;
+}
+
+blockquote {
+  margin: 30px 0;
+  padding: 20px 24px;
+  border-left: 3px solid #0066cc;
+  background: rgba(0, 102, 204, 0.04);
+  font-style: italic;
+  border-radius: 0 6px 6px 0;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+.dark blockquote {
+  border-left-color: #66b2ff;
+  background: rgba(102, 178, 255, 0.08);
+}
+
+.watercolor blockquote {
+  border-left-color: #3b6ea9;
+  background: rgba(59, 110, 169, 0.06);
+}
+
+.cursor-blob {
+  position: fixed;
+  pointer-events: none;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(121, 167, 255, 0.25), 
+    rgba(255, 174, 188, 0.2) 40%, 
+    rgba(168, 236, 195, 0.15) 70%, 
+    transparent 100%);
+  filter: blur(30px);
+  mix-blend-mode: multiply;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.watercolor .cursor-blob {
+  opacity: 0.7;
+}
+
+@media (hover: none) {
+  .cursor-blob {
+    display: none;
+  }
+}
+
+a[target="_blank"]:not(.nav a)::after {
+  content: " ↗";
+  font-size: 0.75em;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+a[target="_blank"]:not(.nav a):hover::after {
+  opacity: 0.8;
+}
+
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #0066cc, #66b2ff);
+  z-index: 10000;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.dark .scroll-progress {
+  background: linear-gradient(90deg, #66b2ff, #99ccff);
+}
+
+.watercolor .scroll-progress {
+  background: linear-gradient(90deg, #3b6ea9, #79a7ff);
+}
+
+blockquote {
+  position: relative;
+}
+
+blockquote::before {
+  content: """;
+  position: absolute;
+  left: -8px;
+  top: -10px;
+  font-family: Georgia, serif;
+  font-size: 4em;
+  line-height: 1;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.dark blockquote::before {
+  opacity: 0.12;
+}
+
+.watercolor blockquote::before {
+  opacity: 0.1;
+}
+
+.copy-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #2c2c2c;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 10001;
+}
+
+.copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dark .copy-toast {
+  background: #e6e6e6;
+  color: #111;
+}
+
+.watercolor .copy-toast {
+  background: #3b6ea9;
+  color: #fff;
+}
+
+.email-link {
+  cursor: pointer;
+}
+
+.moon-toggle {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.moon-toggle:hover {
+  transform: scale(1.1);
+}
+
+.moon-toggle:active {
+  transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .stagger {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .cursor-blob {
+    display: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
 }

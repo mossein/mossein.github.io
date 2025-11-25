@@ -84,126 +84,110 @@
     </noscript>
 
     <main class="content">
-      <h1>hi, i'm mo.</h1>
+      <h1 id="greeting" class="stagger stagger-1">hi, i'm mo.</h1>
 
-      <p>
-        software developer with end to end experience across architecture,
-        infrastructure, and applied ai. as a
-       founding software developer at
-        <a href="https://retellio.com">retellio</a>, i built the aws ecosystem,
-        scalable backend systems, and shipped production-grade genai features. previously, i worked on nasdaq’s
-        entity research copilot adopted by
-        2,000+ institutions.
+      <p class="stagger stagger-2">
+        software developer. i design infrastructure, ship ai features, and keep 
+        things running. currently founding engineer at 
+        <a href="https://retellio.com">retellio</a>, where i built everything 
+        from the ground up—aws, ci/cd, the llm pipeline, all of it. before that, 
+        i helped build nasdaq's first genai product, now used by 2,000+ institutions.
+      </p>
+
+      <p class="personal-note stagger stagger-3">
+        currently based in toronto, making things that work and occasionally things that look nice.
       </p>
 
       <img
+        class="stagger stagger-4"
         src="portrait.jpeg"
         alt="Mohammad Jafari"
         decoding="async"
         fetchpriority="high"
       />
 
-      <h2>tl;dr</h2>
+      <section class="reveal">
+        <h2>experience</h2>
 
-      <p>
-        retellio (founding dev): <span class="hl">aws</span>, node/typescript,
-        agentic workflows, microservices, ci/cd,
-        <span class="hl">llm/rag</span>, observability.<br />
-        nasdaq: entity research copilot—retrieval, evaluation, and apis on
-        aws/terraform.
-      </p>
+        <ul class="experience-list">
+          <li>
+            <span class="role">Founding Engineer at Retellio</span
+            ><span class="dates">Jul 2024 – Present</span>
+            <div class="summary">
+              built the entire platform from scratch: <span class="hl">aws</span> 
+              infrastructure, <span class="hl">llm/rag</span> pipelines, 
+              microservices, and integrations with salesforce, hubspot, gong. 
+              <span class="hl">99.9% uptime</span>, shipping daily.
+            </div>
+          </li>
+          <li>
+            <span class="role">Senior Software Developer at Nasdaq</span
+            ><span class="dates">Jan 2024 – Jul 2024</span>
+            <div class="summary">
+              helped build nasdaq's first <span class="hl">genai product</span>—an 
+              entity research copilot. owned retrieval and evaluation modules, 
+              deployed on <span class="hl">aws/terraform</span>. now used by 
+              2,000+ financial institutions.
+            </div>
+          </li>
+          <li>
+            <span class="role">Software Developer at Verafin</span
+            ><span class="dates">Jan 2022 – Jan 2024</span>
+            <div class="summary">
+              started as intern, promoted twice. built 
+              <span class="hl">fraud detection</span> agents and ml pipelines in 
+              <span class="hl">java</span>. owned features from design to 
+              production, handled on-call for critical systems.
+            </div>
+          </li>
+          <li>
+            <span class="role">Web Developer at Memorial University</span
+            ><span class="dates">Jan 2020 – Jan 2022</span>
+            <div class="summary">
+              redesigned the student portal serving 
+              <span class="hl">15k+ users</span>. built auth, scheduling 
+              integrations, and accessible ui from the ground up.
+            </div>
+          </li>
+        </ul>
+      </section>
 
-      <h2>experience</h2>
+      <section class="reveal">
+        <h2>education</h2>
 
-      <ul class="experience-list">
-        <li>
-          <span class="role">Founding Software Developer at Retellio</span
-          ><span class="dates">Jul 2024 - Present</span>
-          <div class="summary">
-            designing and shipping the platform end-to-end:
-            <span class="hl">aws infra</span>, <span class="hl">ci/cd</span>,
-            microservices, <span class="hl">llm/rag</span>, integrations
-            (intercom, crm), and full observability;
-            <span class="hl">99.9%+ uptime</span> with
-            <span class="hl">daily releases</span>.
-          </div>
-        </li>
-        <li>
-          <span class="role">Senior Software Developer at Nasdaq</span
-          ><span class="dates">Jan 2024 - Jul 2024</span>
-          <div class="summary">
-            contributed to nasdaq’s first generative ai product; developed
-            retrieval, evaluation, and api modules; deployed on
-            <span class="hl">aws</span> infrastructure using terraform; improved
-            product review efficiency and reduced costs.
-          </div>
-        </li>
-        <li>
-          <span class="role">Software Developer at Verafin</span
-          ><span class="dates">May 2023 - Jan 2024</span>
-          <div class="summary">
-            delivered <span class="hl">fraud‑detection</span> features in
-            <span class="hl">java</span> services, tuned performance and alerts,
-            and improved <span class="hl">reliability/on‑call</span> across
-            environments.
-          </div>
-        </li>
-        <li>
-          <span class="role">Software Developer (PT) at Verafin</span
-          ><span class="dates">Sep 2022 - Apr 2023</span>
-          <div class="summary">
-            ownership of small services; shipped features, and handled
-            production issues.
-          </div>
-        </li>
-        <li>
-          <span class="role">Software Developer Intern at Verafin</span
-          ><span class="dates">Jan 2022 - Sep 2022</span>
-          <div class="summary">
-            worked on new fraud/ml agents; owned multiple agents from design to
-            rollout.
-          </div>
-        </li>
-        <li>
-          <span class="role"
-            >Web Developer at Memorial University of Newfoundland</span
-          ><span class="dates">Jan 2020 - Jan 2022</span>
-          <div class="summary">
-            redesigned the student portal for
-            <span class="hl">15k+ users</span>; implemented auth/session and
-            scheduling api integration; shipped accessible, responsive ui.
-          </div>
-        </li>
-      </ul>
+        <ul class="experience-list">
+          <li>
+            <span class="role">Computer Science at Memorial University</span
+            ><span class="dates">2019 – 2023</span>
+            <div class="summary">
+              st. john's, newfoundland. studied algorithms, systems, and ai. 
+              worked part-time as a developer throughout.
+            </div>
+          </li>
+        </ul>
+      </section>
 
-      <h2>skills</h2>
+      <section class="reveal">
+        <h2>skills</h2>
 
-      <p>languages: python, typescript/node, go, c#, sql, swift, c/c++.</p>
-      <p>
-        ai: llm integration, rag systems, agentic workflows, prompt engineering,
-        spacy, numpy, embeddings & inference pipelines.
-      </p>
-      <p>
-        cloud/devops: aws (ec2, lambda, s3, rds, iam), docker, kubernetes,
-        terraform, ci/cd.
-      </p>
-      <p>
-        backend: microservices, rest & graphql apis, event‑driven systems,
-        system design, scalable architectures.
-      </p>
-      <p>
-        data/messaging: dynamodb, redshift, elasticsearch, rabbitmq, streaming,
-        queues.
-      </p>
-      <p>
-        process: tdd, unit testing, clean code, agile/scrum, code review & ci
-        workflows.
-      </p>
+        <p>
+          i write <span class="hl">python</span>, typescript, go, and swift. 
+          i build on <span class="hl">aws</span> with docker, kubernetes, and terraform. 
+          i care about <span class="hl">llms</span>, distributed systems, and good ux.
+        </p>
+      </section>
 
-      <h2>contact</h2>
+      <section class="reveal">
+        <h2>contact</h2>
 
-      <p><a href="mailto:me@mohammad.page">me@mohammad.page</a></p>
+        <p>
+          <a href="mailto:me@mohammad.page">me@mohammad.page</a><br />
+          <a href="https://github.com/mossein" target="_blank">github</a> · 
+          <a href="https://www.linkedin.com/in/mojafarii/" target="_blank">linkedin</a>
+        </p>
+      </section>
     </main>
+    <footer>© 2025 · toronto · ☾</footer>
     <script src="nav.js" defer></script>
     <script type="application/ld+json">
       {
@@ -218,7 +202,7 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Mohammad Jafari",
-        "jobTitle": "Software Developer",
+        "jobTitle": "Founding Engineer",
         "worksFor": {
           "@type": "Organization",
           "name": "Retellio"

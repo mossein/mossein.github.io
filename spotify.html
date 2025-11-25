@@ -78,14 +78,37 @@
         border-radius: 12px;
         display: block;
       }
+      .playlist-card {
+        min-height: 380px;
+        position: relative;
+      }
+      .playlist-card::before {
+        content: "loading...";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.9em;
+        z-index: 0;
+      }
+      .playlist-card iframe {
+        position: relative;
+        z-index: 1;
+      }
       .back-link {
         margin-top: 40px;
         padding-top: 20px;
         border-top: 1px solid #e5e5e5;
       }
     </style>
-    <link rel="preconnect" href="https://open.spotify.com" />
-    <link rel="preconnect" href="https://i.scdn.co" />
+    <link rel="preconnect" href="https://open.spotify.com" crossorigin />
+    <link rel="preconnect" href="https://i.scdn.co" crossorigin />
+    <link rel="preconnect" href="https://sdk.scdn.co" crossorigin />
+    <link rel="preconnect" href="https://encore.scdn.co" crossorigin />
+    <link rel="dns-prefetch" href="https://open.spotify.com" />
+    <link rel="dns-prefetch" href="https://i.scdn.co" />
   </head>
   <body>
     <site-nav></site-nav>
@@ -111,6 +134,7 @@
         <p><a href="links.html">← Back to links</a></p>
       </div>
     </main>
+    <footer>© 2025 · toronto · ☾</footer>
 
     <script>
       const MY_PLAYLISTS = [
@@ -121,9 +145,7 @@
         "3QSY42sTLZiaC2cETC4zvy", // Tehran Vibes
       ];
 
-      function createPlaylistCard(playlistId) {
-        const spotifyUrl = `https://open.spotify.com/playlist/${playlistId}`;
-
+      function createPlaylistCard(playlistId, eager) {
         return `
                 <div class="playlist-card">
                     <iframe 
@@ -133,7 +155,7 @@
                         frameborder="0" 
                         allowfullscreen="" 
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                        loading="lazy">
+                        ${eager ? '' : 'loading="lazy"'}>
                     </iframe>
                 </div>
             `;
@@ -141,13 +163,10 @@
 
       function initializePlaylists() {
         const grid = document.getElementById("playlist-grid");
-
-        grid.innerHTML = MY_PLAYLISTS.map(createPlaylistCard).join("");
+        grid.innerHTML = MY_PLAYLISTS.map((id, i) => createPlaylistCard(id, i < 2)).join("");
       }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        initializePlaylists();
-      });
+      initializePlaylists();
     </script>
     <script src="nav.js" defer></script>
   </body>
