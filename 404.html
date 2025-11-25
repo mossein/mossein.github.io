@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Not Found - Mohammad Jafari</title>
+    <title>page not found - mohammad jafari</title>
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
@@ -17,124 +17,36 @@
       content="#000000"
       media="(prefers-color-scheme: dark)"
     />
-    <style>
-      .content {
-        margin-top: 20vh;
-        text-align: center;
-      }
-      .code {
-        font-size: 4rem;
-        letter-spacing: 0.06em;
-        margin-bottom: 10px;
-        cursor: pointer;
-      }
-      .msg {
-        color: #666;
-        margin-bottom: 20px;
-      }
-      .actions {
-        display: inline-flex;
-        gap: 12px;
-      }
-      .btn {
-        padding: 8px 14px;
-        border-radius: 999px;
-        border: 1px solid #111;
-        color: #111;
-        background: transparent;
-        transition: background-color 0.2s ease, color 0.2s ease,
-          border-color 0.2s ease;
-      }
-      .btn:hover {
-        background: #111;
-        color: #fff;
-      }
-      .dark .btn {
-        border-color: #fff;
-        color: #fff;
-      }
-      .dark .btn:hover {
-        background: #fff;
-        color: #000;
-      }
-      .egg {
-        display: none;
-        margin-top: 12px;
-        color: #999;
-        font-size: 0.9em;
-      }
-      @keyframes wobble {
-        0% {
-          transform: translateX(0);
-        }
-        25% {
-          transform: translateX(-2px) rotate(-0.5deg);
-        }
-        50% {
-          transform: translateX(2px) rotate(0.5deg);
-        }
-        75% {
-          transform: translateX(-1px) rotate(-0.3deg);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-      .code.wobble {
-        animation: wobble 450ms ease-in-out 1;
-      }
-      .page-bg {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        background: url("404.jpeg") center / cover no-repeat;
-        opacity: 0.3;
-        pointer-events: none;
-      }
-      .dark .page-bg {
-        opacity: 0.35;
-      }
-      body,
-      .content {
-        position: relative;
-        z-index: 1;
-      }
-      @media (prefers-reduced-data: reduce) {
-        .page-bg {
-          background-image: none;
-        }
-      }
-    </style>
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
   </head>
-  <body>
+  <body class="has-page-bg">
     <site-nav></site-nav>
     <noscript>
       <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="links.html">Links</a>
+        <a href="index.html">home</a>
+        <a href="blog.html">blog</a>
+        <a href="links.html">links</a>
       </nav>
     </noscript>
 
     <div class="page-bg" aria-hidden="true"></div>
 
-    <main class="content" role="main">
-      <div class="code">404</div>
+    <main class="content error-content has-page-bg" role="main">
+      <div class="error-code">404</div>
       <h1>page not found</h1>
-      <p class="msg">that page doesn’t exist or was moved.</p>
-      <div class="actions">
+      <p class="error-msg">that page doesn't exist or was moved.</p>
+      <div class="error-actions">
         <a class="btn" href="index.html">go home</a>
       </div>
-      <p id="egg" class="egg">haha you are a little weirdo.</p>
+      <p id="egg" class="error-egg">haha you are a little weirdo.</p>
     </main>
     <footer>© 2025 · toronto · ☾</footer>
 
     <script src="nav.js" defer></script>
     <script>
       (function () {
-        var c = document.querySelector(".code");
+        var c = document.querySelector(".error-code");
         var e = document.getElementById("egg");
         if (!c || !e) {
           return;

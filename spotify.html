@@ -28,7 +28,7 @@
     />
     <meta property="og:url" content="https://www.mohammad.page/spotify.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://mohammad.page/og.png" />
+    <meta property="og:image" content="https://www.mohammad.page/og.png" />
     <meta property="og:site_name" content="Mohammad Jafari" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Spotify Playlists - Mohammad Jafari" />
@@ -36,7 +36,7 @@
       name="twitter:description"
       content="Mohammad Jafari's curated Spotify playlists and music collections."
     />
-    <meta name="twitter:image" content="https://mohammad.page/og.png" />
+    <meta name="twitter:image" content="https://www.mohammad.page/og.png" />
     <meta
       name="theme-color"
       content="#ffffff"
@@ -49,60 +49,11 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spotify Playlists - Mohammad Jafari</title>
+    <title>spotify playlists - mohammad jafari</title>
     <meta
       name="description"
       content="Mohammad Jafari's curated Spotify playlists and music collections."
     />
-    <style>
-      .content {
-        margin-top: 5vh;
-      }
-      .playlist-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin-top: 30px;
-      }
-      .playlist-card {
-        border-radius: 12px;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: #f8f9fa;
-      }
-      .playlist-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-      }
-      .playlist-card iframe {
-        border-radius: 12px;
-        display: block;
-      }
-      .playlist-card {
-        min-height: 380px;
-        position: relative;
-      }
-      .playlist-card::before {
-        content: "loading...";
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #999;
-        font-size: 0.9em;
-        z-index: 0;
-      }
-      .playlist-card iframe {
-        position: relative;
-        z-index: 1;
-      }
-      .back-link {
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid #e5e5e5;
-      }
-    </style>
     <link rel="preconnect" href="https://open.spotify.com" crossorigin />
     <link rel="preconnect" href="https://i.scdn.co" crossorigin />
     <link rel="preconnect" href="https://sdk.scdn.co" crossorigin />
@@ -114,24 +65,24 @@
     <site-nav></site-nav>
     <noscript>
       <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="links.html">Links</a>
+        <a href="index.html">home</a>
+        <a href="blog.html">blog</a>
+        <a href="links.html">links</a>
       </nav>
     </noscript>
 
-    <main class="content">
-      <h1>Spotify Playlists</h1>
+    <main class="content spotify-content">
+      <h1>spotify playlists</h1>
 
       <p>
-        I believe in the power of music to bring people together. Here are some
+        i believe in the power of music to bring people together. here are some
         of my playlists.
       </p>
 
       <div class="playlist-grid" id="playlist-grid"></div>
 
       <div class="back-link">
-        <p><a href="links.html">← Back to links</a></p>
+        <p><a href="links.html">← back to links</a></p>
       </div>
     </main>
     <footer>© 2025 · toronto · ☾</footer>
