@@ -108,10 +108,6 @@
   updatePortrait();
   host.replaceWith(nav, btn);
 
-  var grain = document.createElement("div");
-  grain.className = "grain";
-  grain.setAttribute("aria-hidden", "true");
-  document.body.appendChild(grain);
 
   var blob = document.createElement("div");
   blob.className = "cursor-blob";
