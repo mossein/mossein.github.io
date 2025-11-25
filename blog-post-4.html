@@ -17,7 +17,7 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>delete more code - mo's blog</title>
+    <title>delete more code (and clean up ai slop) - mo's blog</title>
     <link rel="canonical" href="https://www.mohammad.page/blog-post-4.html" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
@@ -26,15 +26,15 @@
     <meta property="og:locale" content="en_US" />
     <meta
       name="description"
-      content="The best code I wrote this year was mass deletion. Why removing 40% of our codebase made everything better."
+      content="Most of it was AI-generated code that worked fine but nobody understood anymore. Why removing 40% of our codebase made everything better."
     />
     <meta
       property="og:title"
-      content="Delete More Code"
+      content="Delete More Code (and Clean Up AI Slop)"
     />
     <meta
       property="og:description"
-      content="The best code I wrote this year was mass deletion. Why removing 40% of our codebase made everything better."
+      content="Most of it was AI-generated code that worked fine but nobody understood anymore. Why removing 40% of our codebase made everything better."
     />
     <meta
       property="og:url"
@@ -46,11 +46,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Delete More Code"
+      content="Delete More Code (and Clean Up AI Slop)"
     />
     <meta
       name="twitter:description"
-      content="The best code I wrote this year was mass deletion. Why removing 40% of our codebase made everything better."
+      content="Most of it was AI-generated code that worked fine but nobody understood anymore. Why removing 40% of our codebase made everything better."
     />
     <meta name="twitter:image" content="https://www.mohammad.page/portrait.jpeg" />
     <meta
@@ -80,7 +80,7 @@
           {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": "Delete More Code",
+            "headline": "Delete More Code (and Clean Up AI Slop)",
             "author": {
               "@type": "Person",
               "name": "Mohammad Jafari"
@@ -96,38 +96,37 @@
           }
         </script>
 
-        <h1>Delete More Code</h1>
+        <h1>Delete More Code (and Clean Up AI Slop)</h1>
         <p class="date">November 25, 2025</p>
 
         <p>
           last month i deleted about 40% of our codebase. not refactored. deleted. 
-          it was the most productive week i've had all year.
+          most of it was ai-generated code that worked fine but nobody understood 
+          anymore. it was the most productive week i've had all year.
         </p>
 
         <h2>how we got here</h2>
         <p>
-          when you're building fast, you accumulate stuff. a feature that made sense 
-          six months ago. an abstraction you built "for later." a module copied from 
-          another project that you never fully understood. three different ways to 
-          do the same thing because three different people built them.
+          when you're building fast, you accumulate stuff. features that made sense 
+          six months ago. abstractions built "for later." modules copied from other 
+          projects that you never fully understood.
         </p>
         <p>
-          and if you're like us and use ai to write code (yes, we vibe code), this 
-          problem compounds fast. llms are great at generating code. they're also 
-          great at generating more code than you need, with extra abstractions "just 
-          in case," defensive checks for things that won't happen, and patterns 
-          borrowed from codebases ten times your size.
+          if you use ai to write code (yes, we vibe code), this compounds fast. 
+          ai-generated code is verbose, over-abstracted, and full of defensive 
+          checks for things that won't happen. it works, but it's slop. and it 
+          piles up faster than you realize.
         </p>
         <p>
-          none of it is bad code. that's the trap. it's all reasonable. it all works. 
-          but collectively, it's friction. every new feature has to navigate around 
-          old decisions. every bug could be in twelve different places. onboarding 
-          someone means explaining why there are two user services.
+          that's the trap. it works, so you keep it. but collectively, it's friction. 
+          every new feature navigates around old decisions. every bug could be in 
+          twelve different places. onboarding someone means explaining why there 
+          are two user services.
         </p>
 
         <h2>what i actually deleted</h2>
         <p>
-          <strong>unused feature flags.</strong> we had 47 feature flags. 31 of them 
+          <strong>unused feature flags.</strong> we had 22 feature flags. 7 of them 
           hadn't been touched in months. some pointed to code that no longer existed. 
           i deleted the flags and the dead code paths they guarded. nothing broke.
         </p>
@@ -196,17 +195,35 @@
 
         <h2>especially if you vibe code</h2>
         <p>
-          if you or your team uses ai to generate code, deletion isn't optional. it's 
-          mandatory. vibe coding is fast, but it's also accumulative. you prompt, it 
-          generates, you ship. the code works, so you move on. but you didn't write 
-          it, so you don't fully own it mentally. it piles up.
+          most ai-generated code is slop. it works. it passes the tests. it does 
+          what you asked. but it's not good code. depending on which model you're 
+          using, you get varying degrees of over-engineering, weird patterns, and 
+          abstractions that make sense to no one.
+        </p>
+        <p>
+          the trap is that it works. you prompt, it generates, you run it, it runs. 
+          so you ship and move on. but you didn't write it, so you don't fully own 
+          it mentally. you don't know why it made that choice. you don't notice the 
+          three extra layers it added. the slop accumulates.
+        </p>
+        <p>
+          this is why periodic rewrites matter. not refactors. rewrites. take a 
+          module that ai helped you build three months ago and actually read it. 
+          understand what it does. then rewrite the logic yourself, cleaner, with 
+          the context you have now. you'll delete half the code and the result will 
+          be better.
         </p>
         <p>
           i've found that for every hour of ai-assisted coding, i need to spend 
-          fifteen minutes actively deleting. not the code i just wrote, but the 
-          cruft that accumulated around it. the helper functions that turned out to 
-          be unnecessary. the error handling for cases that can't happen. the 
-          abstractions that made sense to the model but not to me.
+          fifteen minutes actively cleaning up. not just deleting dead code, but 
+          rewriting the logic that survived. the helper functions that are 
+          unnecessarily generic. the error handling for impossible states. the 
+          class hierarchies that exist because the model learned from java codebases.
+        </p>
+        <p>
+          ai makes you faster at generating code. it doesn't make you faster at 
+          having good code. that part is still on you. and it requires regularly 
+          going back and fixing what the model got wrong.
         </p>
 
         <blockquote>
