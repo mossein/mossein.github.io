@@ -5,6 +5,27 @@
     <link>https://www.mohammad.page/</link>
     <description>Articles on AI, product, and engineering by Mohammad Jafari.</description>
     <item>
+      <title>Delete More Code</title>
+      <link>https://www.mohammad.page/blog-post-4.html</link>
+      <guid>https://www.mohammad.page/blog-post-4.html</guid>
+      <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
+      <description>Last month I deleted about 40% of our codebase. Not refactored. Deleted. It was the most productive week I've had all year.</description>
+    </item>
+    <item>
+      <title>Always Be Building</title>
+      <link>https://www.mohammad.page/blog-post-5.html</link>
+      <guid>https://www.mohammad.page/blog-post-5.html</guid>
+      <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
+      <description>I have 47 ideas in my notes app right now. A social app where you scroll through music instead of photos. An AI persona that actually remembers and evolves. A style engine that tells you what clothes fit your proportions. I used to think I needed to figure out which ones were worth building before I started. I was wrong.</description>
+    </item>
+    <item>
+      <title>LLMs in Production: What Nobody Tells You</title>
+      <link>https://www.mohammad.page/blog-post-3.html</link>
+      <guid>https://www.mohammad.page/blog-post-3.html</guid>
+      <pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate>
+      <description>I've spent the last few years building LLM features at two companies. First at Nasdaq on an entity research copilot, then at Retellio where I built the entire AI pipeline from scratch. Here's what I wish someone had told me before I started.</description>
+    </item>
+    <item>
       <title>From Calls to Clarity: Shipping Insight Podcasts at Retellio</title>
       <link>https://www.mohammad.page/blog-post-2.html</link>
       <guid>https://www.mohammad.page/blog-post-2.html</guid>

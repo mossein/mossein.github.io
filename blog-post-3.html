@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-40C7CVW886"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.addEventListener("DOMContentLoaded", function () {
+        gtag("js", new Date());
+        gtag("config", "G-40C7CVW886");
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLMs in Production: What Nobody Tells You - Mohammad Jafari's Blog</title>
+    <link rel="canonical" href="https://www.mohammad.page/blog-post-3.html" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      name="description"
+      content="Hard-won lessons from shipping LLM features to real users. The stuff that isn't in the tutorials."
+    />
+    <meta
+      property="og:title"
+      content="LLMs in Production: What Nobody Tells You"
+    />
+    <meta
+      property="og:description"
+      content="Hard-won lessons from shipping LLM features to real users. The stuff that isn't in the tutorials."
+    />
+    <meta
+      property="og:url"
+      content="https://www.mohammad.page/blog-post-3.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://mohammad.page/portrait.jpeg" />
+    <meta property="og:site_name" content="Mohammad Jafari" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="LLMs in Production: What Nobody Tells You"
+    />
+    <meta
+      name="twitter:description"
+      content="Hard-won lessons from shipping LLM features to real users. The stuff that isn't in the tutorials."
+    />
+    <meta name="twitter:image" content="https://mohammad.page/portrait.jpeg" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+  <body>
+    <site-nav></site-nav>
+    <noscript>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="links.html">Links</a>
+      </nav>
+    </noscript>
+
+    <main class="content">
+      <article>
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "LLMs in Production: What Nobody Tells You",
+            "author": {
+              "@type": "Person",
+              "name": "Mohammad Jafari"
+            },
+            "datePublished": "2025-11-11",
+            "dateModified": "2025-11-11",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.mohammad.page/blog-post-3.html"
+            },
+            "image": "https://mohammad.page/portrait.jpeg",
+            "description": "Hard-won lessons from shipping LLM features to real users. The stuff that isn't in the tutorials."
+          }
+        </script>
+
+        <h1>LLMs in Production: What Nobody Tells You</h1>
+        <p class="date">November 11, 2025</p>
+
+        <p>
+          i've spent the last few years building llm features at two companies. first 
+          at nasdaq on an entity research copilot, then at retellio where i built 
+          the entire ai pipeline from scratch. here's what i wish someone had told 
+          me before i started.
+        </p>
+
+        <blockquote>
+          <p>the hard part isn't getting the llm to work. it's getting it to work reliably, every time, at 3am, when you're asleep.</p>
+        </blockquote>
+
+        <h2>the demo trap</h2>
+        <p>
+          every llm demo looks magical. you paste some text, it generates something 
+          impressive, everyone claps. then you try to ship it.
+        </p>
+        <p>
+          suddenly you're dealing with prompts that work 90% of the time (which means 
+          they fail for 1 in 10 users), latency spikes that make your ui feel broken, 
+          and costs that scale faster than your runway. the gap between "working demo" 
+          and "production feature" is where most projects die.
+        </p>
+
+        <h2>what actually matters</h2>
+        <p>
+          after shipping llm features to thousands of users, here's what i actually 
+          spend my time on:
+        </p>
+        <p>
+          <strong>structured outputs.</strong> don't let the model free-write. force 
+          json. validate schemas. if the model returns malformed data, retry with 
+          the error message in context. this alone fixed 80% of our reliability issues.
+        </p>
+        <p>
+          <strong>prompt versioning.</strong> treat prompts like code. version them. 
+          a/b test them. never edit a prompt in production without knowing you can 
+          roll back in 30 seconds.
+        </p>
+        <p>
+          <strong>graceful degradation.</strong> what happens when openai is down? 
+          when you hit rate limits? when the response takes 45 seconds? your feature 
+          should still work, even if it's worse. fallbacks aren't optional.
+        </p>
+        <p>
+          <strong>cost controls.</strong> set hard limits. alert on anomalies. one 
+          infinite loop with gpt-4 can burn through your monthly budget in hours. 
+          ask me how i know.
+        </p>
+
+        <h2>the rag trap</h2>
+        <p>
+          everyone wants to build rag (retrieval-augmented generation). shove your 
+          docs into a vector db, retrieve relevant chunks, feed them to the llm. 
+          sounds simple.
+        </p>
+        <p>
+          it's not. retrieval quality is everything, and it's hard to measure. your 
+          embeddings might find "semantically similar" content that's actually useless 
+          for the question. chunking strategy matters more than you think. and when 
+          retrieval fails silently, the llm just hallucinates confidently.
+        </p>
+        <p>
+          what helped us: treat retrieval as a separate system with its own metrics. 
+          log what you retrieve. sample and review. build evaluation sets. don't just 
+          trust the vibes.
+        </p>
+
+        <h2>observability is non-negotiable</h2>
+        <p>
+          you need to see every request: the input, the prompt, the retrieval results, 
+          the model output, the latency, the cost. not aggregates. individual requests. 
+          when something goes wrong (and it will), you need to replay exactly what 
+          happened.
+        </p>
+        <p>
+          we log everything to a structured store. every llm call has a trace id that 
+          links back to the user action that triggered it. when someone reports a bad 
+          output, i can pull up the exact prompt and context in seconds.
+        </p>
+
+        <h2>start smaller than you think</h2>
+        <p>
+          your first llm feature shouldn't be an autonomous agent that handles complex 
+          multi-step workflows. ship something constrained. a summarizer. a classifier. 
+          something where wrong outputs are annoying but not catastrophic.
+        </p>
+        <p>
+          once you've built the infrastructure (the observability, the fallbacks, the 
+          cost controls) then you can get ambitious. but don't skip the boring stuff 
+          to build the cool stuff. the boring stuff is what lets the cool stuff work.
+        </p>
+
+        <h2>the actual competitive advantage</h2>
+        <p>
+          here's the thing: everyone has access to the same models. gpt-5.1, claude 4.5, 
+          gemini 3. they're commodities. the advantage isn't the model.
+        </p>
+        <p>
+          it's the data you have, the ux you build around it, and the reliability of 
+          your system. a mediocre model with great retrieval, smart fallbacks, and 
+          sub-second latency will beat a frontier model wrapped in a fragile demo 
+          every time.
+        </p>
+        <p>
+          that's what nobody tells you: the llm is the easy part.
+        </p>
+      </article>
+
+      <p><a href="blog.html">← Back to blog</a></p>
+    </main>
+    <footer>© 2025 · toronto · ☾</footer>
+    <script src="nav.js" defer></script>
+  </body>
+</html>
+

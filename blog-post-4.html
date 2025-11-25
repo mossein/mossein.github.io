@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-40C7CVW886"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.addEventListener("DOMContentLoaded", function () {
+        gtag("js", new Date());
+        gtag("config", "G-40C7CVW886");
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete More Code - Mohammad Jafari's Blog</title>
+    <link rel="canonical" href="https://www.mohammad.page/blog-post-4.html" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      name="description"
+      content="The best code I wrote this year was mass deletion. Why removing 40% of our codebase made everything better."
+    />
+    <meta
+      property="og:title"
+      content="Delete More Code"
+    />
+    <meta
+      property="og:description"
+      content="The best code I wrote this year was mass deletion. Why removing 40% of our codebase made everything better."
+    />
+    <meta
+      property="og:url"
+      content="https://www.mohammad.page/blog-post-4.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://mohammad.page/portrait.jpeg" />
+    <meta property="og:site_name" content="Mohammad Jafari" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Delete More Code"
+    />
+    <meta
+      name="twitter:description"
+      content="The best code I wrote this year was mass deletion. Why removing 40% of our codebase made everything better."
+    />
+    <meta name="twitter:image" content="https://mohammad.page/portrait.jpeg" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+  <body>
+    <site-nav></site-nav>
+    <noscript>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="links.html">Links</a>
+      </nav>
+    </noscript>
+
+    <main class="content">
+      <article>
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Delete More Code",
+            "author": {
+              "@type": "Person",
+              "name": "Mohammad Jafari"
+            },
+            "datePublished": "2025-11-25",
+            "dateModified": "2025-11-25",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.mohammad.page/blog-post-4.html"
+            },
+            "image": "https://mohammad.page/portrait.jpeg",
+            "description": "The best code I wrote this year was mass deletion. Why removing 40% of our codebase made everything better."
+          }
+        </script>
+
+        <h1>Delete More Code</h1>
+        <p class="date">November 25, 2025</p>
+
+        <p>
+          last month i deleted about 40% of our codebase. not refactored. deleted. 
+          it was the most productive week i've had all year.
+        </p>
+
+        <h2>how we got here</h2>
+        <p>
+          when you're building fast, you accumulate stuff. a feature that made sense 
+          six months ago. an abstraction you built "for later." a module copied from 
+          another project that you never fully understood. three different ways to 
+          do the same thing because three different people built them.
+        </p>
+        <p>
+          and if you're like us and use ai to write code (yes, we vibe code), this 
+          problem compounds fast. llms are great at generating code. they're also 
+          great at generating more code than you need, with extra abstractions "just 
+          in case," defensive checks for things that won't happen, and patterns 
+          borrowed from codebases ten times your size.
+        </p>
+        <p>
+          none of it is bad code. that's the trap. it's all reasonable. it all works. 
+          but collectively, it's friction. every new feature has to navigate around 
+          old decisions. every bug could be in twelve different places. onboarding 
+          someone means explaining why there are two user services.
+        </p>
+
+        <h2>what i actually deleted</h2>
+        <p>
+          <strong>unused feature flags.</strong> we had 47 feature flags. 31 of them 
+          hadn't been touched in months. some pointed to code that no longer existed. 
+          i deleted the flags and the dead code paths they guarded. nothing broke.
+        </p>
+        <p>
+          <strong>the "flexible" config system.</strong> we built a system that could 
+          configure anything from anywhere: environment variables, config files, 
+          database, remote service. in practice, we used environment variables for 
+          everything. i ripped out the abstraction and hardcoded the one pattern we 
+          actually use. 400 lines gone.
+        </p>
+        <p>
+          <strong>defensive code for impossible states.</strong> null checks on things 
+          that can't be null. try/catch blocks around code that can't throw. validation 
+          for data that's already validated upstream. years of "just to be safe" 
+          accumulating into noise.
+        </p>
+        <p>
+          <strong>tests for deleted features.</strong> the features were gone but the 
+          tests remained, mocking things that no longer existed, passing because they 
+          tested nothing.
+        </p>
+        <p>
+          <strong>the second way of doing things.</strong> we had two http clients, 
+          two logging wrappers, two date formatting utilities. i picked one of each 
+          and migrated everything. the "worse" option was often fine. the consistency 
+          mattered more than the choice.
+        </p>
+
+        <h2>what happened after</h2>
+        <p>
+          build times dropped. not because of caching tricks or parallelization. 
+          just less code to compile.
+        </p>
+        <p>
+          bugs got easier to find. fewer places to look. fewer interactions to reason 
+          about. i fixed a bug last week by reading the entire module. that used to 
+          be impossible.
+        </p>
+        <p>
+          new features got faster to ship. not because of new tooling. because i 
+          could hold the relevant context in my head. no more "wait, which service 
+          handles this again?"
+        </p>
+
+        <h2>how to know what to delete</h2>
+        <p>
+          search for the last meaningful change. if a file hasn't been touched in 
+          six months except for bulk reformatting or dependency updates, question 
+          whether it needs to exist.
+        </p>
+        <p>
+          look for code that's "handling" things. error handlers that log and rethrow. 
+          wrappers that add nothing. adapters between things that could talk directly. 
+          every layer has a cost.
+        </p>
+        <p>
+          find the features nobody uses. check your analytics. talk to users. that 
+          export-to-pdf feature you spent two weeks on? if nobody clicks it, delete it. 
+          you can rebuild it if someone asks. they won't ask.
+        </p>
+        <p>
+          delete the abstraction before you need the variation. we had a plugin system 
+          for exactly one plugin. i inlined it. if we ever need a second plugin, i'll 
+          spend an hour extracting the abstraction. probably won't happen.
+        </p>
+
+        <h2>especially if you vibe code</h2>
+        <p>
+          if you or your team uses ai to generate code, deletion isn't optional. it's 
+          mandatory. vibe coding is fast, but it's also accumulative. you prompt, it 
+          generates, you ship. the code works, so you move on. but you didn't write 
+          it, so you don't fully own it mentally. it piles up.
+        </p>
+        <p>
+          i've found that for every hour of ai-assisted coding, i need to spend 
+          fifteen minutes actively deleting. not the code i just wrote, but the 
+          cruft that accumulated around it. the helper functions that turned out to 
+          be unnecessary. the error handling for cases that can't happen. the 
+          abstractions that made sense to the model but not to me.
+        </p>
+
+        <blockquote>
+          <p>every line of code is a liability. the only way to have zero bugs in a feature is to not have that feature.</p>
+        </blockquote>
+
+        <h2>the fear</h2>
+        <p>
+          the hardest part isn't finding code to delete. it's convincing yourself it's 
+          okay. what if we need it later? what if there's a bug and we need to debug 
+          the old path? what if someone asks for that feature back?
+        </p>
+        <p>
+          that's what version control is for. the code isn't gone. it's in git. you 
+          can resurrect it in minutes. in two years of doing this, i've restored 
+          deleted code exactly once.
+        </p>
+        <p>
+          the fear of deleting is almost always worse than the reality.
+        </p>
+
+        <h2>a ritual</h2>
+        <p>
+          i've started doing this quarterly now. one week, no new features. just 
+          deletion. i go through the codebase file by file and ask: does this need 
+          to exist? is this the only way to do this thing? when was the last time 
+          a human read this?
+        </p>
+        <p>
+          it feels unproductive. your commit count goes negative. you're not shipping 
+          anything visible. but the next three months feel lighter. the codebase 
+          becomes something you can understand again, not just navigate.
+        </p>
+        <p>
+          the best code you write might be the code you delete.
+        </p>
+      </article>
+
+      <p><a href="blog.html">← Back to blog</a></p>
+    </main>
+    <footer>© 2025 · toronto · ☾</footer>
+    <script src="nav.js" defer></script>
+  </body>
+</html>
+
