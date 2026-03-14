@@ -470,7 +470,7 @@
         offset = 18 - (phase - 0.5) * 2 * 36; // +18 to -18
       }
 
-      moonEl.innerHTML = '<svg width="16" height="16" viewBox="0 0 20 20" style="vertical-align:middle">'
+      moonEl.innerHTML = '<svg width="12" height="12" viewBox="0 0 20 20" style="vertical-align:-1px">'
         + '<defs><mask id="moonmask">'
         + '<rect width="20" height="20" fill="white"/>'
         + '<circle cx="' + (10 + offset) + '" cy="10" r="9" fill="black"/>'
