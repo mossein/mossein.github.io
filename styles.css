@@ -1263,15 +1263,17 @@ blockquote::before {
   cursor: pointer;
   transition: transform 0.3s ease;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .moon-toggle:hover {
-  transform: scale(1.1) rotate(15deg);
+  transform: scale(1.2) rotate(15deg);
 }
 
 .moon-toggle:active {
   transform: scale(0.95) rotate(-30deg);
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

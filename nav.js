@@ -429,19 +429,65 @@
     }
   });
 
-  // --- Moon toggle ---
-  var moons = ["☾", "☽", "◐", "◑", "●", "○"];
-  var moonIndex = 0;
+  // --- Moon toggle (SVG-drawn, real phase) ---
+  function getMoonPhase() {
+    // simple lunar phase calculation
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    if (month <= 2) { year--; month += 12; }
+    var a = Math.floor(year / 100);
+    var b = 2 - a + Math.floor(a / 4);
+    var jd = Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + b - 1524.5;
+    var phase = ((jd - 2451550.1) / 29.530588853) % 1;
+    if (phase < 0) phase += 1;
+    return phase; // 0 = new, 0.5 = full
+  }
+
+  var moonPhase = getMoonPhase();
   var footer = document.querySelector("footer");
   if (footer && footer.textContent.includes("☾")) {
     var html = footer.innerHTML;
-    footer.innerHTML = html.replace("☾", '<span class="moon-toggle">☾</span>');
+    var svgNS = "http://www.w3.org/2000/svg";
+    footer.innerHTML = html.replace("☾", '<span class="moon-toggle" aria-label="Moon phase"></span>');
     var moonEl = footer.querySelector(".moon-toggle");
-    if (moonEl) {
-      moonEl.addEventListener("click", function() {
-        moonIndex = (moonIndex + 1) % moons.length;
-        moonEl.textContent = moons[moonIndex];
-      });
+
+    function drawMoon(phase) {
+      var isDk = r.classList.contains("dark");
+      var isWc = r.classList.contains("watercolor");
+      var litColor = isDk ? "#ccc" : isWc ? "#8b8e92" : "#888";
+      var bgColor = isDk ? "#000" : isWc ? "#faf7f1" : "#fff";
+
+      // two-circle approach: lit moon + shadow circle offset
+      // phase 0 = new (all dark), 0.5 = full (all lit)
+      var offset;
+      if (phase < 0.5) {
+        // waxing: shadow circle moves from center to the right
+        offset = -18 + phase * 2 * 36; // -18 to +18
+      } else {
+        // waning: shadow circle moves from right to center from left
+        offset = 18 - (phase - 0.5) * 2 * 36; // +18 to -18
+      }
+
+      moonEl.innerHTML = '<svg width="16" height="16" viewBox="0 0 20 20" style="vertical-align:middle">'
+        + '<defs><mask id="moonmask">'
+        + '<rect width="20" height="20" fill="white"/>'
+        + '<circle cx="' + (10 + offset) + '" cy="10" r="9" fill="black"/>'
+        + '</mask></defs>'
+        + '<circle cx="10" cy="10" r="9" fill="' + litColor + '" mask="url(#moonmask)"/>'
+        + '</svg>';
     }
+
+    drawMoon(moonPhase);
+
+    moonEl.addEventListener("click", function () {
+      moonPhase = (moonPhase + (1 / 8)) % 1;
+      drawMoon(moonPhase);
+    });
+
+    // redraw on theme change
+    var moonObs = new MutationObserver(function () { drawMoon(moonPhase); });
+    moonObs.observe(r, { attributes: true, attributeFilter: ["class"] });
   }
 })();
