@@ -31,7 +31,8 @@
     { href: "index.html", label: "home" },
     { href: "blog.html", label: "blog" },
     { href: "links.html", label: "links" },
-    { href: "studio.html", label: "studio" }
+    { href: "studio.html", label: "studio" },
+    { href: "now.html", label: "now" }
   ];
   var path = location.pathname.split("/").pop() || "index.html";
   for (var i = 0; i < links.length; i++) {
@@ -407,6 +408,25 @@
         }, 2000);
       });
     });
+  });
+
+  // --- Keyboard shortcuts ---
+  document.addEventListener("keydown", function (e) {
+    // skip if typing in an input/textarea
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch (e.key) {
+      case "1": window.location.href = "index.html"; break;
+      case "2": window.location.href = "blog.html"; break;
+      case "3": window.location.href = "links.html"; break;
+      case "4": window.location.href = "studio.html"; break;
+      case "5": window.location.href = "now.html"; break;
+      case "t":
+        var c = currentTheme();
+        var next = c === "light" ? "dark" : c === "dark" ? "watercolor" : "light";
+        setTheme(next);
+        break;
+    }
   });
 
   // --- Moon toggle ---

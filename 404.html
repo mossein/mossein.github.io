@@ -29,6 +29,7 @@
         <a href="blog.html">blog</a>
         <a href="links.html">links</a>
         <a href="studio.html">studio</a>
+        <a href="now.html">now</a>
       </nav>
     </noscript>
 
@@ -42,6 +43,12 @@
         <a class="btn" href="index.html">go home</a>
       </div>
       <p id="egg" class="error-egg">haha you are a little weirdo.</p>
+
+      <div class="game-wrap" id="game-wrap">
+        <p class="game-prompt">you're lost. might as well play snake.</p>
+        <canvas id="snake" width="300" height="300"></canvas>
+        <p class="game-score">score: <span id="snake-score">0</span></p>
+      </div>
     </main>
     <footer>© 2026 · toronto · ☾</footer>
 
@@ -60,6 +67,146 @@
             c.classList.remove("wobble");
           }, 500);
         });
+      })();
+
+      // snake game
+      (function () {
+        var canvas = document.getElementById("snake");
+        if (!canvas) return;
+        var ctx = canvas.getContext("2d");
+        var size = 15;
+        var cols = canvas.width / size;
+        var rows = canvas.height / size;
+        var snake, dir, food, score, running, interval;
+
+        var isDark = document.documentElement.classList.contains("dark");
+        var snakeColor = isDark ? "#66b2ff" : "#0066cc";
+        var foodColor = isDark ? "#ff6b6b" : "#cc3333";
+        var bgColor = "transparent";
+        var gridColor = isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)";
+
+        function init() {
+          snake = [{ x: 10, y: 10 }];
+          dir = { x: 1, y: 0 };
+          score = 0;
+          document.getElementById("snake-score").textContent = "0";
+          placeFood();
+          running = true;
+          if (interval) clearInterval(interval);
+          interval = setInterval(tick, 120);
+          draw();
+        }
+
+        function placeFood() {
+          food = {
+            x: Math.floor(Math.random() * cols),
+            y: Math.floor(Math.random() * rows)
+          };
+        }
+
+        function tick() {
+          if (!running) return;
+          var head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+          // wrap
+          if (head.x < 0) head.x = cols - 1;
+          if (head.x >= cols) head.x = 0;
+          if (head.y < 0) head.y = rows - 1;
+          if (head.y >= rows) head.y = 0;
+          // self collision
+          for (var i = 0; i < snake.length; i++) {
+            if (snake[i].x === head.x && snake[i].y === head.y) {
+              running = false;
+              drawGameOver();
+              return;
+            }
+          }
+          snake.unshift(head);
+          if (head.x === food.x && head.y === food.y) {
+            score++;
+            document.getElementById("snake-score").textContent = score;
+            placeFood();
+          } else {
+            snake.pop();
+          }
+          draw();
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          // grid
+          ctx.strokeStyle = gridColor;
+          ctx.lineWidth = 0.5;
+          for (var x = 0; x < cols; x++) {
+            ctx.beginPath();
+            ctx.moveTo(x * size, 0);
+            ctx.lineTo(x * size, canvas.height);
+            ctx.stroke();
+          }
+          for (var y = 0; y < rows; y++) {
+            ctx.beginPath();
+            ctx.moveTo(0, y * size);
+            ctx.lineTo(canvas.width, y * size);
+            ctx.stroke();
+          }
+          // food
+          ctx.fillStyle = foodColor;
+          ctx.beginPath();
+          ctx.arc(food.x * size + size / 2, food.y * size + size / 2, size / 2.5, 0, Math.PI * 2);
+          ctx.fill();
+          // snake
+          for (var s = 0; s < snake.length; s++) {
+            var alpha = 1 - (s / snake.length) * 0.5;
+            ctx.fillStyle = snakeColor;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.roundRect(snake[s].x * size + 1, snake[s].y * size + 1, size - 2, size - 2, 3);
+            ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+        }
+
+        function drawGameOver() {
+          ctx.fillStyle = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.7)";
+          ctx.font = "16px -apple-system, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText("game over. click to restart.", canvas.width / 2, canvas.height / 2);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.key) !== -1) {
+            e.preventDefault();
+          }
+          if (e.key === "ArrowUp" && dir.y !== 1) dir = { x: 0, y: -1 };
+          else if (e.key === "ArrowDown" && dir.y !== -1) dir = { x: 0, y: 1 };
+          else if (e.key === "ArrowLeft" && dir.x !== 1) dir = { x: -1, y: 0 };
+          else if (e.key === "ArrowRight" && dir.x !== -1) dir = { x: 1, y: 0 };
+        });
+
+        canvas.addEventListener("click", function () {
+          if (!running) init();
+        });
+
+        // swipe support for mobile
+        var touchStart = null;
+        canvas.addEventListener("touchstart", function (e) {
+          touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }, { passive: true });
+        canvas.addEventListener("touchend", function (e) {
+          if (!touchStart) return;
+          var dx = e.changedTouches[0].clientX - touchStart.x;
+          var dy = e.changedTouches[0].clientY - touchStart.y;
+          if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 20 && dir.x !== -1) dir = { x: 1, y: 0 };
+            else if (dx < -20 && dir.x !== 1) dir = { x: -1, y: 0 };
+          } else {
+            if (dy > 20 && dir.y !== -1) dir = { x: 0, y: 1 };
+            else if (dy < -20 && dir.y !== 1) dir = { x: 0, y: -1 };
+          }
+          if (!running) init();
+          touchStart = null;
+        });
+
+        init();
       })();
     </script>
   </body>
