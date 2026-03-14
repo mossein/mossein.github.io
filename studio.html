@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-40C7CVW886"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.addEventListener("DOMContentLoaded", function () {
+        gtag("js", new Date());
+        gtag("config", "G-40C7CVW886");
+      });
+    </script>
+    <link rel="canonical" href="https://www.mohammad.page/studio.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Studio - Mohammad Jafari" />
+    <meta
+      property="og:description"
+      content="Generative art pieces, different every time you visit."
+    />
+    <meta property="og:url" content="https://www.mohammad.page/studio.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.mohammad.page/og.png" />
+    <meta property="og:site_name" content="Mohammad Jafari" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Studio - Mohammad Jafari" />
+    <meta
+      name="twitter:description"
+      content="Generative art pieces, different every time you visit."
+    />
+    <meta name="twitter:image" content="https://www.mohammad.page/og.png" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>studio - mohammad jafari</title>
+    <meta
+      name="description"
+      content="Generative art pieces, different every time you visit."
+    />
+  </head>
+  <body>
+    <site-nav></site-nav>
+    <noscript>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">home</a>
+        <a href="blog.html">blog</a>
+        <a href="links.html">links</a>
+        <a href="studio.html" aria-current="page">studio</a>
+      </nav>
+    </noscript>
+
+    <main class="content studio-content">
+      <h1>studio</h1>
+      <p class="personal-note">generative pieces. different every time you visit. click to regenerate.</p>
+
+      <div class="studio-controls">
+        <button id="btn-flow">flow field</button>
+        <button id="btn-constellation">constellation</button>
+        <button id="btn-wave">wave interference</button>
+        <button id="btn-save">save as png</button>
+      </div>
+
+      <div class="studio-canvas-wrap">
+        <canvas id="studio-canvas" width="1600" height="900"></canvas>
+      </div>
+      <p class="studio-info" id="studio-seed"></p>
+    </main>
+    <footer>&copy; 2026 &middot; toronto &middot; ☾</footer>
+    <script src="nav.js" defer></script>
+    <script>
+    (function () {
+      var canvas = document.getElementById("studio-canvas");
+      var ctx = canvas.getContext("2d");
+      var W = canvas.width;
+      var H = canvas.height;
+      var seed = Date.now();
+      var currentMode = "flow";
+
+      // simple seeded random
+      function rng(s) {
+        return function () {
+          s = (s * 16807 + 0) % 2147483647;
+          return (s - 1) / 2147483646;
+        };
+      }
+
+      function isDark() {
+        return document.documentElement.classList.contains("dark");
+      }
+
+      function isWatercolor() {
+        return document.documentElement.classList.contains("watercolor");
+      }
+
+      function palette(rand) {
+        if (isWatercolor()) {
+          return [
+            [121, 167, 255], [255, 174, 188], [168, 236, 195],
+            [255, 200, 140], [200, 160, 255], [255, 221, 128]
+          ];
+        } else if (isDark()) {
+          return [
+            [102, 178, 255], [153, 204, 255], [100, 200, 180],
+            [255, 180, 100], [200, 140, 255], [255, 140, 160]
+          ];
+        } else {
+          return [
+            [0, 102, 204], [40, 80, 160], [20, 140, 120],
+            [180, 100, 40], [120, 60, 180], [200, 60, 80]
+          ];
+        }
+      }
+
+      function bgColor() {
+        if (isDark()) return "#000000";
+        if (isWatercolor()) return "#faf7f1";
+        return "#ffffff";
+      }
+
+      // --- Flow Field ---
+      function drawFlow() {
+        var rand = rng(seed);
+        var colors = palette(rand);
+        ctx.fillStyle = bgColor();
+        ctx.fillRect(0, 0, W, H);
+
+        var scale = 0.004 + rand() * 0.003;
+        var numLines = 800 + Math.floor(rand() * 600);
+        var steps = 60 + Math.floor(rand() * 40);
+        var angleOffset = rand() * Math.PI * 2;
+
+        for (var i = 0; i < numLines; i++) {
+          var x = rand() * W;
+          var y = rand() * H;
+          var col = colors[Math.floor(rand() * colors.length)];
+          var alpha = 0.15 + rand() * 0.3;
+
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.strokeStyle = "rgba(" + col[0] + "," + col[1] + "," + col[2] + "," + alpha + ")";
+          ctx.lineWidth = 0.5 + rand() * 1.5;
+
+          for (var s = 0; s < steps; s++) {
+            var angle = noise2d(x * scale, y * scale, rand) * Math.PI * 4 + angleOffset;
+            x += Math.cos(angle) * 2;
+            y += Math.sin(angle) * 2;
+            ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      }
+
+      function noise2d(x, y, rand) {
+        return (Math.sin(x * 12.9898 + y * 78.233) * 43758.5453) % 1;
+      }
+
+      // --- Constellation ---
+      function drawConstellation() {
+        var rand = rng(seed);
+        var colors = palette(rand);
+        ctx.fillStyle = bgColor();
+        ctx.fillRect(0, 0, W, H);
+
+        var numPoints = 120 + Math.floor(rand() * 80);
+        var points = [];
+        var maxDist = 100 + rand() * 60;
+
+        for (var i = 0; i < numPoints; i++) {
+          points.push({
+            x: rand() * W,
+            y: rand() * H,
+            r: 1 + rand() * 3,
+            col: colors[Math.floor(rand() * colors.length)]
+          });
+        }
+
+        // draw connections
+        for (var a = 0; a < points.length; a++) {
+          for (var b = a + 1; b < points.length; b++) {
+            var dx = points[a].x - points[b].x;
+            var dy = points[a].y - points[b].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDist) {
+              var alpha = (1 - dist / maxDist) * 0.25;
+              var col = points[a].col;
+              ctx.beginPath();
+              ctx.moveTo(points[a].x, points[a].y);
+              ctx.lineTo(points[b].x, points[b].y);
+              ctx.strokeStyle = "rgba(" + col[0] + "," + col[1] + "," + col[2] + "," + alpha + ")";
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // draw points
+        for (var p = 0; p < points.length; p++) {
+          var pt = points[p];
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(" + pt.col[0] + "," + pt.col[1] + "," + pt.col[2] + ",0.7)";
+          ctx.fill();
+
+          // glow
+          var grd = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, pt.r * 4);
+          grd.addColorStop(0, "rgba(" + pt.col[0] + "," + pt.col[1] + "," + pt.col[2] + ",0.15)");
+          grd.addColorStop(1, "rgba(" + pt.col[0] + "," + pt.col[1] + "," + pt.col[2] + ",0)");
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, pt.r * 4, 0, Math.PI * 2);
+          ctx.fillStyle = grd;
+          ctx.fill();
+        }
+      }
+
+      // --- Wave Interference ---
+      function drawWave() {
+        var rand = rng(seed);
+        var colors = palette(rand);
+        ctx.fillStyle = bgColor();
+        ctx.fillRect(0, 0, W, H);
+
+        var numSources = 3 + Math.floor(rand() * 4);
+        var sources = [];
+        for (var i = 0; i < numSources; i++) {
+          sources.push({
+            x: rand() * W,
+            y: rand() * H,
+            freq: 0.01 + rand() * 0.03,
+            phase: rand() * Math.PI * 2,
+            col: colors[Math.floor(rand() * colors.length)]
+          });
+        }
+
+        var imageData = ctx.createImageData(W, H);
+        var data = imageData.data;
+        var bg = isDark() ? [0, 0, 0] : isWatercolor() ? [250, 247, 241] : [255, 255, 255];
+
+        for (var y = 0; y < H; y++) {
+          for (var x = 0; x < W; x++) {
+            var val = 0;
+            var r = bg[0], g = bg[1], b = bg[2];
+            for (var s = 0; s < sources.length; s++) {
+              var src = sources[s];
+              var dx = x - src.x;
+              var dy = y - src.y;
+              var dist = Math.sqrt(dx * dx + dy * dy);
+              var wave = Math.sin(dist * src.freq + src.phase) * 0.5 + 0.5;
+              var intensity = wave * Math.max(0, 1 - dist / (W * 0.6));
+              r += (src.col[0] - bg[0]) * intensity * 0.3;
+              g += (src.col[1] - bg[1]) * intensity * 0.3;
+              b += (src.col[2] - bg[2]) * intensity * 0.3;
+            }
+            var idx = (y * W + x) * 4;
+            data[idx] = Math.min(255, Math.max(0, r));
+            data[idx + 1] = Math.min(255, Math.max(0, g));
+            data[idx + 2] = Math.min(255, Math.max(0, b));
+            data[idx + 3] = 255;
+          }
+        }
+        ctx.putImageData(imageData, 0, 0);
+
+        // overlay circles at source positions
+        for (var c = 0; c < sources.length; c++) {
+          var sc = sources[c];
+          ctx.beginPath();
+          ctx.arc(sc.x, sc.y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(" + sc.col[0] + "," + sc.col[1] + "," + sc.col[2] + ",0.5)";
+          ctx.fill();
+        }
+      }
+
+      function generate() {
+        if (currentMode === "flow") drawFlow();
+        else if (currentMode === "constellation") drawConstellation();
+        else if (currentMode === "wave") drawWave();
+
+        document.getElementById("studio-seed").textContent = "seed: " + seed + " / " + currentMode;
+      }
+
+      function regenerate() {
+        seed = Date.now();
+        generate();
+      }
+
+      canvas.addEventListener("click", regenerate);
+
+      document.getElementById("btn-flow").addEventListener("click", function () {
+        currentMode = "flow"; regenerate();
+      });
+      document.getElementById("btn-constellation").addEventListener("click", function () {
+        currentMode = "constellation"; regenerate();
+      });
+      document.getElementById("btn-wave").addEventListener("click", function () {
+        currentMode = "wave"; regenerate();
+      });
+      document.getElementById("btn-save").addEventListener("click", function () {
+        var link = document.createElement("a");
+        link.download = "studio-" + seed + ".png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+
+      // observe theme changes to regenerate with new palette
+      var mo = new MutationObserver(function () { generate(); });
+      mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+      generate();
+    })();
+    </script>
+  </body>
+</html>

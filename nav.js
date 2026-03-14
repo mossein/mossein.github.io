@@ -30,7 +30,8 @@
   var links = [
     { href: "index.html", label: "home" },
     { href: "blog.html", label: "blog" },
-    { href: "links.html", label: "links" }
+    { href: "links.html", label: "links" },
+    { href: "studio.html", label: "studio" }
   ];
   var path = location.pathname.split("/").pop() || "index.html";
   for (var i = 0; i < links.length; i++) {
@@ -56,7 +57,84 @@
     return "☾";
   }
 
+  // --- Theme switch sounds ---
+  var audioCtx = null;
+  function getAudioCtx() {
+    if (!audioCtx) {
+      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
+    }
+    return audioCtx;
+  }
+
+  function playThemeSound(theme) {
+    var ctx = getAudioCtx();
+    if (!ctx) return;
+    try {
+      if (theme === "light") {
+        playTone(ctx, 880, 0.08, 0, "sine");
+        playTone(ctx, 1100, 0.06, 0.08, "sine");
+      } else if (theme === "dark") {
+        playTone(ctx, 220, 0.1, 0, "triangle");
+        playTone(ctx, 165, 0.08, 0.06, "triangle");
+      } else {
+        playWaterSplash(ctx);
+      }
+    } catch (e) {}
+  }
+
+  function playTone(ctx, freq, dur, delay, type) {
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = type || "sine";
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.06, ctx.currentTime + delay);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + dur);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(ctx.currentTime + delay);
+    osc.stop(ctx.currentTime + delay + dur + 0.01);
+  }
+
+  function playWaterSplash(ctx) {
+    var bufferSize = ctx.sampleRate * 0.15;
+    var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    var data = buffer.getChannelData(0);
+    for (var i = 0; i < bufferSize; i++) {
+      data[i] = (Math.random() * 2 - 1) * 0.3;
+    }
+    var source = ctx.createBufferSource();
+    source.buffer = buffer;
+    var filter = ctx.createBiquadFilter();
+    filter.type = "bandpass";
+    filter.frequency.value = 2000;
+    filter.Q.value = 0.5;
+    var gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+    source.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+    source.start();
+  }
+
+  // --- Clean up all watercolor-specific inline styles ---
+  function clearWatercolorState() {
+    document.body.style.backgroundImage = "";
+    document.body.style.backgroundColor = "";
+    if (blob2El) {
+      blob2El.remove();
+      blob2El = null;
+    }
+    // clear any paint trail canvases
+    var trails = document.querySelectorAll(".paint-trail-canvas");
+    trails.forEach(function (el) { el.remove(); });
+  }
+
   function setTheme(theme) {
+    playThemeSound(theme);
+    // always clean watercolor state first
+    clearWatercolorState();
+
     if (theme === "dark") {
       r.classList.add("dark");
       r.classList.remove("watercolor");
@@ -65,6 +143,9 @@
       r.classList.add("watercolor");
       r.classList.remove("dark");
       localStorage.setItem("theme", "watercolor");
+      addBlob2();
+      applyTimeOfDay();
+      setupPaintTrail();
     } else {
       r.classList.remove("dark");
       r.classList.remove("watercolor");
@@ -108,7 +189,7 @@
   updatePortrait();
   host.replaceWith(nav, btn);
 
-
+  // --- Cursor blob (base) ---
   var blob = document.createElement("div");
   blob.className = "cursor-blob";
   document.body.appendChild(blob);
@@ -126,6 +207,136 @@
   }
   animateBlob();
 
+  // --- Paint trail (watercolor cursor effect) ---
+  var trailCanvas = null;
+  var trailCtx = null;
+  var trailPoints = [];
+  var lastTrailTime = 0;
+
+  function setupPaintTrail() {
+    if (trailCanvas) return;
+    trailCanvas = document.createElement("canvas");
+    trailCanvas.className = "paint-trail-canvas";
+    trailCanvas.style.cssText = "position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:0.35;";
+    trailCanvas.width = window.innerWidth;
+    trailCanvas.height = window.innerHeight;
+    document.body.appendChild(trailCanvas);
+    trailCtx = trailCanvas.getContext("2d");
+    trailPoints = [];
+
+    window.addEventListener("resize", function () {
+      if (trailCanvas) {
+        trailCanvas.width = window.innerWidth;
+        trailCanvas.height = window.innerHeight;
+      }
+    });
+  }
+
+  var wcColors = [
+    [121, 167, 255], [255, 174, 188], [168, 236, 195],
+    [255, 200, 140], [200, 160, 255]
+  ];
+
+  document.addEventListener("mousemove", function (e) {
+    if (!r.classList.contains("watercolor") || !trailCtx) return;
+    var now = Date.now();
+    if (now - lastTrailTime < 40) return;
+    lastTrailTime = now;
+
+    var col = wcColors[Math.floor(Math.random() * wcColors.length)];
+    trailPoints.push({
+      x: e.clientX,
+      y: e.clientY,
+      r: 8 + Math.random() * 16,
+      col: col,
+      alpha: 0.3 + Math.random() * 0.2,
+      life: 1
+    });
+    if (trailPoints.length > 60) trailPoints.shift();
+  });
+
+  function fadeTrail() {
+    if (!trailCtx || !r.classList.contains("watercolor")) {
+      if (trailCtx) trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+      requestAnimationFrame(fadeTrail);
+      return;
+    }
+    trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+    for (var i = trailPoints.length - 1; i >= 0; i--) {
+      var p = trailPoints[i];
+      p.life -= 0.008;
+      if (p.life <= 0) { trailPoints.splice(i, 1); continue; }
+      var grd = trailCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+      var a = p.alpha * p.life;
+      grd.addColorStop(0, "rgba(" + p.col[0] + "," + p.col[1] + "," + p.col[2] + "," + a + ")");
+      grd.addColorStop(0.6, "rgba(" + p.col[0] + "," + p.col[1] + "," + p.col[2] + "," + (a * 0.3) + ")");
+      grd.addColorStop(1, "rgba(" + p.col[0] + "," + p.col[1] + "," + p.col[2] + ",0)");
+      trailCtx.beginPath();
+      trailCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      trailCtx.fillStyle = grd;
+      trailCtx.fill();
+    }
+    requestAnimationFrame(fadeTrail);
+  }
+  fadeTrail();
+
+  if (currentTheme() === "watercolor") setupPaintTrail();
+
+  // --- Second watercolor blob layer ---
+  var blob2El = null;
+  function addBlob2() {
+    if (blob2El) return;
+    blob2El = document.createElement("div");
+    blob2El.className = "watercolor-blob-2";
+    document.body.appendChild(blob2El);
+  }
+  if (currentTheme() === "watercolor") addBlob2();
+
+
+  // --- Time-of-day watercolor ---
+  function applyTimeOfDay() {
+    if (!r.classList.contains("watercolor")) return;
+    var hour = new Date().getHours();
+    var bgColor, blobs;
+    if (hour >= 5 && hour < 10) {
+      // morning — warm peach and gold
+      bgColor = "#fdf6ed";
+      blobs = "radial-gradient(1200px 800px at 8% 12%, rgba(255, 200, 120, 0.3), transparent 60%),"
+        + "radial-gradient(1000px 700px at 85% 18%, rgba(255, 160, 140, 0.25), transparent 60%),"
+        + "radial-gradient(900px 620px at 25% 85%, rgba(255, 220, 160, 0.22), transparent 60%),"
+        + "radial-gradient(600px 400px at 60% 40%, rgba(255, 190, 100, 0.18), transparent 65%),"
+        + "radial-gradient(1400px 900px at 50% 50%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7))";
+    } else if (hour >= 10 && hour < 16) {
+      // midday — bright, balanced (default palette basically)
+      bgColor = "#faf7f1";
+      blobs = "radial-gradient(1200px 800px at 8% 12%, rgba(121, 167, 255, 0.22), transparent 60%),"
+        + "radial-gradient(1000px 700px at 85% 18%, rgba(255, 174, 188, 0.22), transparent 60%),"
+        + "radial-gradient(900px 620px at 25% 85%, rgba(168, 236, 195, 0.2), transparent 60%),"
+        + "radial-gradient(600px 400px at 70% 50%, rgba(200, 160, 255, 0.14), transparent 65%),"
+        + "radial-gradient(1400px 900px at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8))";
+    } else if (hour >= 16 && hour < 20) {
+      // golden hour — deep amber, rose, warm purple
+      bgColor = "#faf3ea";
+      blobs = "radial-gradient(1200px 800px at 10% 20%, rgba(255, 140, 80, 0.3), transparent 60%),"
+        + "radial-gradient(1000px 700px at 80% 15%, rgba(255, 120, 140, 0.28), transparent 60%),"
+        + "radial-gradient(900px 620px at 30% 80%, rgba(200, 140, 255, 0.2), transparent 60%),"
+        + "radial-gradient(600px 400px at 65% 50%, rgba(255, 180, 60, 0.22), transparent 65%),"
+        + "radial-gradient(1400px 900px at 50% 50%, rgba(255, 252, 245, 0.75), rgba(255, 252, 245, 0.75))";
+    } else {
+      // night — deep blues, indigo, soft moonlight
+      bgColor = "#f0f0f6";
+      blobs = "radial-gradient(1200px 800px at 8% 12%, rgba(80, 100, 200, 0.3), transparent 60%),"
+        + "radial-gradient(1000px 700px at 85% 18%, rgba(120, 100, 180, 0.25), transparent 60%),"
+        + "radial-gradient(900px 620px at 25% 85%, rgba(100, 140, 200, 0.22), transparent 60%),"
+        + "radial-gradient(600px 400px at 70% 50%, rgba(160, 120, 220, 0.18), transparent 65%),"
+        + "radial-gradient(1400px 900px at 50% 50%, rgba(240, 240, 250, 0.8), rgba(240, 240, 250, 0.8))";
+    }
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.backgroundImage = blobs;
+  }
+  if (currentTheme() === "watercolor") applyTimeOfDay();
+
+  // --- Reveal observer ---
   var reveals = document.querySelectorAll(".reveal");
   if (reveals.length > 0 && "IntersectionObserver" in window) {
     var observer = new IntersectionObserver(function(entries) {
@@ -139,6 +350,21 @@
     reveals.forEach(function(el) { observer.observe(el); });
   }
 
+  // --- Reading time ---
+  var article = document.querySelector("article");
+  if (article) {
+    var words = article.textContent.trim().split(/\s+/).length;
+    var mins = Math.max(1, Math.round(words / 230));
+    var dateEl = article.querySelector(".date");
+    if (dateEl) {
+      var span = document.createElement("span");
+      span.className = "reading-time";
+      span.textContent = " · " + mins + " min read";
+      dateEl.appendChild(span);
+    }
+  }
+
+  // --- Time-based greeting ---
   var greeting = document.getElementById("greeting");
   if (greeting) {
     var hour = new Date().getHours();
@@ -149,6 +375,7 @@
     greeting.textContent = text + ", i'm mo.";
   }
 
+  // --- Scroll progress ---
   var progress = document.createElement("div");
   progress.className = "scroll-progress";
   progress.setAttribute("aria-hidden", "true");
@@ -162,6 +389,7 @@
   window.addEventListener("scroll", updateProgress, { passive: true });
   updateProgress();
 
+  // --- Copy email ---
   var toast = document.createElement("div");
   toast.className = "copy-toast";
   toast.textContent = "copied to clipboard";
@@ -181,6 +409,7 @@
     });
   });
 
+  // --- Moon toggle ---
   var moons = ["☾", "☽", "◐", "◑", "●", "○"];
   var moonIndex = 0;
   var footer = document.querySelector("footer");

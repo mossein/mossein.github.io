@@ -135,6 +135,10 @@ a:focus {
 }
 
 
+.reading-time {
+  opacity: 0.7;
+}
+
 .dark .date {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -570,32 +574,77 @@ a:focus {
   opacity: 0.9;
   transform: translate3d(0, 0, 0);
   will-change: transform;
-  animation: wcFloat 24s ease-in-out infinite alternate;
+  animation: wcFloat 24s ease-in-out infinite alternate, wcBreathe 8s ease-in-out infinite;
+}
+
+.watercolor-blob-2 {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(38% 30% at 65% 25%, rgba(200, 160, 255, 0.18), transparent 70%),
+    radial-gradient(44% 28% at 20% 60%, rgba(255, 200, 140, 0.16), transparent 70%),
+    radial-gradient(32% 24% at 80% 70%, rgba(121, 200, 255, 0.14), transparent 70%);
+  mix-blend-mode: multiply;
+  filter: blur(16px) saturate(110%);
+  opacity: 0.8;
+  animation: wcFloat2 32s ease-in-out infinite alternate, wcBreathe 12s ease-in-out infinite;
+  z-index: 0;
 }
 
 .watercolor body::after {
-  background-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.015) 0 2px, transparent 2px 4px),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.012) 0 3px, transparent 3px 6px);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.012) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.008) 0 3px, transparent 3px 6px);
   mix-blend-mode: overlay;
-  opacity: 0.6;
+  opacity: 0.7;
   filter: saturate(105%);
 }
 
 @keyframes wcFloat {
   0% {
-    transform: translate3d(-1%, -0.5%, 0) rotate(-0.2deg) scale(1);
+    transform: translate3d(-2%, -1%, 0) rotate(-0.5deg) scale(1);
+  }
+  50% {
+    transform: translate3d(1%, 1.5%, 0) rotate(0.3deg) scale(1.04);
   }
   100% {
-    transform: translate3d(1.2%, 0.8%, 0) rotate(0.25deg) scale(1.015);
+    transform: translate3d(2%, -0.5%, 0) rotate(0.5deg) scale(1.02);
+  }
+}
+
+@keyframes wcFloat2 {
+  0% {
+    transform: translate3d(2%, -1.5%, 0) rotate(0.4deg) scale(1.02);
+  }
+  50% {
+    transform: translate3d(-1.5%, 1%, 0) rotate(-0.3deg) scale(0.97);
+  }
+  100% {
+    transform: translate3d(-1%, 2%, 0) rotate(-0.5deg) scale(1.01);
+  }
+}
+
+@keyframes wcBreathe {
+  0%, 100% {
+    filter: blur(12px) saturate(112%);
+    opacity: 0.75;
+  }
+  50% {
+    filter: blur(16px) saturate(125%);
+    opacity: 1;
   }
 }
 
 @keyframes wcFlow {
   0% {
-    background-position: 0% 0%, 100% 0%, 20% 100%, 50% 50%;
+    background-position: 0% 0%, 100% 0%, 20% 100%, 70% 50%, 50% 50%;
+  }
+  50% {
+    background-position: 5% 5%, 92% 8%, 28% 92%, 60% 55%, 50% 50%;
   }
   100% {
-    background-position: 4% 3%, 96% 4%, 26% 96%, 50% 50%;
+    background-position: 8% 3%, 88% 6%, 32% 88%, 65% 45%, 50% 50%;
   }
 }
 
@@ -617,35 +666,65 @@ a:focus {
 .watercolor h1,
 .watercolor h2 {
   position: relative;
-  text-shadow: 0 2px 12px rgba(59, 110, 169, 0.12), 0 0 1px rgba(0, 0, 0, 0.08);
+  text-shadow: 0 2px 16px rgba(59, 110, 169, 0.18), 0 0 2px rgba(0, 0, 0, 0.06);
 }
 
 .watercolor h1::before {
   content: "";
   position: absolute;
-  left: -8px;
-  right: -12px;
-  top: 58%;
-  height: 0.65em;
+  left: -14px;
+  right: -18px;
+  top: 48%;
+  height: 0.85em;
   background: radial-gradient(70% 180% at 30% 50%, rgba(255, 200, 140, 0.38), transparent 60%),
-    radial-gradient(80% 220% at 70% 50%, rgba(121, 167, 255, 0.28), transparent 60%);
+    radial-gradient(80% 220% at 70% 50%, rgba(121, 167, 255, 0.28), transparent 60%),
+    radial-gradient(50% 160% at 90% 40%, rgba(200, 160, 255, 0.18), transparent 65%);
   transform: rotate(-1.6deg);
-  filter: blur(5px) saturate(110%);
+  filter: blur(8px) saturate(115%);
   z-index: -1;
+}
+
+.watercolor h1::after {
+  content: "";
+  position: absolute;
+  left: -20px;
+  right: -24px;
+  top: 40%;
+  height: 1em;
+  background: radial-gradient(60% 140% at 20% 60%, rgba(255, 174, 188, 0.12), transparent 65%),
+    radial-gradient(50% 120% at 80% 40%, rgba(168, 236, 195, 0.1), transparent 65%);
+  transform: rotate(1deg);
+  filter: blur(14px);
+  z-index: -2;
 }
 
 .watercolor h2::before {
   content: "";
   position: absolute;
-  left: -6px;
-  right: -8px;
-  top: 62%;
-  height: 0.45em;
+  left: -10px;
+  right: -14px;
+  top: 55%;
+  height: 0.6em;
   background: radial-gradient(65% 180% at 35% 50%, rgba(168, 236, 195, 0.3), transparent 60%),
-    radial-gradient(70% 200% at 72% 50%, rgba(255, 174, 188, 0.24), transparent 60%);
+    radial-gradient(70% 200% at 72% 50%, rgba(255, 174, 188, 0.24), transparent 60%),
+    radial-gradient(45% 150% at 85% 45%, rgba(255, 221, 128, 0.16), transparent 65%);
   transform: rotate(1.2deg);
-  filter: blur(4px) saturate(108%);
+  filter: blur(6px) saturate(112%);
   z-index: -1;
+}
+
+.watercolor h2::after {
+  content: "";
+  position: absolute;
+  left: -16px;
+  right: -20px;
+  top: 45%;
+  height: 0.8em;
+  background: radial-gradient(55% 130% at 25% 55%, rgba(121, 167, 255, 0.08), transparent 65%),
+    radial-gradient(45% 110% at 75% 50%, rgba(255, 200, 140, 0.08), transparent 65%);
+  transform: rotate(-0.8deg);
+  filter: blur(12px);
+  z-index: -2;
 }
 
  
@@ -808,7 +887,36 @@ blockquote p {
 }
 
 .watercolor .cursor-blob {
-  opacity: 0.7;
+  opacity: 0.8;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at 35% 35%,
+    rgba(121, 167, 255, 0.35),
+    rgba(255, 174, 188, 0.25) 35%,
+    rgba(168, 236, 195, 0.2) 55%,
+    rgba(200, 160, 255, 0.12) 75%,
+    transparent 100%);
+  filter: blur(35px);
+  animation: blobMorph 6s ease-in-out infinite alternate;
+}
+
+@keyframes blobMorph {
+  0% {
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  33% {
+    border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+    transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
+  }
+  66% {
+    border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%;
+    transform: translate(-50%, -50%) scale(0.95) rotate(-3deg);
+  }
+  100% {
+    border-radius: 55% 45% 50% 50% / 40% 60% 45% 55%;
+    transform: translate(-50%, -50%) scale(1.02) rotate(4deg);
+  }
 }
 
 @media (hover: none) {
@@ -1223,6 +1331,88 @@ blockquote::before {
   .page-bg {
     background-image: none;
   }
+}
+
+.studio-content {
+  margin-top: 10vh;
+}
+
+.studio-canvas-wrap {
+  position: relative;
+  margin: 30px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.dark .studio-canvas-wrap {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.watercolor .studio-canvas-wrap {
+  box-shadow: 0 6px 24px rgba(59, 110, 169, 0.15);
+}
+
+.studio-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.studio-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.studio-controls button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.88em;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.studio-controls button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: #999;
+}
+
+.dark .studio-controls button {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark .studio-controls button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.watercolor .studio-controls button {
+  border-color: rgba(59, 110, 169, 0.2);
+}
+
+.watercolor .studio-controls button:hover {
+  background: rgba(59, 110, 169, 0.08);
+  border-color: rgba(59, 110, 169, 0.4);
+}
+
+.studio-info {
+  color: #888;
+  font-size: 0.88em;
+  margin-top: 8px;
+}
+
+.dark .studio-info {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.watercolor .studio-info {
+  color: #8b8e92;
 }
 
 .sr-only {
