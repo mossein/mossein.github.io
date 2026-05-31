@@ -5,6 +5,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  /* one refined easing curve + a small set of durations, used site-wide */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-micro: 150ms;   /* hovers, color shifts */
+  --dur: 300ms;         /* underlines, lifts, toggles */
+  --dur-entrance: 600ms;/* scroll reveals, page load */
+}
+
 ::selection {
   background: rgba(0, 102, 204, 0.15);
   color: #0066cc;
@@ -74,7 +82,7 @@ img {
   margin-bottom: 20px;
   border-radius: 3px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow var(--dur) var(--ease);
 }
 
 img:hover {
@@ -84,41 +92,23 @@ img:hover {
 a {
   color: #0066cc;
   text-decoration: none;
-  transition: all 0.2s ease;
-  border-bottom: 1px solid transparent;
+  border-bottom: 0;
   position: relative;
+  transition: color var(--dur-micro) var(--ease);
 }
 
-a:not(.nav a)::before {
-  content: "";
-  position: absolute;
-  left: -4px;
-  right: -4px;
-  top: -2px;
-  bottom: -2px;
-  background: radial-gradient(ellipse at center, rgba(0, 102, 204, 0.12), transparent 70%);
-  border-radius: 4px;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: -1;
+/* smooth left-to-right underline reveal (nav links keep their own pill style) */
+a:not(.nav a) {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  transition: background-size var(--dur) var(--ease),
+    color var(--dur-micro) var(--ease);
 }
 
-a:not(.nav a):hover::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-a:hover {
-  border-bottom: 1px solid #0066cc;
-}
-
-.dark a:not(.nav a)::before {
-  background: radial-gradient(ellipse at center, rgba(102, 178, 255, 0.15), transparent 70%);
-}
-
-.watercolor a:not(.nav a)::before {
-  background: radial-gradient(ellipse at center, rgba(59, 110, 169, 0.12), transparent 70%);
+a:not(.nav a):hover {
+  background-size: 100% 1.5px;
 }
 
 a:focus {
@@ -412,7 +402,8 @@ a:focus {
 .nav a {
   padding: 6px 10px;
   border-radius: 6px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color var(--dur-micro) var(--ease),
+    color var(--dur-micro) var(--ease);
   color: #111111;
   border-bottom: 0;
   -webkit-tap-highlight-color: transparent;
@@ -449,7 +440,8 @@ a:focus {
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color var(--dur-micro) var(--ease),
+    color var(--dur-micro) var(--ease), transform var(--dur-micro) var(--ease);
   z-index: 1000;
   backdrop-filter: blur(8px) saturate(120%);
   -webkit-backdrop-filter: blur(8px) saturate(120%);
@@ -459,7 +451,7 @@ a:focus {
 }
 
 .content {
-  animation: fadeIn 0.6s ease-out;
+  animation: fadeIn var(--dur-entrance) var(--ease);
 }
 
 @keyframes fadeIn {
@@ -493,7 +485,8 @@ a:focus {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity var(--dur-entrance) var(--ease),
+    transform var(--dur-entrance) var(--ease);
 }
 
 .reveal.visible {
@@ -509,10 +502,6 @@ a:focus {
 
 .dark a {
   color: #66b2ff;
-}
-
-.dark a:hover {
-  border-bottom-color: #66b2ff;
 }
 
 .dark .nav a {
@@ -557,7 +546,7 @@ a:focus {
   right: -6px;
   top: 0.1em;
   bottom: 0.25em;
-  background: rgba(255, 255, 0, 0.45);
+  background: rgba(255, 255, 0, 0.38);
   border-radius: 8px;
   transform: rotate(-2.5deg) skew(1.5deg) scaleY(0.83);
   filter: blur(1.4px) contrast(105%);
@@ -602,9 +591,9 @@ a:focus {
   bottom: 0.08em;
   background: repeating-linear-gradient(
     175deg,
-    rgba(255, 255, 120, 0.3) 0px,
-    rgba(255, 255, 120, 0.3) 2px,
-    rgba(255, 255, 100, 0.15) 4px
+    rgba(255, 255, 120, 0.25) 0px,
+    rgba(255, 255, 120, 0.25) 2px,
+    rgba(255, 255, 100, 0.12) 4px
   );
   border-radius: 12px;
   transform: rotate(1.5deg) skew(-1.2deg) scaleY(0.88);
@@ -642,7 +631,7 @@ a:focus {
   );
 }
 .dark .hl::before {
-  background: rgba(255, 210, 0, 0.35);
+  background: rgba(255, 210, 0, 0.3);
   filter: blur(1.4px) contrast(110%);
 }
 .dark .hl::after {
@@ -654,18 +643,9 @@ a:focus {
   );
 }
 
-/* company/school links keep the heading look, just gain a small arrow */
+/* company/school links keep the heading colour, gain the underline + arrow */
 .experience-list .role a {
   color: inherit;
-}
-
-.experience-list .role a:hover {
-  border-bottom-color: currentColor;
-}
-
-/* no glow/animation on these — keep them as plain headings with an arrow */
-.experience-list .role a::before {
-  display: none;
 }
 
 .experience-list {
@@ -737,10 +717,6 @@ a:focus {
   color: #3b6ea9;
 }
 
-.watercolor a:hover {
-  border-bottom-color: #3b6ea9;
-}
-
 .watercolor a:focus {
   outline: 2px solid rgba(59, 110, 169, 0.3);
   outline-offset: 2px;
@@ -791,7 +767,7 @@ a:focus {
 }
 
 .watercolor .hl::before {
-  background: rgba(255, 194, 120, 0.45);
+  background: rgba(255, 194, 120, 0.38);
   filter: blur(1.2px) contrast(104%);
 }
 
@@ -908,21 +884,6 @@ a:focus {
   100% {
     background-position: 8% 3%, 88% 6%, 32% 88%, 65% 45%, 50% 50%;
   }
-}
-
-.watercolor a {
-  text-decoration: none;
-  border-bottom: 0;
-  position: relative;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-size: 0% 2px;
-  background-position: 0 100%;
-  transition: background-size 0.4s ease, color 0.2s ease;
-}
-
-.watercolor a:hover {
-  background-size: 100% 2px;
 }
 
 .watercolor h1,
@@ -1188,14 +1149,16 @@ blockquote p {
 }
 
 a[target="_blank"]:not(.nav a)::after {
-  content: " ↗";
-  font-size: 0.75em;
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
+  content: "↗";
+  font-size: 0.62em;
+  opacity: 0.4;
+  vertical-align: super;
+  margin-left: 0.15em;
+  transition: opacity var(--dur-micro) var(--ease);
 }
 
 a[target="_blank"]:not(.nav a):hover::after {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 
@@ -1758,7 +1721,8 @@ blockquote::before {
   margin: 0;
   border-radius: 6px;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    filter var(--dur) var(--ease);
 }
 
 .photo-item img:hover {
