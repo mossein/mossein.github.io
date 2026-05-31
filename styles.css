@@ -710,10 +710,10 @@ a:focus {
 .watercolor body {
   background-color: #faf7f1;
   color: #2b2a28;
-  background-image: radial-gradient(1200px 800px at 8% 12%, rgba(121, 167, 255, 0.18), transparent 60%),
-    radial-gradient(1000px 700px at 85% 18%, rgba(255, 174, 188, 0.18), transparent 60%),
-    radial-gradient(900px 620px at 25% 85%, rgba(168, 236, 195, 0.16), transparent 60%),
-    radial-gradient(1400px 900px at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  background-image: radial-gradient(1200px 800px at 8% 12%, rgba(121, 167, 255, 0.14), transparent 62%),
+    radial-gradient(1000px 700px at 85% 18%, rgba(255, 174, 188, 0.13), transparent 62%),
+    radial-gradient(900px 620px at 25% 85%, rgba(168, 236, 195, 0.11), transparent 62%),
+    radial-gradient(1400px 900px at 50% 50%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82));
   background-attachment: fixed;
 }
 
@@ -793,7 +793,7 @@ a:focus {
 .watercolor body {
   position: relative;
   overflow-x: hidden;
-  animation: wcFlow 28s ease-in-out infinite alternate;
+  animation: wcFlow 60s ease-in-out infinite alternate;
 }
 
 .watercolor body::before,
@@ -805,33 +805,33 @@ a:focus {
 }
 
 .watercolor body::before {
-  background-image: radial-gradient(42% 28% at 12% 16%, rgba(121, 167, 255, 0.26), transparent 70%),
-    radial-gradient(36% 26% at 84% 20%, rgba(255, 174, 188, 0.26), transparent 70%),
-    radial-gradient(48% 32% at 28% 78%, rgba(168, 236, 195, 0.22), transparent 70%),
-    radial-gradient(30% 22% at 76% 84%, rgba(255, 221, 128, 0.18), transparent 75%),
-    radial-gradient(12px 12px at 18% 28%, rgba(59, 110, 169, 0.2), transparent 70%),
-    radial-gradient(10px 10px at 72% 36%, rgba(255, 174, 188, 0.18), transparent 70%),
-    radial-gradient(8px 8px at 42% 72%, rgba(168, 236, 195, 0.18), transparent 70%),
-    radial-gradient(14px 14px at 64% 78%, rgba(255, 200, 140, 0.18), transparent 70%);
+  background-image: radial-gradient(46% 32% at 12% 16%, rgba(121, 167, 255, 0.2), transparent 72%),
+    radial-gradient(40% 30% at 84% 20%, rgba(255, 174, 188, 0.18), transparent 72%),
+    radial-gradient(52% 36% at 28% 78%, rgba(168, 236, 195, 0.15), transparent 72%),
+    radial-gradient(34% 26% at 76% 84%, rgba(255, 221, 128, 0.12), transparent 76%),
+    radial-gradient(12px 12px at 18% 28%, rgba(59, 110, 169, 0.13), transparent 70%),
+    radial-gradient(10px 10px at 72% 36%, rgba(255, 174, 188, 0.12), transparent 70%),
+    radial-gradient(8px 8px at 42% 72%, rgba(168, 236, 195, 0.11), transparent 70%),
+    radial-gradient(14px 14px at 64% 78%, rgba(255, 200, 140, 0.11), transparent 70%);
   mix-blend-mode: multiply;
-  filter: blur(12px) saturate(112%);
-  opacity: 0.9;
+  filter: blur(14px) saturate(108%);
+  opacity: 0.72;
   transform: translate3d(0, 0, 0);
   will-change: transform;
-  animation: wcFloat 24s ease-in-out infinite alternate, wcBreathe 8s ease-in-out infinite;
+  animation: wcFloat 46s ease-in-out infinite alternate, wcBreathe 17s ease-in-out infinite;
 }
 
 .watercolor-blob-2 {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(38% 30% at 65% 25%, rgba(200, 160, 255, 0.18), transparent 70%),
-    radial-gradient(44% 28% at 20% 60%, rgba(255, 200, 140, 0.16), transparent 70%),
-    radial-gradient(32% 24% at 80% 70%, rgba(121, 200, 255, 0.14), transparent 70%);
+  background-image: radial-gradient(40% 32% at 65% 25%, rgba(167, 178, 255, 0.13), transparent 72%),
+    radial-gradient(46% 30% at 20% 60%, rgba(255, 200, 140, 0.11), transparent 72%),
+    radial-gradient(34% 26% at 80% 70%, rgba(133, 188, 240, 0.1), transparent 72%);
   mix-blend-mode: multiply;
-  filter: blur(16px) saturate(110%);
-  opacity: 0.8;
-  animation: wcFloat2 32s ease-in-out infinite alternate, wcBreathe 12s ease-in-out infinite;
+  filter: blur(18px) saturate(106%);
+  opacity: 0.6;
+  animation: wcFloat2 54s ease-in-out infinite alternate, wcBreathe 21s ease-in-out infinite;
   z-index: 0;
 }
 
@@ -847,35 +847,35 @@ a:focus {
 
 @keyframes wcFloat {
   0% {
-    transform: translate3d(-2%, -1%, 0) rotate(-0.5deg) scale(1);
+    transform: translate3d(-1%, -0.6%, 0) rotate(-0.25deg) scale(1);
   }
   50% {
-    transform: translate3d(1%, 1.5%, 0) rotate(0.3deg) scale(1.04);
+    transform: translate3d(0.6%, 0.8%, 0) rotate(0.18deg) scale(1.02);
   }
   100% {
-    transform: translate3d(2%, -0.5%, 0) rotate(0.5deg) scale(1.02);
+    transform: translate3d(1%, -0.3%, 0) rotate(0.25deg) scale(1.01);
   }
 }
 
 @keyframes wcFloat2 {
   0% {
-    transform: translate3d(2%, -1.5%, 0) rotate(0.4deg) scale(1.02);
+    transform: translate3d(1%, -0.8%, 0) rotate(0.2deg) scale(1.01);
   }
   50% {
-    transform: translate3d(-1.5%, 1%, 0) rotate(-0.3deg) scale(0.97);
+    transform: translate3d(-0.8%, 0.6%, 0) rotate(-0.18deg) scale(0.99);
   }
   100% {
-    transform: translate3d(-1%, 2%, 0) rotate(-0.5deg) scale(1.01);
+    transform: translate3d(-0.6%, 1%, 0) rotate(-0.25deg) scale(1);
   }
 }
 
 @keyframes wcBreathe {
   0%, 100% {
-    filter: blur(12px) saturate(112%);
-    opacity: 0.75;
+    filter: blur(14px) saturate(108%);
+    opacity: 0.82;
   }
   50% {
-    filter: blur(16px) saturate(125%);
+    filter: blur(16px) saturate(116%);
     opacity: 1;
   }
 }
@@ -905,11 +905,11 @@ a:focus {
   right: -18px;
   top: 48%;
   height: 0.85em;
-  background: radial-gradient(70% 180% at 30% 50%, rgba(255, 200, 140, 0.38), transparent 60%),
-    radial-gradient(80% 220% at 70% 50%, rgba(121, 167, 255, 0.28), transparent 60%),
-    radial-gradient(50% 160% at 90% 40%, rgba(200, 160, 255, 0.18), transparent 65%);
+  background: radial-gradient(70% 180% at 30% 50%, rgba(255, 200, 140, 0.26), transparent 62%),
+    radial-gradient(80% 220% at 70% 50%, rgba(121, 167, 255, 0.2), transparent 62%),
+    radial-gradient(50% 160% at 90% 40%, rgba(167, 178, 255, 0.12), transparent 66%);
   transform: rotate(-1.6deg);
-  filter: blur(8px) saturate(115%);
+  filter: blur(9px) saturate(108%);
   z-index: -1;
 }
 
@@ -934,11 +934,11 @@ a:focus {
   right: -14px;
   top: 55%;
   height: 0.6em;
-  background: radial-gradient(65% 180% at 35% 50%, rgba(168, 236, 195, 0.3), transparent 60%),
-    radial-gradient(70% 200% at 72% 50%, rgba(255, 174, 188, 0.24), transparent 60%),
-    radial-gradient(45% 150% at 85% 45%, rgba(255, 221, 128, 0.16), transparent 65%);
+  background: radial-gradient(65% 180% at 35% 50%, rgba(168, 236, 195, 0.2), transparent 62%),
+    radial-gradient(70% 200% at 72% 50%, rgba(255, 174, 188, 0.16), transparent 62%),
+    radial-gradient(45% 150% at 85% 45%, rgba(255, 221, 128, 0.11), transparent 66%);
   transform: rotate(1.2deg);
-  filter: blur(6px) saturate(112%);
+  filter: blur(7px) saturate(106%);
   z-index: -1;
 }
 
@@ -1115,17 +1115,17 @@ blockquote p {
 }
 
 .watercolor .cursor-blob {
-  opacity: 0.8;
+  opacity: 0.6;
   width: 180px;
   height: 180px;
   background: radial-gradient(circle at 35% 35%,
-    rgba(121, 167, 255, 0.35),
-    rgba(255, 174, 188, 0.25) 35%,
-    rgba(168, 236, 195, 0.2) 55%,
-    rgba(200, 160, 255, 0.12) 75%,
+    rgba(121, 167, 255, 0.28),
+    rgba(255, 174, 188, 0.2) 35%,
+    rgba(168, 236, 195, 0.16) 55%,
+    rgba(167, 178, 255, 0.1) 75%,
     transparent 100%);
-  filter: blur(35px);
-  animation: blobMorph 6s ease-in-out infinite alternate;
+  filter: blur(38px);
+  animation: blobMorph 11s ease-in-out infinite alternate;
 }
 
 @keyframes blobMorph {
