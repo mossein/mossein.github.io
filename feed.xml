@@ -2,54 +2,54 @@
 <rss version="2.0">
   <channel>
     <title>Mohammad Jafari Blog</title>
-    <link>https://www.mohammad.page/</link>
+    <link>https://mohammad.page/</link>
     <description>Articles on AI, product, and engineering by Mohammad Jafari.</description>
     <item>
       <title>I Haven't Coded in 3 Months</title>
-      <link>https://www.mohammad.page/blog-post-7.html</link>
-      <guid>https://www.mohammad.page/blog-post-7.html</guid>
+      <link>https://mohammad.page/blog-post-7.html</link>
+      <guid>https://mohammad.page/blog-post-7.html</guid>
       <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
       <description>I haven't typed actual code in 3 months. I just talk now. And I've shipped more than ever.</description>
     </item>
     <item>
       <title>The AI Hangover</title>
-      <link>https://www.mohammad.page/blog-post-6.html</link>
-      <guid>https://www.mohammad.page/blog-post-6.html</guid>
+      <link>https://mohammad.page/blog-post-6.html</link>
+      <guid>https://mohammad.page/blog-post-6.html</guid>
       <pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate>
       <description>2025 was the year of peak AI noise. 2026 will be the year of the hangover. and the return to craftsmanship.</description>
     </item>
     <item>
       <title>Delete More Code</title>
-      <link>https://www.mohammad.page/blog-post-4.html</link>
-      <guid>https://www.mohammad.page/blog-post-4.html</guid>
+      <link>https://mohammad.page/blog-post-4.html</link>
+      <guid>https://mohammad.page/blog-post-4.html</guid>
       <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
       <description>Last month I deleted about 40% of our codebase. Not refactored. Deleted. It was the most productive week I've had all year.</description>
     </item>
     <item>
       <title>Always Be Building</title>
-      <link>https://www.mohammad.page/blog-post-5.html</link>
-      <guid>https://www.mohammad.page/blog-post-5.html</guid>
+      <link>https://mohammad.page/blog-post-5.html</link>
+      <guid>https://mohammad.page/blog-post-5.html</guid>
       <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
       <description>I have 47 ideas in my notes app right now. A social app where you scroll through music instead of photos. An AI persona that actually remembers and evolves. A style engine that tells you what clothes fit your proportions. I used to think I needed to figure out which ones were worth building before I started. I was wrong.</description>
     </item>
     <item>
       <title>LLMs in Production: What Nobody Tells You</title>
-      <link>https://www.mohammad.page/blog-post-3.html</link>
-      <guid>https://www.mohammad.page/blog-post-3.html</guid>
+      <link>https://mohammad.page/blog-post-3.html</link>
+      <guid>https://mohammad.page/blog-post-3.html</guid>
       <pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate>
       <description>I've spent the last few years building LLM features at two companies. First at Nasdaq on an entity research copilot, then at Retellio where I built the entire AI pipeline from scratch. Here's what I wish someone had told me before I started.</description>
     </item>
     <item>
       <title>From Calls to Clarity: Shipping Insight Podcasts at Retellio</title>
-      <link>https://www.mohammad.page/blog-post-2.html</link>
-      <guid>https://www.mohammad.page/blog-post-2.html</guid>
+      <link>https://mohammad.page/blog-post-2.html</link>
+      <guid>https://mohammad.page/blog-post-2.html</guid>
       <pubDate>Thu, 14 Nov 2024 00:00:00 GMT</pubDate>
       <description>How Retellio turns long customer calls into short, insight-rich podcasts delivered where teams work; integrating with Salesforce, HubSpot, Gong, and Zoom.</description>
     </item>
     <item>
       <title>The Future of AI in B2B Customer Research</title>
-      <link>https://www.mohammad.page/blog-post-1.html</link>
-      <guid>https://www.mohammad.page/blog-post-1.html</guid>
+      <link>https://mohammad.page/blog-post-1.html</link>
+      <guid>https://mohammad.page/blog-post-1.html</guid>
       <pubDate>Wed, 28 Aug 2024 00:00:00 GMT</pubDate>
       <description>Reflections on the evolving role of AI in B2B customer research and where it's heading.</description>
     </item>

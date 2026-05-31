@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.mohammad.page/sitemap.xml
+Sitemap: https://mohammad.page/sitemap.xml
 
 
