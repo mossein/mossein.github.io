@@ -31,7 +31,8 @@
     { href: "index.html", label: "home" },
     { href: "blog.html", label: "blog" },
     { href: "links.html", label: "links" },
-    { href: "studio.html", label: "studio" },
+    { href: "photos.html", label: "photos" },
+    // { href: "studio.html", label: "studio" }, // hidden for now
     { href: "now.html", label: "now" }
   ];
   var path = location.pathname.split("/").pop() || "index.html";
