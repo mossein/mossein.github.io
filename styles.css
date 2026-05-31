@@ -402,6 +402,7 @@ a:focus {
 .nav a {
   padding: 6px 10px;
   border-radius: 6px;
+  position: relative;
   transition: background-color var(--dur-micro) var(--ease),
     color var(--dur-micro) var(--ease);
   color: #111111;
@@ -416,7 +417,7 @@ a:focus {
 
 .nav a[aria-current="page"] {
   font-weight: 600;
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: transparent;
   border-bottom: 0;
 }
 
@@ -425,29 +426,31 @@ a:focus {
 }
 
 .theme-toggle {
-  position: fixed;
-  top: 12px;
-  right: 12px;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
   border: none;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.35);
-  color: #222222;
+  background: transparent;
+  color: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1;
   transition: background-color var(--dur-micro) var(--ease),
     color var(--dur-micro) var(--ease), transform var(--dur-micro) var(--ease);
-  z-index: 1000;
-  backdrop-filter: blur(8px) saturate(120%);
-  -webkit-backdrop-filter: blur(8px) saturate(120%);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12),
-    inset 0 1px 1px rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: scale(1.08);
+}
+
+.theme-toggle:active {
+  transform: scale(0.94);
 }
 
 .content {
@@ -514,7 +517,7 @@ a:focus {
 }
 
 .dark .nav a[aria-current="page"] {
-  background-color: rgba(255, 255, 255, 0.18);
+  background-color: transparent;
 }
 
 .dark img {
@@ -527,11 +530,12 @@ a:focus {
 }
 
 .dark .theme-toggle {
-  background: rgba(0, 0, 0, 0.35);
+  background: transparent;
   color: #e6e6e6;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.dark .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .hl {
@@ -733,7 +737,7 @@ a:focus {
 }
 
 .watercolor .nav a[aria-current="page"] {
-  background-color: rgba(59, 110, 169, 0.12);
+  background-color: transparent;
   border-bottom: 0;
 }
 
@@ -743,10 +747,12 @@ a:focus {
 }
 
 .watercolor .theme-toggle {
-  background: rgba(255, 255, 255, 0.55);
+  background: transparent;
   color: #2b2a28;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 6px 22px rgba(61, 95, 128, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.55);
+}
+
+.watercolor .theme-toggle:hover {
+  background: rgba(59, 110, 169, 0.08);
 }
 
 .watercolor img {
@@ -1011,8 +1017,7 @@ a:focus {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.watercolor .nav a:hover::after,
-.watercolor .nav a[aria-current="page"]::after {
+.watercolor .nav a:hover::after {
   opacity: 1;
   transform: rotate(0deg);
 }
@@ -1760,17 +1765,21 @@ blockquote::before {
   position: fixed;
   inset: 0;
   z-index: 10002;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.92);
   opacity: 0;
-  transition: opacity 0.25s ease;
+  visibility: hidden;
+  pointer-events: none;
+  /* visibility (not display) so it can fade out on close, not just in */
+  transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
 }
 
 .lightbox.open {
-  display: flex;
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .lightbox-figure {
@@ -1790,7 +1799,11 @@ blockquote::before {
   border-radius: 4px;
   box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5);
   cursor: zoom-out;
-  animation: lbZoom 0.25s ease-out;
+}
+
+/* play the zoom-in each time the lightbox opens, not once on page load */
+.lightbox.open .lightbox-img {
+  animation: lbZoom var(--dur) var(--ease);
 }
 
 .lightbox-meta {
@@ -1819,7 +1832,8 @@ blockquote::before {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color var(--dur-micro) var(--ease),
+    transform var(--dur-micro) var(--ease);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }

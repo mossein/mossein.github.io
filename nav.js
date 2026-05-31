@@ -53,10 +53,11 @@
   }
 
   function iconForTheme(theme) {
-    if (theme === "dark") return "☀︎";
-    if (theme === "watercolor")
-      return '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c-3.5 0-6 2.9-6 6.2 0 3.6 2.5 6.2 5.6 10.2.2.2.6.2.8 0 3.1-4 5.6-6.6 5.6-10.2C18 4.9 15.5 2 12 2z"/></svg>';
-    return "☾";
+    // one consistent monochrome glyph for every theme — a half-filled
+    // contrast circle that reads as "appearance", matching the text menu
+    return '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">' +
+      '<circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.3"/>' +
+      '<path d="M8 1.6a6.4 6.4 0 0 0 0 12.8z" fill="currentColor"/></svg>';
   }
 
   // --- Theme switch sounds ---
@@ -189,7 +190,8 @@
     setTheme(next);
   });
   updatePortrait();
-  host.replaceWith(nav, btn);
+  nav.appendChild(btn);
+  host.replaceWith(nav);
 
   // --- Cursor blob (base) ---
   var blob = document.createElement("div");
