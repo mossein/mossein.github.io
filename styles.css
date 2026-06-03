@@ -389,6 +389,21 @@ a:focus {
   line-height: 1.9;
 }
 
+.skills-note {
+  margin-top: 14px;
+  color: #888;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.dark .skills-note {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.watercolor .skills-note {
+  color: #6b6e72;
+}
+
 .nav {
   display: flex;
   justify-content: center;
