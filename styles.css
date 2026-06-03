@@ -396,6 +396,43 @@ a:focus {
   font-size: 0.95em;
 }
 
+/* easter egg: the claude code mascot peeks out from behind the words on hover */
+.cc-trigger {
+  position: relative;       /* positioning context only — no stacking context,
+                               so the mascot (z-index:-1) stays behind ALL text */
+  white-space: nowrap;      /* keep "claude code" together so the mascot centers on it */
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cc-mascot {
+  position: absolute;
+  left: 50%;
+  top: -1px;
+  width: 21px;
+  height: 21px;
+  z-index: -1;             /* behind the text, in front of the page */
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 55%);   /* tucked low behind the words */
+  /* transition (not animation) so it sinks back smoothly when the mouse leaves */
+  transition: transform 0.5s var(--ease), opacity 0.4s var(--ease);
+}
+
+.cc-mascot svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 5px rgba(217, 119, 87, 0.3));
+}
+
+/* rises up from behind the words into the space above; reverses on mouse-out */
+.cc-trigger:hover .cc-mascot,
+.cc-trigger:focus-within .cc-mascot {
+  opacity: 1;
+  transform: translate(-50%, -88%);
+}
+
 .dark .skills-note {
   color: rgba(255, 255, 255, 0.5);
 }
