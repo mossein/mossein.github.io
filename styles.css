@@ -1111,6 +1111,8 @@ footer {
   text-align: center;
   font-size: 0.85em;
   color: #888;
+  position: relative;
+  z-index: 1;
 }
 
 .dark footer {
@@ -1436,6 +1438,44 @@ blockquote::before {
 
 .spotify-content {
   margin-top: 5vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* breathing ambient light hugging the edges of the playlists page */
+.ambient-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(115% 58% at 50% -8%, rgba(255, 176, 92, 0.38), transparent 64%),
+    radial-gradient(115% 58% at 50% 108%, rgba(233, 110, 80, 0.34), transparent 64%),
+    radial-gradient(58% 115% at -8% 50%, rgba(244, 128, 150, 0.30), transparent 64%),
+    radial-gradient(58% 115% at 108% 50%, rgba(255, 150, 84, 0.32), transparent 64%);
+  animation: ambientBreathe 9s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+@keyframes ambientBreathe {
+  /* stays >= 1 so the layer always covers the viewport (no white edges); the
+     breath reads through the opacity swing plus an outward bloom */
+  0%, 100% { opacity: 0.4; transform: scale(1.02); }
+  50% { opacity: 1; transform: scale(1.14); }
+}
+
+/* the glow reads stronger on black */
+.dark .ambient-glow {
+  background:
+    radial-gradient(115% 58% at 50% -8%, rgba(255, 184, 104, 0.46), transparent 66%),
+    radial-gradient(115% 58% at 50% 108%, rgba(240, 116, 86, 0.42), transparent 66%),
+    radial-gradient(58% 115% at -8% 50%, rgba(250, 136, 158, 0.36), transparent 66%),
+    radial-gradient(58% 115% at 108% 50%, rgba(255, 158, 92, 0.4), transparent 66%);
+}
+
+/* watercolor already has its own moving wash — skip the glow there */
+.watercolor .ambient-glow {
+  display: none;
 }
 
 .eq-bars {
@@ -1476,9 +1516,9 @@ blockquote::before {
 .playlist-card {
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: #f8f9fa;
-  min-height: 380px;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  background: transparent;       /* the embed is already a complete card */
+  min-height: 352px;             /* match the iframe so no light shelf peeks out */
   position: relative;
 }
 
@@ -1504,14 +1544,6 @@ blockquote::before {
   display: block;
   position: relative;
   z-index: 1;
-}
-
-.dark .playlist-card {
-  background: #1a1a1a;
-}
-
-.watercolor .playlist-card {
-  background: rgba(255, 255, 255, 0.6);
 }
 
 .playlist-stagger {
