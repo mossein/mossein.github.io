@@ -99,26 +99,21 @@ img:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
+/* "ink" links: same color as the text, marked by a quiet underline
+   that sharpens to full strength on hover */
 a {
-  color: #b4532a;
-  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 0.18em;
   border-bottom: 0;
   position: relative;
-  transition: color var(--dur-micro) var(--ease);
+  transition: text-decoration-color var(--dur-micro) var(--ease);
 }
 
-/* smooth left-to-right underline reveal (nav links keep their own pill style) */
-a:not(.nav a) {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-size: 0% 1.5px;
-  background-position: 0 100%;
-  transition: background-size var(--dur) var(--ease),
-    color var(--dur-micro) var(--ease);
-}
-
-a:not(.nav a):hover {
-  background-size: 100% 1.5px;
+a:hover {
+  text-decoration-color: currentColor;
 }
 
 a:focus {
@@ -468,6 +463,7 @@ a:focus {
   transition: background-color var(--dur-micro) var(--ease),
     color var(--dur-micro) var(--ease);
   color: #111111;
+  text-decoration: none;
   border-bottom: 0;
   -webkit-tap-highlight-color: transparent;
 }
@@ -563,10 +559,6 @@ a:focus {
 .dark body {
   background: #000000;
   color: #e6e6e6;
-}
-
-.dark a {
-  color: #e89b73;
 }
 
 .dark .nav a {
@@ -777,10 +769,6 @@ a:focus {
     radial-gradient(900px 620px at 25% 85%, rgba(168, 236, 195, 0.11), transparent 62%),
     radial-gradient(1400px 900px at 50% 50%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82));
   background-attachment: fixed;
-}
-
-.watercolor a {
-  color: #3b6ea9;
 }
 
 .watercolor a:focus {
@@ -1613,6 +1601,7 @@ blockquote::before {
 
 .btn {
   padding: 8px 14px;
+  text-decoration: none;
   border-radius: 999px;
   border: 1px solid #111;
   color: #111;
