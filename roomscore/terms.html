@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use — RoomScore</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1c1c1e;
+    --muted: #6e6e73;
+    --border: #e5e5ea;
+    --accent: #0a7cff;
+    --card: #f5f5f7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f11;
+      --fg: #f2f2f7;
+      --muted: #9a9aa2;
+      --border: #2c2c2e;
+      --accent: #4da3ff;
+      --card: #1c1c1e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+  h2 {
+    font-size: 1.15rem;
+    margin-top: 2.2em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+  p, li {
+    font-size: 1rem;
+  }
+  ul {
+    padding-left: 1.2em;
+  }
+  li {
+    margin-bottom: 0.5em;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 1em 0;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .nav-links {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .disclaimer {
+    font-weight: 600;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    background: var(--card);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Terms of Use</h1>
+  <div class="meta">Effective date: July 15, 2026</div>
+
+  <p>
+    These Terms of Use ("Terms") govern your use of RoomScore (the "App"), an iOS
+    application that lets you photograph or LiDAR-scan a room to receive an
+    AI-generated assessment. RoomScore is developed and operated by an individual
+    developer ("we," "us," "mo"). By downloading, installing, or using the App, you
+    agree to these Terms. If you do not agree, please do not use the App.
+  </p>
+
+  <h2>1. What RoomScore Does</h2>
+  <p>
+    You capture photos of a room, or scan it with your device's LiDAR sensor. Those
+    photos, along with room measurements or geometry derived from the scan, are sent
+    to our backend service, which forwards them to a third-party AI provider (Google's
+    Gemini API) for analysis. The App then displays a score, suggestions, and — where
+    available — optional AI-generated "makeover" images based on that analysis.
+  </p>
+
+  <h2>2. Subscriptions and Payment</h2>
+  <p>RoomScore offers optional auto-renewing subscriptions, currently available as:</p>
+  <ul>
+    <li>A <strong>yearly</strong> plan, which includes a 3-day free trial for new subscribers.</li>
+    <li>A <strong>weekly</strong> plan.</li>
+  </ul>
+  <div class="card">
+    <p style="margin:0 0 10px;"><strong>Key subscription terms:</strong></p>
+    <ul style="margin:0;">
+      <li>All payments are processed by Apple through your App Store account. We never see or store your payment details.</li>
+      <li>Subscriptions <strong>automatically renew</strong> for the same duration and at the then-current price unless you cancel at least 24 hours before the end of the current period.</li>
+      <li>If you start a free trial, your subscription will <strong>automatically convert to a paid subscription</strong> at the end of the trial unless you cancel at least 24 hours before the trial ends. You will be charged the subscription price when the trial ends if you don't cancel in time.</li>
+      <li>Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period.</li>
+      <li>You can manage or cancel your subscription any time in your device's <strong>Settings → [your name] → Subscriptions</strong>, or in the App Store app. We have no ability to cancel or refund a subscription on your behalf — those requests must go through Apple.</li>
+      <li>Refunds, if any, are handled solely by Apple in accordance with Apple's policies. No refund is provided for the unused portion of a subscription period if you cancel.</li>
+      <li>Prices, plans, and trial availability may change; we'll make reasonable efforts to notify you of material changes before they take effect for existing subscribers.</li>
+    </ul>
+  </div>
+
+  <h2>3. Acceptable Use</h2>
+  <p>When using RoomScore, you agree not to:</p>
+  <ul>
+    <li>Use the App for any unlawful purpose, or to scan or photograph spaces you don't have the right to photograph (e.g., private property that isn't yours, without permission).</li>
+    <li>Attempt to reverse-engineer, decompile, or interfere with the App or the backend service, including attempts to circumvent rate limits or subscription checks.</li>
+    <li>Upload photos containing people (especially minors), sensitive personal documents, or content unrelated to room/interior scanning, for analysis.</li>
+    <li>Use the App to generate content that is unlawful, infringing, or intended to harass or harm others.</li>
+    <li>Resell, sublicense, or commercially redistribute the App or its output without our written permission.</li>
+  </ul>
+  <p>We may suspend or terminate access to the App for anyone who violates these Terms.</p>
+
+  <h2>4. AI-Generated Content — Please Read</h2>
+  <p class="disclaimer">
+    Scores, suggestions, and any AI-generated images produced by RoomScore are for
+    general informational and entertainment purposes only.
+  </p>
+  <ul>
+    <li>They do <strong>not</strong> constitute professional interior design, real estate, structural engineering, electrical, fire safety, building code, or other professional or safety advice.</li>
+    <li>The underlying AI model can be wrong, inconsistent, or produce inaccurate, incomplete, or nonsensical output ("hallucinations"). Do not rely on RoomScore's output for decisions involving safety, structural integrity, code compliance, property value, or significant financial commitments.</li>
+    <li>Always consult a qualified, licensed professional (e.g., a contractor, architect, engineer, or designer) before making any safety-related, structural, electrical, or major renovation decision.</li>
+    <li>AI-generated "makeover" images are illustrative concepts, not renovation plans, cost estimates, or guarantees of feasibility.</li>
+    <li>We make no warranty as to the accuracy, completeness, or reliability of any AI-generated content in the App.</li>
+  </ul>
+
+  <h2>5. Product Recommendations and Affiliate Disclosure</h2>
+  <p>
+    RoomScore may suggest products (e.g., furniture, decor, or organizational items)
+    as part of its recommendations. Some of these recommendations link to Amazon
+    using affiliate links. This means that if you click a link and make a purchase,
+    we may earn a small commission at no additional cost to you. Product suggestions
+    are generated by the AI model and are provided for convenience only — we do not
+    independently verify pricing, availability, specifications, or suitability of
+    linked products, and we are not responsible for your transactions with Amazon or
+    any third-party seller.
+  </p>
+
+  <h2>6. Third-Party Services</h2>
+  <p>
+    RoomScore relies on third-party services to function, including Google's Gemini
+    API (for AI analysis), Apple's App Store and StoreKit (for subscriptions), and
+    Amazon (for affiliate product links). Your use of the App is also subject to
+    those providers' own terms where applicable. We are not responsible for the
+    availability, performance, or content of third-party services.
+  </p>
+
+  <h2>7. Intellectual Property</h2>
+  <p>
+    The App, its design, and its underlying software are owned by us and protected
+    by applicable intellectual property laws. Photos you capture remain yours. AI
+    output generated for you (scores, suggestions, generated images) is provided for
+    your personal, non-commercial use.
+  </p>
+
+  <h2>8. Disclaimer of Warranties</h2>
+  <p>
+    The App is provided "as is" and "as available," without warranties of any kind,
+    whether express or implied, including but not limited to implied warranties of
+    merchantability, fitness for a particular purpose, and non-infringement. We do
+    not warrant that the App will be uninterrupted, error-free, or that AI output
+    will be accurate.
+  </p>
+
+  <h2>9. Limitation of Liability</h2>
+  <p>
+    To the fullest extent permitted by law, we shall not be liable for any indirect,
+    incidental, special, consequential, or punitive damages, or any loss of profits,
+    data, or goodwill, arising out of or related to your use of (or inability to
+    use) the App, including reliance on any AI-generated score, suggestion, or image.
+    To the extent permitted by law, our total liability for any claim arising from
+    the App shall not exceed the amount you paid us, if any, in the 12 months
+    preceding the claim.
+  </p>
+  <p>
+    Nothing in these Terms limits liability that cannot be limited under applicable
+    law.
+  </p>
+
+  <h2>10. Changes to These Terms</h2>
+  <p>
+    We may update these Terms from time to time, for example to reflect changes in
+    the App's features, subscription plans, or applicable law. If we make material
+    changes, we will update the "Effective date" above and, where practical, notify
+    you through the App. Continued use of the App after changes take effect means
+    you accept the updated Terms.
+  </p>
+
+  <h2>11. Termination</h2>
+  <p>
+    You may stop using the App at any time by deleting it from your device.
+    Deleting the App does not automatically cancel an active subscription — you must
+    cancel through your App Store subscription settings to stop future billing.
+  </p>
+
+  <h2>12. Governing Law</h2>
+  <p>
+    These Terms are governed by the laws applicable to the individual developer
+    operating RoomScore, without regard to conflict-of-law principles, except where
+    mandatory consumer-protection law in your jurisdiction provides otherwise.
+  </p>
+
+  <h2>13. Contact</h2>
+  <p>
+    Questions about these Terms? Contact us at
+    <a href="mailto:shambalilee2@gmail.com">shambalilee2@gmail.com</a>.
+  </p>
+
+  <div class="nav-links">
+    <p><a href="privacy.html">Privacy Policy</a></p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RoomScore — AI rates your room out of 10</title>
+<meta name="description" content="RoomScore scans your room with photos or LiDAR and rates its design out of 10 across 7 axes — with a roast, a glow-up plan, and real product picks.">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg-0: #06070c;
+    --bg-1: #10121f;
+    --bg-2: #1a142e;
+    --fg: #f2f2f7;
+    --muted: #9fa2b4;
+    --accent: #4da3ff;
+    --accent-2: #a37cff;
+    --glass: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.12);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(1100px 620px at 15% -10%, rgba(77, 163, 255, 0.22), transparent 60%),
+      radial-gradient(900px 560px at 95% 0%, rgba(163, 124, 255, 0.20), transparent 60%),
+      radial-gradient(1000px 700px at 50% 120%, rgba(97, 120, 255, 0.14), transparent 60%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%);
+    background-attachment: fixed;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 72px 22px 56px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-size: 2.9rem;
+    line-height: 1.05;
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    background: linear-gradient(120deg, #ffffff 20%, var(--accent) 70%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tagline {
+    font-size: 1.28rem;
+    color: var(--fg);
+    margin: 0 0 26px;
+    font-weight: 500;
+  }
+  .intro {
+    color: var(--muted);
+    font-size: 1.06rem;
+    margin: 0 0 32px;
+  }
+  .card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin: 0 0 30px;
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .feature:last-child { border-bottom: none; }
+  .feature .icon {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(77, 163, 255, 0.28), rgba(163, 124, 255, 0.28));
+    border: 1px solid var(--glass-border);
+  }
+  .feature .txt { padding-top: 2px; }
+  .feature .title { font-weight: 600; }
+  .feature .sub { color: var(--muted); font-size: 0.95rem; }
+  .comingsoon {
+    text-align: center;
+    font-weight: 600;
+    color: var(--fg);
+    background: linear-gradient(135deg, rgba(77, 163, 255, 0.16), rgba(163, 124, 255, 0.16));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 16px;
+    margin: 0 0 34px;
+  }
+  .comingsoon span { color: var(--muted); font-weight: 400; font-size: 0.92rem; display: block; margin-top: 2px; }
+  .support h2 {
+    font-size: 1.15rem;
+    margin: 0 0 6px;
+  }
+  .support p { color: var(--muted); margin: 0 0 34px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 22px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  footer .links { margin-bottom: 8px; }
+  footer .links a { margin-right: 18px; }
+  @media (max-width: 480px) {
+    .wrap { padding: 52px 18px 44px; }
+    h1 { font-size: 2.3rem; }
+    .tagline { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <span class="badge">Coming soon</span>
+    <h1>RoomScore</h1>
+    <p class="tagline">AI rates your room out of 10.</p>
+    <p class="intro">
+      Scan your room with a few photos or LiDAR and get a design score across 7 axes,
+      a roast if you dare, and a glow-up plan with real product picks. Rescan anytime
+      to watch your score climb.
+    </p>
+
+    <section class="card" aria-label="Features">
+      <div class="feature">
+        <div class="icon">📷</div>
+        <div class="txt">
+          <div class="title">Photo or LiDAR scan</div>
+          <div class="sub">Snap a few photos or capture in 3D — your call.</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="icon">🎚️</div>
+        <div class="txt">
+          <div class="title">Nice, Honest, or Roast mode</div>
+          <div class="sub">Pick how much truth you can handle.</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="icon">✨</div>
+        <div class="txt">
+          <div class="title">AI makeover of your actual room</div>
+          <div class="sub">See a glow-up rendered on your real space.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="comingsoon">
+      Coming soon to the App Store
+      <span>iOS 26 · built for iPhone</span>
+    </div>
+
+    <section class="support">
+      <h2>Support</h2>
+      <p>Questions or issues? Email <a href="mailto:shambalilee2@gmail.com">shambalilee2@gmail.com</a></p>
+    </section>
+
+    <footer>
+      <div class="links">
+        <a href="terms.html">Terms of Use</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div>© 2026 RoomScore</div>
+    </footer>
+  </main>
+</body>
+</html>

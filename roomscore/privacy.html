@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — RoomScore</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1c1c1e;
+    --muted: #6e6e73;
+    --border: #e5e5ea;
+    --accent: #0a7cff;
+    --card: #f5f5f7;
+    --good: #1e8e3e;
+    --bad: #c0392b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f11;
+      --fg: #f2f2f7;
+      --muted: #9a9aa2;
+      --border: #2c2c2e;
+      --accent: #4da3ff;
+      --card: #1c1c1e;
+      --good: #3ddc6f;
+      --bad: #ff6b5e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+  h2 {
+    font-size: 1.15rem;
+    margin-top: 2.2em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+  p, li {
+    font-size: 1rem;
+  }
+  ul {
+    padding-left: 1.2em;
+  }
+  li {
+    margin-bottom: 0.5em;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 1em 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 0.95rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .yes { color: var(--good); font-weight: 600; }
+  .no { color: var(--bad); font-weight: 600; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .nav-links {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Privacy Policy</h1>
+  <div class="meta">Effective date: July 15, 2026</div>
+
+  <p>
+    This Privacy Policy explains how RoomScore (the "App"), developed by an
+    individual developer ("we," "us," "mo"), handles information when you use the
+    App. RoomScore is built to work with as little personal data as possible: there
+    are no user accounts, no email collection, no ads, and no analytics or tracking
+    SDKs.
+  </p>
+
+  <h2>1. Quick Summary</h2>
+  <table>
+    <tr><th>Accounts / sign-in</th><td class="no">No</td></tr>
+    <tr><th>Email collection</th><td class="no">No</td></tr>
+    <tr><th>Ads</th><td class="no">No</td></tr>
+    <tr><th>Analytics / tracking SDKs</th><td class="no">No</td></tr>
+    <tr><th>Photos leave your device for AI analysis</th><td class="yes">Yes, transiently</td></tr>
+    <tr><th>Photos stored on our servers</th><td class="no">No — stateless proxy, no copies kept</td></tr>
+    <tr><th>Anonymous device ID</th><td class="yes">Yes, for rate limiting only</td></tr>
+  </table>
+
+  <h2>2. Information We Process</h2>
+  <p><strong>Photos and room data.</strong> When you use RoomScore to photograph or
+  LiDAR-scan a room, those photos and any data derived from the scan (such as room
+  dimensions or geometry) are sent from your device to our backend, hosted on AWS
+  Lambda (us-east-1). The backend forwards them to Google's Gemini API for AI
+  analysis and returns the results (score, suggestions, and optional generated
+  images) to your device. Our backend is a stateless proxy: it does not save copies
+  of your photos or room data. Processing is transient — data passes through to
+  generate your result and is not retained by us afterward.</p>
+
+  <p><strong>Anonymous device identifier.</strong> The App generates an anonymous
+  device UUID (a random identifier, not linked to your Apple ID, name, or any other
+  personal information) that is sent to our backend solely to enforce a daily
+  request limit (rate limiting), so the service isn't abused. The backend stores a
+  simple request counter tied to this UUID in a DynamoDB table, which is
+  automatically deleted within 2 days via a built-in TTL (time-to-live) expiration.
+  We do not use this identifier for advertising, profiling, or tracking you across
+  apps or websites.</p>
+
+  <p><strong>Subscription status.</strong> If you subscribe to RoomScore, Apple
+  handles the transaction and manages your payment details entirely — we never
+  see your credit card or billing information. The App may check your subscription
+  / entitlement status with Apple (via StoreKit) to unlock paid features. We do not
+  receive your name, email, or payment details from Apple as part of this check.</p>
+
+  <h2>3. Information We Do NOT Collect</h2>
+  <ul>
+    <li>No user accounts or profiles.</li>
+    <li>No email addresses or other contact information collected from you (unless you choose to email us directly at our support address).</li>
+    <li>No advertising or ad-tracking identifiers.</li>
+    <li>No third-party analytics or crash-tracking SDKs.</li>
+    <li>No location data collection beyond what's inherently needed to run a LiDAR/camera scan locally on your device (this data is not transmitted as "location" — only the room scan/photo output is sent for analysis).</li>
+  </ul>
+
+  <h2>4. Where Your Photos Live</h2>
+  <p>
+    Your photos and scan results are stored <strong>locally on your device</strong>
+    within the App. We do not maintain a copy on any server. If you delete a scan
+    within the App, or delete the App itself, that data is gone — we have no backend
+    copy to delete on our end because none is kept beyond the transient processing
+    described above.
+  </p>
+
+  <h2>5. Third Parties We Use</h2>
+  <ul>
+    <li><strong>Google (Gemini API):</strong> Photos and room data you submit for analysis are sent to Google's Gemini API for processing. This is subject to Google's own API terms and privacy practices, which are outside our control. Google acts as our AI processing provider for generating scores, suggestions, and any AI-generated images.</li>
+    <li><strong>Apple:</strong> All subscription purchases and payment processing are handled entirely by Apple through the App Store / StoreKit, under Apple's own privacy policy and terms.</li>
+    <li><strong>Amazon:</strong> Some product recommendations include affiliate links to Amazon. Tapping one opens Amazon's site or app in your browser, outside of RoomScore, subject to Amazon's own privacy policy. We do not share your photos, scan data, or device identifier with Amazon.</li>
+  </ul>
+  <p>
+    We do not sell your information, and we do not share it with data brokers or
+    advertisers.
+  </p>
+
+  <h2>6. Data Retention</h2>
+  <div class="card">
+    <ul style="margin:0;">
+      <li><strong>Photos / room scans:</strong> stored only on your device, for as long as you keep them in the App.</li>
+      <li><strong>Rate-limit counters (device UUID + request count):</strong> stored in our backend for a maximum of 2 days, then automatically deleted.</li>
+      <li><strong>Subscription status:</strong> managed by Apple; we don't independently retain billing history.</li>
+    </ul>
+  </div>
+
+  <h2>7. Your Choices and Rights</h2>
+  <p>
+    Because RoomScore doesn't have accounts or store your photos on our servers,
+    there is no separate account or server-side data for us to delete on request —
+    your data lives on your device. You can:
+  </p>
+  <ul>
+    <li>Delete individual scans/photos within the App at any time.</li>
+    <li>Delete the App entirely to remove all locally stored scan data and photos from your device.</li>
+    <li>Contact us with any privacy question or request at <a href="mailto:shambalilee2@gmail.com">shambalilee2@gmail.com</a>, and we'll do our best to help — for example, if you have questions about the anonymous device identifier or want to understand what, if anything, we hold about you.</li>
+  </ul>
+  <p>
+    If you are located in a region with specific data-protection rights (such as the
+    EU/UK GDPR or US state privacy laws), note that we process very limited,
+    largely anonymous, and short-lived data as described above; contact us if you
+    have questions about exercising rights under those laws.
+  </p>
+
+  <h2>8. Children's Privacy</h2>
+  <p>
+    RoomScore is not directed at children under 13, and we do not knowingly collect
+    personal information from children under 13. If you believe a child has
+    provided us with information, please contact us so we can address it.
+  </p>
+
+  <h2>9. Security</h2>
+  <p>
+    We use reasonable technical measures (such as transient, stateless server-side
+    processing and short-lived data storage) to protect data in transit to and from
+    our backend. However, no method of transmission or storage is 100% secure, and
+    we cannot guarantee absolute security.
+  </p>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>
+    We may update this Privacy Policy from time to time, for example if the App's
+    features or data practices change. If we make material changes, we will update
+    the "Effective date" above and, where practical, notify you through the App.
+  </p>
+
+  <h2>11. Contact</h2>
+  <p>
+    Questions about this Privacy Policy or how RoomScore handles data? Contact us
+    at <a href="mailto:shambalilee2@gmail.com">shambalilee2@gmail.com</a>.
+  </p>
+
+  <div class="nav-links">
+    <p><a href="terms.html">Terms of Use</a></p>
+  </div>
+
+</div>
+</body>
+</html>
