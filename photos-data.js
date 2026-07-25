@@ -2,9 +2,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 2020069696758114B7.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 2020069696758114B7.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 2020069696758114B7.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 30 2020069696758114B7",
+    "alt": "South Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -18,9 +19,10 @@ window.PHOTOS = [
   {
     "src": "photos/IMG_0721.jpeg",
     "thumb": "photos/thumbs/IMG_0721.jpg",
+    "thumbWebp": "photos/thumbs/IMG_0721.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "IMG 0721",
+    "alt": "South Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -34,9 +36,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 193917D73C58F2E903.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 193917D73C58F2E903.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 193917D73C58F2E903.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 30 193917D73C58F2E903",
+    "alt": "South Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -50,9 +53,10 @@ window.PHOTOS = [
   {
     "src": "photos/IMG_0666.jpeg",
     "thumb": "photos/thumbs/IMG_0666.jpg",
+    "thumbWebp": "photos/thumbs/IMG_0666.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "IMG 0666",
+    "alt": "South Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -66,9 +70,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 193553AB6913D4B4B1.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 193553AB6913D4B4B1.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 193553AB6913D4B4B1.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 30 193553AB6913D4B4B1",
+    "alt": "South Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -82,9 +87,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 19343893999EC89122.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 19343893999EC89122.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 19343893999EC89122.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 30 19343893999EC89122",
+    "alt": "South Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -98,9 +104,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 1920377CEBF74C0D39.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 1920377CEBF74C0D39.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 1920377CEBF74C0D39.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 30 1920377CEBF74C0D39",
+    "alt": "Beaches\u2014East York, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -114,9 +121,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 18452326BE5BC69288.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 18452326BE5BC69288.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 18452326BE5BC69288.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 30 18452326BE5BC69288",
+    "alt": "East York, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -130,9 +138,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 184039D9B203B74431.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 184039D9B203B74431.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 184039D9B203B74431.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 30 184039D9B203B74431",
+    "alt": "North Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -146,9 +155,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 174047123E4F19B37D.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 174047123E4F19B37D.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 174047123E4F19B37D.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 30 174047123E4F19B37D",
+    "alt": "North Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -162,9 +172,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 17202183E8C9B1DAE6.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 17202183E8C9B1DAE6.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 17202183E8C9B1DAE6.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 30 17202183E8C9B1DAE6",
+    "alt": "North Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -178,9 +189,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-30 17201601C6025C3C9A.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 17201601C6025C3C9A.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-30 17201601C6025C3C9A.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 30 17201601C6025C3C9A",
+    "alt": "North Riverdale, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -194,9 +206,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 2205138A5488E9B951.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 2205138A5488E9B951.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 2205138A5488E9B951.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 28 2205138A5488E9B951",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -210,9 +223,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 205824A2B6062F9C86.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 205824A2B6062F9C86.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 205824A2B6062F9C86.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 205824A2B6062F9C86",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -226,9 +240,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 2052382289FD72C8BC.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 2052382289FD72C8BC.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 2052382289FD72C8BC.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 2052382289FD72C8BC",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -242,9 +257,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 200540333A4D9BD0BB.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 200540333A4D9BD0BB.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 200540333A4D9BD0BB.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 28 200540333A4D9BD0BB",
+    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -258,9 +274,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 194425278A1333F5AB.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 194425278A1333F5AB.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 194425278A1333F5AB.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 194425278A1333F5AB",
+    "alt": "Algonquin Island, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -274,9 +291,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 194015F7EAE3B7CC77.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 194015F7EAE3B7CC77.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 194015F7EAE3B7CC77.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 194015F7EAE3B7CC77",
+    "alt": "Ward's Island, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -290,9 +308,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 192219F3C0E3F08E3A.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 192219F3C0E3F08E3A.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 192219F3C0E3F08E3A.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 192219F3C0E3F08E3A",
+    "alt": "Ward's Island, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "50mm",
@@ -306,9 +325,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 1916510AD3A7AE04B5.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 1916510AD3A7AE04B5.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 1916510AD3A7AE04B5.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 28 1916510AD3A7AE04B5",
+    "alt": "Ward's Island, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -322,9 +342,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 191441C7124BCD658F.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 191441C7124BCD658F.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 191441C7124BCD658F.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 191441C7124BCD658F",
+    "alt": "Ward's Island, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -338,9 +359,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 191257EF80AE71573A.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 191257EF80AE71573A.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 191257EF80AE71573A.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 191257EF80AE71573A",
+    "alt": "Ward's Island, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -354,9 +376,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 1905337D90A61FFC6B.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 1905337D90A61FFC6B.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 1905337D90A61FFC6B.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 28 1905337D90A61FFC6B",
+    "alt": "Ward's Island, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -370,9 +393,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 184236B9BE03EC2F25.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 184236B9BE03EC2F25.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 184236B9BE03EC2F25.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 184236B9BE03EC2F25",
+    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "33mm",
@@ -386,9 +410,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 1841291343703336D1.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 1841291343703336D1.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 1841291343703336D1.webp",
     "width": 4030,
     "height": 3021,
-    "alt": "fxn 2026 05 28 1841291343703336D1",
+    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "133mm",
@@ -402,9 +427,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 183935E9086DA918E0.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 183935E9086DA918E0.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 183935E9086DA918E0.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 183935E9086DA918E0",
+    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -418,9 +444,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 1831104B921702A9B3.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 1831104B921702A9B3.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 1831104B921702A9B3.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 1831104B921702A9B3",
+    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "50mm",
@@ -434,9 +461,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 1825218AB1336FFEE0.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 1825218AB1336FFEE0.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 1825218AB1336FFEE0.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 1825218AB1336FFEE0",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "50mm",
@@ -450,9 +478,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 17561442FE2D27B01E.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 17561442FE2D27B01E.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 17561442FE2D27B01E.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "fxn 2026 05 28 17561442FE2D27B01E",
+    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -466,9 +495,10 @@ window.PHOTOS = [
   {
     "src": "photos/fxn 2026-05-28 1714407C3B284EDD4A.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-28 1714407C3B284EDD4A.jpg",
+    "thumbWebp": "photos/thumbs/fxn 2026-05-28 1714407C3B284EDD4A.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "fxn 2026 05 28 1714407C3B284EDD4A",
+    "alt": "Harbourfront-CityPlace, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "50mm",

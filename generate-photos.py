@@ -26,8 +26,11 @@ PHOTOS_DIR = "photos"
 THUMBS_DIR = os.path.join(PHOTOS_DIR, "thumbs")
 OUTPUT = "photos-data.js"   # loaded via <script>, so it works on file:// too
 GEOCACHE = os.path.join(PHOTOS_DIR, ".geocode-cache.json")
-THUMB_MAX = 1400          # longest edge of grid thumbnail, in px
-THUMB_QUALITY = 82
+THUMB_MAX = 800           # longest edge of grid thumbnail, in px
+                          # the grid column tops out around 380px, so 800 still
+                          # covers 2x displays without shipping megabytes
+THUMB_QUALITY = 78
+WEBP_QUALITY = 76         # webp holds up better than jpeg at the same number
 EXTS = (".jpg", ".jpeg", ".png", ".webp")
 
 # name -> EXIF tag id
@@ -273,13 +276,31 @@ def main():
         kept_thumbs.add(thumb_name)
         thumb = upright.copy()
         thumb.thumbnail((THUMB_MAX, THUMB_MAX))
-        thumb.convert("RGB").save(thumb_path, "JPEG", quality=THUMB_QUALITY, optimize=True)
+        rgb = thumb.convert("RGB")
+        rgb.save(thumb_path, "JPEG", quality=THUMB_QUALITY, optimize=True)
 
-        alt = stem.replace("_", " ").replace("-", " ").strip()
+        # webp alongside the jpeg — the page serves it via <picture>, so browsers
+        # that don't support it still get the jpeg
+        webp_name = stem + ".webp"
+        webp_path = os.path.join(THUMBS_DIR, webp_name)
+        kept_thumbs.add(webp_name)
+        rgb.save(webp_path, "WEBP", quality=WEBP_QUALITY, method=6)
+
+        # prefer real description over the camera's filename, which reads as
+        # gibberish to a screen reader
+        if meta.get("location") and meta.get("date"):
+            alt = "%s, %s" % (meta["location"], meta["date"])
+        elif meta.get("location"):
+            alt = meta["location"]
+        elif meta.get("date"):
+            alt = "photo taken %s" % meta["date"]
+        else:
+            alt = stem.replace("_", " ").replace("-", " ").strip()
 
         items.append({
             "src": path,
             "thumb": thumb_path,
+            "thumbWebp": webp_path,
             "width": w,
             "height": h,
             "alt": alt,
@@ -296,7 +317,7 @@ def main():
     # prune thumbnails whose source photo no longer exists
     pruned = 0
     for f in os.listdir(THUMBS_DIR):
-        if f.lower().endswith(".jpg") and f not in kept_thumbs:
+        if f.lower().endswith((".jpg", ".webp")) and f not in kept_thumbs:
             try:
                 os.remove(os.path.join(THUMBS_DIR, f))
                 pruned += 1

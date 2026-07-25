@@ -32,6 +32,13 @@
     <link rel="canonical" href="https://mohammad.page" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="favicon.ico" />
+    <link
+      rel="preload"
+      href="fonts/Fraunces.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="alternate"
@@ -59,8 +66,13 @@
     <meta property="og:url" content="https://mohammad.page" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://mohammad.page/og.png" />
+    <meta property="og:image:width" content="1268" />
+    <meta property="og:image:height" content="694" />
+    <meta property="og:image:alt" content="Mohammad Jafari" />
     <meta property="og:site_name" content="Mohammad Jafari" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mojafariii" />
+    <meta name="twitter:creator" content="@mojafariii" />
     <meta name="twitter:title" content="Mohammad Jafari - Software Engineer, Toronto | Verlo, ex-Nasdaq" />
     <meta
       name="twitter:description"
@@ -95,6 +107,8 @@
 
       <p class="personal-note stagger stagger-3">
         currently based in toronto, making things that work and occasionally things that look nice.
+        i write about it <a href="blog.html">here</a> — most recently
+        <a href="das-man.html">das man</a>.
       </p>
 
       <div class="portrait-wrap stagger stagger-4">
@@ -127,7 +141,7 @@
 
         <ul class="experience-list">
           <li>
-            <span class="role">Founding Engineer at <a href="https://verlo.finance" target="_blank">Verlo</a></span
+            <span class="role">Founding Engineer at <a href="https://verlo.finance" target="_blank" rel="noopener noreferrer">Verlo</a></span
             ><span class="dates">Jan 2026 – Present</span>
             <div class="summary">
               building an <span class="hl">ai-powered crm</span> for wealth
@@ -137,7 +151,7 @@
             </div>
           </li>
           <li>
-            <span class="role">Founding Engineer at <a href="https://retellio.com" target="_blank">Retellio</a></span
+            <span class="role">Founding Engineer at <a href="https://retellio.com" target="_blank" rel="noopener noreferrer">Retellio</a></span
             ><span class="dates">Jul 2024 – Dec 2025</span>
             <div class="summary">
               built the entire platform from scratch: <span class="hl">aws</span>
@@ -147,7 +161,7 @@
             </div>
           </li>
           <li>
-            <span class="role">Senior Software Developer at <a href="https://www.nasdaq.com" target="_blank">Nasdaq</a></span
+            <span class="role">Senior Software Developer at <a href="https://www.nasdaq.com" target="_blank" rel="noopener noreferrer">Nasdaq</a></span
             ><span class="dates">Jan 2024 – Jul 2024</span>
             <div class="summary">
               helped build nasdaq's first <span class="hl">genai product</span>, an 
@@ -157,7 +171,7 @@
             </div>
           </li>
           <li>
-            <span class="role">Software Developer at <a href="https://verafin.com" target="_blank">Verafin</a></span
+            <span class="role">Software Developer at <a href="https://verafin.com" target="_blank" rel="noopener noreferrer">Verafin</a></span
             ><span class="dates">Jan 2022 – Jan 2024</span>
             <div class="summary">
               started as intern, promoted twice. built 
@@ -167,7 +181,7 @@
             </div>
           </li>
           <li>
-            <span class="role">Web Developer at <a href="https://www.mun.ca" target="_blank">Memorial University</a></span
+            <span class="role">Web Developer at <a href="https://www.mun.ca" target="_blank" rel="noopener noreferrer">Memorial University</a></span
             ><span class="dates">Jan 2020 – Jan 2022</span>
             <div class="summary">
               redesigned the student portal serving 
@@ -183,7 +197,7 @@
 
         <ul class="experience-list">
           <li>
-            <span class="role">Computer Science at <a href="https://www.mun.ca" target="_blank">Memorial University</a></span
+            <span class="role">Computer Science at <a href="https://www.mun.ca" target="_blank" rel="noopener noreferrer">Memorial University</a></span
             ><span class="dates">2019 – 2023</span>
             <div class="summary">
               st. john's, newfoundland. studied algorithms, systems, and ai. 
@@ -202,7 +216,7 @@
           interests: <span class="hl">llms</span>, distributed systems, good ux
         </p>
         <p class="skills-note">
-          mostly i build by directing ai now, <span class="cc-trigger">claude code<span class="cc-mascot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M20.998 10.949H24v3.102h-3v3.028h-1.487V20H18v-2.921h-1.487V20H15v-2.921H9V20H7.488v-2.921H6V20H4.487v-2.921H3V14.05H0V10.95h3V5h17.998v5.949zM6 10.949h1.488V8.102H6v2.847zm10.51 0H18V8.102h-1.49v2.847z" fill="#D97757" fill-rule="evenodd" /></svg></span></span>
+          mostly i build by directing ai now, <span class="cc-trigger" tabindex="0">claude code<span class="cc-mascot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M20.998 10.949H24v3.102h-3v3.028h-1.487V20H18v-2.921h-1.487V20H15v-2.921H9V20H7.488v-2.921H6V20H4.487v-2.921H3V14.05H0V10.95h3V5h17.998v5.949zM6 10.949h1.488V8.102H6v2.847zm10.51 0H18V8.102h-1.49v2.847z" fill="#D97757" fill-rule="evenodd" /></svg></span></span>
           most days. there's more craft to working this way than it looks.
         </p>
       </section>
@@ -211,9 +225,10 @@
         <h2>contact</h2>
 
         <p>
-          <a href="mailto:me@mohammad.page">me@mohammad.page</a><br />
-          <a href="https://github.com/mossein" target="_blank">github</a> · 
-          <a href="https://www.linkedin.com/in/mojafarii/" target="_blank">linkedin</a>
+          <a href="mailto:me@mohammad.page">me@mohammad.page</a>
+          <span class="email-hint">(click to copy)</span><br />
+          <a href="https://github.com/mossein" target="_blank" rel="noopener noreferrer">github</a> ·
+          <a href="https://www.linkedin.com/in/mojafarii/" target="_blank" rel="noopener noreferrer">linkedin</a>
         </p>
       </section>
       <section class="sr-only" aria-label="About Mohammad Jafari">

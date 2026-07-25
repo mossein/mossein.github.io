@@ -52,12 +52,38 @@
     return "light";
   }
 
+  var THEME_LABEL = {
+    light: "Theme: light — switch to dark",
+    dark: "Theme: dark — switch to watercolor",
+    watercolor: "Theme: watercolor — switch to light"
+  };
+
   function iconForTheme(theme) {
-    // one consistent monochrome glyph for every theme — a half-filled
-    // contrast circle that reads as "appearance", matching the text menu
-    return '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">' +
-      '<circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.3"/>' +
-      '<path d="M8 1.6a6.4 6.4 0 0 0 0 12.8z" fill="currentColor"/></svg>';
+    // the glyph has to say which theme you're IN, otherwise nobody discovers
+    // there's a third one behind the toggle
+    var open = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">';
+    if (theme === "dark") {
+      // crescent
+      return open + '<path d="M13.2 10.4A5.6 5.6 0 0 1 6 3.1a5.7 5.7 0 1 0 7.2 7.3z" ' +
+        'fill="currentColor"/></svg>';
+    }
+    if (theme === "watercolor") {
+      // droplet
+      return open + '<path d="M8 1.6s4 4.3 4 7a4 4 0 0 1-8 0c0-2.7 4-7 4-7z" ' +
+        'fill="currentColor" opacity="0.85"/></svg>';
+    }
+    // sun
+    return open + '<circle cx="8" cy="8" r="3.1" fill="currentColor"/>' +
+      '<g stroke="currentColor" stroke-width="1.3" stroke-linecap="round">' +
+      '<path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3.1 3.1l1.1 1.1M11.8 11.8l1.1 1.1' +
+      'M12.9 3.1l-1.1 1.1M4.2 11.8l-1.1 1.1"/></g></svg>';
+  }
+
+  function paintToggle() {
+    var t = currentTheme();
+    btn.innerHTML = iconForTheme(t);
+    btn.setAttribute("aria-label", THEME_LABEL[t]);
+    btn.setAttribute("title", THEME_LABEL[t]);
   }
 
   // --- Theme switch sounds ---
@@ -154,7 +180,7 @@
       r.classList.remove("watercolor");
       localStorage.setItem("theme", "light");
     }
-    btn.innerHTML = iconForTheme(currentTheme());
+    paintToggle();
     updatePortrait();
   }
 
@@ -182,8 +208,7 @@
   var btn = document.createElement("button");
   btn.className = "theme-toggle";
   btn.id = "theme-toggle";
-  btn.setAttribute("aria-label", "Toggle theme");
-  btn.innerHTML = iconForTheme(currentTheme());
+  paintToggle();
   btn.addEventListener("click", function () {
     var c = currentTheme();
     var next = c === "light" ? "dark" : c === "dark" ? "watercolor" : "light";
@@ -401,14 +426,19 @@
   var emailLinks = document.querySelectorAll('a[href^="mailto:"]');
   emailLinks.forEach(function(link) {
     link.classList.add("email-link");
+    link.title = "click to copy";
     link.addEventListener("click", function(e) {
-      e.preventDefault();
       var email = link.href.replace("mailto:", "");
+      if (!navigator.clipboard) return; // no clipboard — let the mailto happen
+      e.preventDefault();
       navigator.clipboard.writeText(email).then(function() {
         toast.classList.add("show");
         setTimeout(function() {
           toast.classList.remove("show");
         }, 2000);
+      }).catch(function() {
+        // copying failed — don't swallow the click, fall back to the mail client
+        window.location.href = link.href;
       });
     });
   });
@@ -419,11 +449,13 @@
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     switch (e.key) {
+      // mirrors the nav order so the numbers match what's on screen
       case "1": window.location.href = "index.html"; break;
       case "2": window.location.href = "blog.html"; break;
       case "3": window.location.href = "links.html"; break;
-      case "4": window.location.href = "studio.html"; break;
+      case "4": window.location.href = "photos.html"; break;
       case "5": window.location.href = "now.html"; break;
+      case "6": window.location.href = "studio.html"; break;
       case "t":
         var c = currentTheme();
         var next = c === "light" ? "dark" : c === "dark" ? "watercolor" : "light";
@@ -453,7 +485,11 @@
   if (footer && footer.textContent.includes("☾")) {
     var html = footer.innerHTML;
     var svgNS = "http://www.w3.org/2000/svg";
-    footer.innerHTML = html.replace("☾", '<span class="moon-toggle" aria-label="Moon phase"></span>');
+    // a real button so it's reachable by keyboard, not a click-only span
+    footer.innerHTML = html.replace(
+      "☾",
+      '<button type="button" class="moon-toggle" aria-label="Moon phase — click to advance"></button>'
+    );
     var moonEl = footer.querySelector(".moon-toggle");
 
     function drawMoon(phase) {

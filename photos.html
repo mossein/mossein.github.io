@@ -18,6 +18,13 @@
     <link rel="canonical" href="https://mohammad.page/photos.html" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href="fonts/Fraunces.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -30,8 +37,13 @@
     <meta property="og:url" content="https://mohammad.page/photos.html" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://mohammad.page/og.png" />
+    <meta property="og:image:width" content="1268" />
+    <meta property="og:image:height" content="694" />
+    <meta property="og:image:alt" content="Mohammad Jafari" />
     <meta property="og:site_name" content="Mohammad Jafari" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mojafariii" />
+    <meta name="twitter:creator" content="@mojafariii" />
     <meta name="twitter:title" content="Photos - Mohammad Jafari" />
     <meta
       name="twitter:description"
@@ -169,7 +181,6 @@
             var fig = document.createElement("figure");
             fig.className = "photo-item";
             var img = document.createElement("img");
-            img.src = p.thumb || p.src;
             img.alt = p.alt || "";
             img.loading = "lazy";
             img.decoding = "async";
@@ -178,7 +189,32 @@
             }
             img.style.cursor = "zoom-in";
             img.addEventListener("click", function () { open(i); });
-            fig.appendChild(img);
+
+            if (p.thumbWebp) {
+              // webp where supported, jpeg everywhere else. the <source> has to be
+              // in the DOM before src is set, or the browser commits to the jpeg
+              // and never re-runs picture selection
+              var pic = document.createElement("picture");
+              var srcEl = document.createElement("source");
+              srcEl.type = "image/webp";
+              srcEl.srcset = encodeURI(p.thumbWebp);
+              pic.appendChild(srcEl);
+              pic.appendChild(img);
+              fig.appendChild(pic);
+            } else {
+              fig.appendChild(img);
+            }
+            // src last — picture selection runs off the sources already present
+            img.src = p.thumb || p.src;
+            // where and when, from the exif — the full spec stays in the lightbox
+            var place = [(p.meta && p.meta.location), (p.meta && p.meta.date)]
+              .filter(Boolean).join("  ·  ");
+            if (place) {
+              var cap = document.createElement("figcaption");
+              cap.className = "photo-caption";
+              cap.textContent = place;
+              fig.appendChild(cap);
+            }
             grid.appendChild(fig);
           });
         }

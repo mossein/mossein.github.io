@@ -114,13 +114,27 @@ def render_card(title, out_path):
     img.save(out_path, "PNG", optimize=True)
 
 
+def find_posts():
+    """Every real post page.
+
+    Posts used to be blog-post-N.html, so a glob was enough. They now live at
+    keyword slugs, and the old paths survive as redirect stubs — so identify a
+    post by what's in it (an <article> carrying BlogPosting schema) rather than
+    by its filename, which also skips the stubs automatically.
+    """
+    for f in glob.glob("*.html"):
+        html = open(f).read()
+        if "<article" in html and '"@type": "BlogPosting"' in html:
+            yield f
+
+
 def main():
     if not os.path.exists(FONT_PATH):
         print("missing %s — see the curl step in the README" % FONT_PATH)
         return
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    posts = sorted(glob.glob("blog-post-*.html"))
+    posts = sorted(find_posts())
     for post in posts:
         stem = os.path.splitext(os.path.basename(post))[0]
         html = open(post).read()

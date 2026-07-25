@@ -18,6 +18,13 @@
     <link rel="canonical" href="https://mohammad.page/blog.html" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href="fonts/Fraunces.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -34,8 +41,13 @@
     <meta property="og:url" content="https://mohammad.page/blog.html" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://mohammad.page/og.png" />
+    <meta property="og:image:width" content="1268" />
+    <meta property="og:image:height" content="694" />
+    <meta property="og:image:alt" content="Mohammad Jafari" />
     <meta property="og:site_name" content="Mohammad Jafari" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mojafariii" />
+    <meta name="twitter:creator" content="@mojafariii" />
     <meta name="twitter:title" content="Mohammad Jafari's Blog" />
     <meta
       name="twitter:description"
@@ -89,18 +101,26 @@
         }
       </script>
 
-      <div class="post">
-        <h2>das man</h2>
+      <h1>blog</h1>
+      <p class="personal-note">
+        thinking out loud about ai, building, and whatever i'm reading.
+        <a href="/feed.xml">rss</a>.
+      </p>
+
+      <div class="post post-pinned">
+        <div class="post-tags"><span class="tag">philosophy</span><span class="tag">life</span></div>
+        <h2>das man <span class="pin-badge">pinned</span></h2>
         <p class="date">June 8, 2026 <span class="reading-time">· 5 min read</span></p>
         <p>
           my therapist told me i'm a das man. i went in talking about anxiety and
           came out reading heidegger on my phone for weeks. the they, angst,
           ownedness, enframing, and trying to let the evening just be an evening.
         </p>
-        <a href="blog-post-9.html">read more</a>
+        <a href="das-man.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">ai</span><span class="tag">building</span></div>
         <h2>Making Software Is So Easy, I Stopped Doing It</h2>
         <p class="date">May 31, 2026 <span class="reading-time">· 4 min read</span></p>
         <p>
@@ -109,10 +129,11 @@
           for a while i built something new every week. then i stopped, and
           started thinking about what's actually worth building at all.
         </p>
-        <a href="blog-post-8.html">read more</a>
+        <a href="making-software-is-so-easy-i-stopped-doing-it.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">ai</span><span class="tag">building</span></div>
         <h2>I Haven't Coded in 3 Months</h2>
         <p class="date">March 14, 2026 <span class="reading-time">· 4 min read</span></p>
         <p>
@@ -120,10 +141,11 @@
           function, not a variable, not even a css property. and i've shipped
           more in those three months than i did in all of 2024.
         </p>
-        <a href="blog-post-7.html">read more</a>
+        <a href="i-havent-coded-in-3-months.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">ai</span><span class="tag">industry</span></div>
         <h2>The AI Hangover</h2>
         <p class="date">January 1, 2026 <span class="reading-time">· 2 min read</span></p>
         <p>
@@ -131,10 +153,11 @@
           and 2025 was the year of "let’s shove ai into everything," then 2026 is 
           officially the start of the hangover.
         </p>
-        <a href="blog-post-6.html">read more</a>
+        <a href="the-ai-hangover.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">ai</span><span class="tag">engineering</span></div>
         <h2>Delete More Code (and Clean Up AI Slop)</h2>
         <p class="date">November 25, 2025 <span class="reading-time">· 5 min read</span></p>
         <p>
@@ -142,10 +165,11 @@
           most of it was ai-generated code that worked fine but nobody understood 
           anymore.
         </p>
-        <a href="blog-post-4.html">read more</a>
+        <a href="delete-more-code.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">building</span></div>
         <h2>Always Be Building</h2>
         <p class="date">November 24, 2025 <span class="reading-time">· 3 min read</span></p>
         <p>
@@ -155,10 +179,11 @@
           fit your proportions. some are good. most are probably not. i used to think 
           i needed to figure out which ones were worth building before i started.
         </p>
-        <a href="blog-post-5.html">read more</a>
+        <a href="always-be-building.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">ai</span><span class="tag">engineering</span></div>
         <h2>LLMs in Production: What Nobody Tells You</h2>
         <p class="date">November 11, 2025 <span class="reading-time">· 3 min read</span></p>
         <p>
@@ -167,10 +192,11 @@
           the entire ai pipeline from scratch. here's what i wish someone had told 
           me before i started.
         </p>
-        <a href="blog-post-3.html">read more</a>
+        <a href="llms-in-production.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">retellio</span><span class="tag">product</span></div>
         <h2>From Calls to Clarity: Shipping Insight Podcasts at Retellio</h2>
         <p class="date">August 14, 2025 <span class="reading-time">· 2 min read</span></p>
         <p>
@@ -178,10 +204,11 @@
           delivered to your stack; with source-linked quotes and integrations
           with Salesforce, HubSpot, Gong, and Zoom.
         </p>
-        <a href="blog-post-2.html">read more</a>
+        <a href="retellio-insight-podcasts.html">read more</a>
       </div>
 
       <div class="post">
+        <div class="post-tags"><span class="tag">ai</span><span class="tag">product</span></div>
         <h2>The Future of AI in B2B Customer Research</h2>
         <p class="date">August 28, 2024 <span class="reading-time">· 2 min read</span></p>
         <p>
@@ -189,7 +216,7 @@
           research at Retellio, I've been reflecting on the transformative
           potential of these technologies...
         </p>
-        <a href="blog-post-1.html">read more</a>
+        <a href="ai-in-b2b-customer-research.html">read more</a>
       </div>
     </main>
     <footer>© 2026 · toronto · ☾</footer>

@@ -1,15 +1,12 @@
-/* self-hosted variable font (opsz 9–144, wght 100–900), latin subset */
+/* self-hosted variable font (opsz 9–144, wght 100–900), latin subset.
+   self-hosting also avoids the @import chain — html → css → css → font — that
+   used to delay every heading by three extra round trips. */
 @font-face {
   font-family: 'Fraunces';
   src: url('fonts/Fraunces.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-}
-
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
@@ -298,7 +295,7 @@ a:focus {
 }
 
 .now-hero {
-  min-height: 80vh;
+  min-height: 42vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -309,8 +306,14 @@ a:focus {
   font-style: italic;
   margin-bottom: 16px;
   letter-spacing: -0.05em;
-  opacity: 0.08;
+  opacity: 0.12;
   line-height: 1;
+}
+
+/* on black, 0.12 of #e6e6e6 disappears entirely — lift it enough to read as a
+   ghost rather than as nothing */
+.dark .now-heading {
+  opacity: 0.2;
 }
 
 .now-season {
@@ -410,6 +413,10 @@ a:focus {
   -webkit-tap-highlight-color: transparent;
 }
 
+.cc-trigger:focus {
+  outline: none;
+}
+
 .cc-mascot {
   position: absolute;
   left: 50%;
@@ -431,9 +438,12 @@ a:focus {
   filter: drop-shadow(0 2px 5px rgba(217, 119, 87, 0.3));
 }
 
-/* rises up from behind the words into the space above; reverses on mouse-out */
+/* rises up from behind the words into the space above; reverses on mouse-out.
+   :focus and :active carry the egg to keyboard and touch, which hover can't reach */
 .cc-trigger:hover .cc-mascot,
-.cc-trigger:focus-within .cc-mascot {
+.cc-trigger:focus .cc-mascot,
+.cc-trigger:active .cc-mascot,
+.cc-trigger.cc-peek .cc-mascot {
   opacity: 1;
   transform: translate(-50%, -88%);
 }
@@ -891,8 +901,20 @@ a:focus {
     repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.012) 0 2px, transparent 2px 4px),
     repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.008) 0 3px, transparent 3px 6px);
   mix-blend-mode: overlay;
-  opacity: 0.7;
+  opacity: 0.35;
   filter: saturate(105%);
+}
+
+/* the wash is a background treatment — it shouldn't sit on top of photographs
+   and flatten them, so lift images and body copy above the fixed paint layers */
+.watercolor img,
+.watercolor .portrait-wrap,
+.watercolor .photo-item,
+.watercolor p,
+.watercolor .experience-list,
+.watercolor article {
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes wcFloat {
@@ -1205,6 +1227,12 @@ blockquote p {
   }
 }
 
+/* the arrow marks external links in prose; in the experience list every single
+   row would carry one, which just reads as noise */
+.experience-list .role a[target="_blank"]::after {
+  content: none;
+}
+
 a[target="_blank"]:not(.nav a)::after {
   content: "↗";
   font-size: 0.62em;
@@ -1298,6 +1326,20 @@ blockquote::before {
   transition: transform 0.3s ease;
   display: inline-block;
   vertical-align: middle;
+  /* it's a real <button> now, so strip the chrome back to the bare glyph */
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.moon-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 50%;
 }
 
 .moon-toggle:hover {
@@ -1555,6 +1597,74 @@ blockquote::before {
   transform: translateY(0);
 }
 
+/* prev/next between posts — keeps a reader moving instead of dead-ending */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0.92em;
+}
+
+.dark .post-nav {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.watercolor .post-nav {
+  border-top-color: rgba(31, 36, 40, 0.08);
+}
+
+.post-nav a {
+  max-width: 46%;
+}
+
+.post-nav .post-nav-next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.post-nav-label {
+  display: block;
+  font-size: 0.78em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 2px;
+}
+
+.dark .post-nav-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 560px) {
+  .post-nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .post-nav a,
+  .post-nav .post-nav-next {
+    max-width: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
+}
+
+.email-hint {
+  font-size: 0.78em;
+  color: #aaa;
+  letter-spacing: 0.02em;
+}
+
+.dark .email-hint {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.watercolor .email-hint {
+  color: #9a9da1;
+}
+
 .back-link {
   margin-top: 40px;
   padding-top: 20px;
@@ -1668,12 +1778,13 @@ blockquote::before {
   inset: 0;
   z-index: 0;
   background: url("404.jpeg") center / cover no-repeat;
-  opacity: 0.3;
+  /* low enough that the snake grid and the copy stay legible over it */
+  opacity: 0.1;
   pointer-events: none;
 }
 
 .dark .page-bg {
-  opacity: 0.35;
+  opacity: 0.14;
 }
 
 .has-page-bg {
@@ -1803,6 +1914,11 @@ blockquote::before {
   break-inside: avoid;
 }
 
+/* <picture> is inline by default, which collapses the img's width:100% to zero */
+.photo-item picture {
+  display: block;
+}
+
 .photo-item img {
   width: 100%;
   height: auto;
@@ -1824,6 +1940,22 @@ blockquote::before {
 
 .watercolor .photo-item img:hover {
   box-shadow: 0 10px 30px rgba(59, 110, 169, 0.22);
+}
+
+.photo-caption {
+  margin: 6px 0 0;
+  font-size: 0.72em;
+  letter-spacing: 0.02em;
+  color: #999;
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .photo-caption {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.watercolor .photo-caption {
+  color: #8b8e92;
 }
 
 .photo-empty {
