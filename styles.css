@@ -174,64 +174,29 @@ a:focus {
   color: rgba(255, 255, 255, 0.4);
 }
 
+/* tags and the pinned marker are metadata, not chrome — they ride in the date
+   line at its weight instead of as pills competing with the title */
 .post-tags {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 8px;
+  color: inherit;
 }
 
-.tag {
-  display: inline-block;
-  font-size: 0.75em;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(180, 83, 42, 0.08);
+.post-flag {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.42em;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  vertical-align: 0.42em;
+  margin-left: 0.5em;
   color: #b4532a;
-  letter-spacing: 0.02em;
+  opacity: 0.75;
 }
 
-.dark .tag {
-  background: rgba(232, 155, 115, 0.12);
+.dark .post-flag {
   color: #e89b73;
 }
 
-.watercolor .tag {
-  background: rgba(59, 110, 169, 0.1);
-  color: #3b6ea9;
-}
-
-.post-pinned {
-  border-left: 3px solid #b4532a;
-  padding-left: 16px;
-}
-
-.dark .post-pinned {
-  border-left-color: #e89b73;
-}
-
-.watercolor .post-pinned {
-  border-left-color: #3b6ea9;
-}
-
-.pin-badge {
-  font-size: 0.55em;
-  font-weight: 400;
-  vertical-align: middle;
-  background: rgba(180, 83, 42, 0.08);
-  color: #b4532a;
-  padding: 2px 8px;
-  border-radius: 999px;
-  margin-left: 6px;
-  letter-spacing: 0.03em;
-}
-
-.dark .pin-badge {
-  background: rgba(232, 155, 115, 0.12);
-  color: #e89b73;
-}
-
-.watercolor .pin-badge {
-  background: rgba(59, 110, 169, 0.1);
+.watercolor .post-flag {
   color: #3b6ea9;
 }
 

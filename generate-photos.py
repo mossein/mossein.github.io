@@ -8,9 +8,13 @@ Workflow:
     3. Commit  photos/ , photos/thumbs/ , and  photos-data.js
 
 It reads each image's EXIF (camera, lens, focal length, aperture, shutter,
-ISO, date taken), records its dimensions, and writes web-sized thumbnails to
-photos/thumbs/ so the grid stays fast — the lightbox still loads the full-res
-original. Originals are never modified.
+ISO, date taken), records its dimensions, and writes two derived tiers — grid
+thumbnails in photos/thumbs/ and a 1600px lightbox tier in photos/display/ —
+each as both JPEG and WebP. The full-res originals are only linked, never sent
+to a visitor, and never modified.
+
+It also renders the grid markup straight into photos.html, so the gallery is in
+the HTML for crawlers instead of being assembled client-side.
 
 Requires Pillow:  pip3 install Pillow
 """
@@ -24,6 +28,7 @@ from PIL import Image, ImageOps, ExifTags
 
 PHOTOS_DIR = "photos"
 THUMBS_DIR = os.path.join(PHOTOS_DIR, "thumbs")
+DISPLAY_DIR = os.path.join(PHOTOS_DIR, "display")
 OUTPUT = "photos-data.js"   # loaded via <script>, so it works on file:// too
 GEOCACHE = os.path.join(PHOTOS_DIR, ".geocode-cache.json")
 THUMB_MAX = 800           # longest edge of grid thumbnail, in px
@@ -31,6 +36,9 @@ THUMB_MAX = 800           # longest edge of grid thumbnail, in px
                           # covers 2x displays without shipping megabytes
 THUMB_QUALITY = 78
 WEBP_QUALITY = 76         # webp holds up better than jpeg at the same number
+DISPLAY_MAX = 1600        # lightbox tier — the originals are 4032px/4mb each,
+                          # far more than any screen shows
+DISPLAY_QUALITY = 82
 EXTS = (".jpg", ".jpeg", ".png", ".webp")
 
 # name -> EXIF tag id
@@ -231,6 +239,61 @@ def extract_meta(img):
     return meta, str(raw_date) if raw_date else None
 
 
+GRID_START = "<!-- PHOTO-GRID:START (generated) -->"
+GRID_END = "<!-- PHOTO-GRID:END -->"
+
+
+def esc(s):
+    return (str(s).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
+
+
+def render_grid(items):
+    """Grid markup as static HTML.
+
+    The gallery used to be built entirely in JS, which meant 30 photos' worth of
+    alt text and locations were invisible to anything that doesn't run scripts.
+    """
+    out = []
+    for i, p in enumerate(items):
+        cap = "  ·  ".join(
+            x for x in (p["meta"].get("location"), p["meta"].get("date")) if x
+        )
+        out.append('        <figure class="photo-item">')
+        out.append('          <picture>')
+        out.append('            <source type="image/webp" srcset="%s" />'
+                   % esc(urllib.parse.quote(p["thumbWebp"])))
+        out.append(
+            '            <img src="%s" alt="%s" width="%d" height="%d" '
+            'loading="%s" decoding="async" data-index="%d" />'
+            % (esc(urllib.parse.quote(p["thumb"])), esc(p["alt"]),
+               p["width"], p["height"],
+               "eager" if i < 3 else "lazy", i)
+        )
+        out.append('          </picture>')
+        if cap:
+            out.append('          <figcaption class="photo-caption">%s</figcaption>'
+                       % esc(cap))
+        out.append('        </figure>')
+    return "\n".join(out)
+
+
+def write_grid(items):
+    try:
+        html = open("photos.html").read()
+    except OSError:
+        return
+    a, b = html.find(GRID_START), html.find(GRID_END)
+    if a == -1 or b == -1:
+        print("photos.html has no PHOTO-GRID markers — skipped grid injection.")
+        return
+    new = (html[:a + len(GRID_START)] + "\n" + render_grid(items) + "\n      "
+           + html[b:])
+    if new != html:
+        open("photos.html", "w").write(new)
+        print("injected %d figures into photos.html" % len(items))
+
+
 def write_manifest(items):
     # Emit as a JS file so the gallery can load it with <script> — that works
     # both on GitHub Pages and when opening photos.html directly (file://),
@@ -248,6 +311,7 @@ def main():
         return
 
     os.makedirs(THUMBS_DIR, exist_ok=True)
+    os.makedirs(DISPLAY_DIR, exist_ok=True)
 
     files = sorted(
         f for f in os.listdir(PHOTOS_DIR)
@@ -256,6 +320,7 @@ def main():
 
     items = []
     kept_thumbs = set()
+    kept_display = set()
     for name in files:
         path = os.path.join(PHOTOS_DIR, name)
         try:
@@ -286,6 +351,18 @@ def main():
         kept_thumbs.add(webp_name)
         rgb.save(webp_path, "WEBP", quality=WEBP_QUALITY, method=6)
 
+        # display tier for the lightbox, so opening a photo doesn't pull the
+        # 4mb original down the wire
+        disp = upright.copy()
+        disp.thumbnail((DISPLAY_MAX, DISPLAY_MAX))
+        disp_rgb = disp.convert("RGB")
+        disp_jpg = os.path.join(DISPLAY_DIR, stem + ".jpg")
+        disp_webp = os.path.join(DISPLAY_DIR, stem + ".webp")
+        kept_display.update([stem + ".jpg", stem + ".webp"])
+        disp_rgb.save(disp_jpg, "JPEG", quality=DISPLAY_QUALITY, optimize=True,
+                      progressive=True)
+        disp_rgb.save(disp_webp, "WEBP", quality=DISPLAY_QUALITY, method=6)
+
         # prefer real description over the camera's filename, which reads as
         # gibberish to a screen reader
         if meta.get("location") and meta.get("date"):
@@ -301,6 +378,8 @@ def main():
             "src": path,
             "thumb": thumb_path,
             "thumbWebp": webp_path,
+            "display": disp_jpg,
+            "displayWebp": disp_webp,
             "width": w,
             "height": h,
             "alt": alt,
@@ -314,17 +393,18 @@ def main():
     for it in items:
         it.pop("_sort", None)
 
-    # prune thumbnails whose source photo no longer exists
+    # prune derived images whose source photo no longer exists
     pruned = 0
-    for f in os.listdir(THUMBS_DIR):
-        if f.lower().endswith((".jpg", ".webp")) and f not in kept_thumbs:
-            try:
-                os.remove(os.path.join(THUMBS_DIR, f))
-                pruned += 1
-            except OSError:
-                pass
-
+    for d, keep in ((THUMBS_DIR, kept_thumbs), (DISPLAY_DIR, kept_display)):
+        for f in os.listdir(d):
+            if f.lower().endswith((".jpg", ".webp")) and f not in keep:
+                try:
+                    os.remove(os.path.join(d, f))
+                    pruned += 1
+                except OSError:
+                    pass
     write_manifest(items)
+    write_grid(items)
     save_geocache()
     print("\nwrote %s with %d photo(s)." % (OUTPUT, len(items)))
     if pruned:

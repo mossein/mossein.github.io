@@ -12,7 +12,11 @@
       }
       window.addEventListener("DOMContentLoaded", function () {
         gtag("js", new Date());
-        gtag("config", "G-40C7CVW886");
+        // /x, /x.html and / vs /index.html are all served, so collapse them
+        // into one path or every page reports as two or three separate rows
+        var p = location.pathname.replace(/\/index\.html$/, "/");
+        if (p !== "/" && !/\.[a-z0-9]+$/i.test(p)) p += ".html";
+        gtag("config", "G-40C7CVW886", { page_path: p + location.search });
       });
     </script>
     <meta charset="UTF-8" />
@@ -29,7 +33,7 @@
     <meta name="author" content="Mohammad Jafari" />
     <meta name="robots" content="index, follow" />
     <meta property="og:locale" content="en_US" />
-    <link rel="canonical" href="https://mohammad.page" />
+    <link rel="canonical" href="https://mohammad.page/" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="favicon.ico" />
     <link
@@ -56,14 +60,13 @@
       content="#000000"
       media="(prefers-color-scheme: dark)"
     />
-    <link rel="preload" as="image" href="portrait.jpeg" fetchpriority="high" />
 
     <meta property="og:title" content="Mohammad Jafari - Software Engineer, Toronto | Verlo, ex-Nasdaq" />
     <meta
       property="og:description"
       content="Experienced software developer specializing in AI, cloud computing, and scalable software solutions."
     />
-    <meta property="og:url" content="https://mohammad.page" />
+    <meta property="og:url" content="https://mohammad.page/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://mohammad.page/og.png" />
     <meta property="og:image:width" content="1268" />
@@ -85,7 +88,7 @@
     <site-nav></site-nav>
     <noscript>
       <nav class="nav" aria-label="Primary">
-        <a href="index.html" aria-current="page">home</a>
+        <a href="/" aria-current="page">home</a>
         <a href="blog.html">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html">photos</a>

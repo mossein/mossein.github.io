@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+
+# old versions of this site, kept in the repo for reference only
+Disallow: /website(depricated)/
+Disallow: /websiteV2(depricated)/
+
 Sitemap: https://mohammad.page/sitemap.xml
-
-

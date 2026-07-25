@@ -12,7 +12,11 @@
       }
       window.addEventListener("DOMContentLoaded", function () {
         gtag("js", new Date());
-        gtag("config", "G-40C7CVW886");
+        // /x, /x.html and / vs /index.html are all served, so collapse them
+        // into one path or every page reports as two or three separate rows
+        var p = location.pathname.replace(/\/index\.html$/, "/");
+        if (p !== "/" && !/\.[a-z0-9]+$/i.test(p)) p += ".html";
+        gtag("config", "G-40C7CVW886", { page_path: p + location.search });
       });
     </script>
     <link rel="canonical" href="https://mohammad.page/photos.html" />
@@ -72,7 +76,7 @@
     <site-nav></site-nav>
     <noscript>
       <nav class="nav" aria-label="Primary">
-        <a href="index.html">home</a>
+        <a href="/">home</a>
         <a href="blog.html">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html" aria-current="page">photos</a>
@@ -90,10 +94,226 @@
 
       <!--
         This gallery is generated. Drop images in /photos and run
-        `python3 generate-photos.py` — it builds photos-data.js (with EXIF) and
-        thumbnails, which this page reads. No HTML editing needed.
+        `python3 generate-photos.py` — it builds photos-data.js (with EXIF),
+        the thumbnail and display tiers, and the figures below. The markup is
+        committed so the photos are in the HTML for crawlers and for anyone
+        without JS; the script only wires up the lightbox.
+        Don't hand-edit between the markers.
       -->
-      <div class="photo-grid" id="photoGrid"></div>
+      <div class="photo-grid" id="photoGrid">
+        <!-- PHOTO-GRID:START (generated) -->
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%202020069696758114B7.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%202020069696758114B7.jpg" alt="South Riverdale, Toronto, May 30, 2026" width="4032" height="3024" loading="eager" decoding="async" data-index="0" />
+          </picture>
+          <figcaption class="photo-caption">South Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/IMG_0721.webp" />
+            <img src="photos/thumbs/IMG_0721.jpg" alt="South Riverdale, Toronto, May 30, 2026" width="3024" height="4032" loading="eager" decoding="async" data-index="1" />
+          </picture>
+          <figcaption class="photo-caption">South Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%20193917D73C58F2E903.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%20193917D73C58F2E903.jpg" alt="South Riverdale, Toronto, May 30, 2026" width="4032" height="3024" loading="eager" decoding="async" data-index="2" />
+          </picture>
+          <figcaption class="photo-caption">South Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/IMG_0666.webp" />
+            <img src="photos/thumbs/IMG_0666.jpg" alt="South Riverdale, Toronto, May 30, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="3" />
+          </picture>
+          <figcaption class="photo-caption">South Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%20193553AB6913D4B4B1.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%20193553AB6913D4B4B1.jpg" alt="South Riverdale, Toronto, May 30, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="4" />
+          </picture>
+          <figcaption class="photo-caption">South Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%2019343893999EC89122.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%2019343893999EC89122.jpg" alt="South Riverdale, Toronto, May 30, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="5" />
+          </picture>
+          <figcaption class="photo-caption">South Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%201920377CEBF74C0D39.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%201920377CEBF74C0D39.jpg" alt="Beaches—East York, Toronto, May 30, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="6" />
+          </picture>
+          <figcaption class="photo-caption">Beaches—East York, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%2018452326BE5BC69288.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%2018452326BE5BC69288.jpg" alt="East York, Toronto, May 30, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="7" />
+          </picture>
+          <figcaption class="photo-caption">East York, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%20184039D9B203B74431.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%20184039D9B203B74431.jpg" alt="North Riverdale, Toronto, May 30, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="8" />
+          </picture>
+          <figcaption class="photo-caption">North Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%20174047123E4F19B37D.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%20174047123E4F19B37D.jpg" alt="North Riverdale, Toronto, May 30, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="9" />
+          </picture>
+          <figcaption class="photo-caption">North Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%2017202183E8C9B1DAE6.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%2017202183E8C9B1DAE6.jpg" alt="North Riverdale, Toronto, May 30, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="10" />
+          </picture>
+          <figcaption class="photo-caption">North Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%2017201601C6025C3C9A.webp" />
+            <img src="photos/thumbs/fxn%202026-05-30%2017201601C6025C3C9A.jpg" alt="North Riverdale, Toronto, May 30, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="11" />
+          </picture>
+          <figcaption class="photo-caption">North Riverdale, Toronto  ·  May 30, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%202205138A5488E9B951.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%202205138A5488E9B951.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="12" />
+          </picture>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20205824A2B6062F9C86.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20205824A2B6062F9C86.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="13" />
+          </picture>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%202052382289FD72C8BC.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%202052382289FD72C8BC.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="14" />
+          </picture>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20200540333A4D9BD0BB.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20200540333A4D9BD0BB.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="15" />
+          </picture>
+          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20194425278A1333F5AB.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20194425278A1333F5AB.jpg" alt="Algonquin Island, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="16" />
+          </picture>
+          <figcaption class="photo-caption">Algonquin Island, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20194015F7EAE3B7CC77.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20194015F7EAE3B7CC77.jpg" alt="Ward's Island, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="17" />
+          </picture>
+          <figcaption class="photo-caption">Ward's Island, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20192219F3C0E3F08E3A.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20192219F3C0E3F08E3A.jpg" alt="Ward's Island, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="18" />
+          </picture>
+          <figcaption class="photo-caption">Ward's Island, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201916510AD3A7AE04B5.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%201916510AD3A7AE04B5.jpg" alt="Ward's Island, Toronto, May 28, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="19" />
+          </picture>
+          <figcaption class="photo-caption">Ward's Island, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20191441C7124BCD658F.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20191441C7124BCD658F.jpg" alt="Ward's Island, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="20" />
+          </picture>
+          <figcaption class="photo-caption">Ward's Island, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20191257EF80AE71573A.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20191257EF80AE71573A.jpg" alt="Ward's Island, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="21" />
+          </picture>
+          <figcaption class="photo-caption">Ward's Island, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201905337D90A61FFC6B.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%201905337D90A61FFC6B.jpg" alt="Ward's Island, Toronto, May 28, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="22" />
+          </picture>
+          <figcaption class="photo-caption">Ward's Island, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20184236B9BE03EC2F25.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20184236B9BE03EC2F25.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="23" />
+          </picture>
+          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201841291343703336D1.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%201841291343703336D1.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4030" height="3021" loading="lazy" decoding="async" data-index="24" />
+          </picture>
+          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20183935E9086DA918E0.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%20183935E9086DA918E0.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="25" />
+          </picture>
+          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201831104B921702A9B3.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%201831104B921702A9B3.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="26" />
+          </picture>
+          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201825218AB1336FFEE0.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%201825218AB1336FFEE0.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="27" />
+          </picture>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%2017561442FE2D27B01E.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%2017561442FE2D27B01E.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="28" />
+          </picture>
+          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <picture>
+            <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201714407C3B284EDD4A.webp" />
+            <img src="photos/thumbs/fxn%202026-05-28%201714407C3B284EDD4A.jpg" alt="Harbourfront-CityPlace, Toronto, May 28, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="29" />
+          </picture>
+          <figcaption class="photo-caption">Harbourfront-CityPlace, Toronto  ·  May 28, 2026</figcaption>
+        </figure>
+      <!-- PHOTO-GRID:END -->
+      </div>
 
       <p class="photo-empty" id="photoEmpty" hidden>
         no photos here yet — drop images in <code>/photos</code> and run
@@ -113,7 +333,10 @@
       <button class="lightbox-close" id="lbClose" aria-label="Close">&times;</button>
       <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
       <figure class="lightbox-figure">
-        <img class="lightbox-img" id="lbImg" alt="" />
+        <picture>
+          <source id="lbSource" type="image/webp" />
+          <img class="lightbox-img" id="lbImg" alt="" />
+        </picture>
         <figcaption class="lightbox-meta" id="lbMeta"></figcaption>
       </figure>
       <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next">&#8250;</button>
@@ -128,6 +351,7 @@
         var empty = document.getElementById("photoEmpty");
         var lb = document.getElementById("lightbox");
         var lbImg = document.getElementById("lbImg");
+        var lbSource = document.getElementById("lbSource");
         var lbMeta = document.getElementById("lbMeta");
         if (!grid || !lb) return;
 
@@ -150,11 +374,20 @@
           i = ((i % n) + n) % n;
           current = i;
           var p = photos[i];
-          lbImg.src = p.src;
+          // the 1600px display tier, not the 4mb original. srcset has to be set
+          // before src or the browser commits to the jpeg and skips the webp
+          lbSource.srcset = p.displayWebp ? encodeURI(p.displayWebp) : "";
+          lbImg.src = p.display || p.src;
           lbImg.alt = p.alt || "";
           var line = metaLine(p.meta);
           lbMeta.textContent = line;
           lbMeta.style.display = line ? "block" : "none";
+          if (window.gtag) {
+            gtag("event", "photo_view", {
+              photo: (p.src || "").split("/").pop(),
+              location: (p.meta && p.meta.location) || "unknown"
+            });
+          }
         }
 
         function open(i) {
@@ -171,55 +404,24 @@
           lbImg.src = "";
         }
 
-        function render(data) {
+        // the figures are already in the HTML (generate-photos.py writes them),
+        // so this only attaches the lightbox to what's there
+        function bind(data) {
           photos = data || [];
-          if (!photos.length) {
+          var imgs = grid.querySelectorAll(".photo-item img");
+          if (!imgs.length) {
             empty.hidden = false;
             return;
           }
-          photos.forEach(function (p, i) {
-            var fig = document.createElement("figure");
-            fig.className = "photo-item";
-            var img = document.createElement("img");
-            img.alt = p.alt || "";
-            img.loading = "lazy";
-            img.decoding = "async";
-            if (p.width && p.height) {
-              img.style.aspectRatio = p.width + " / " + p.height;
-            }
+          Array.prototype.forEach.call(imgs, function (img, n) {
+            var i = parseInt(img.getAttribute("data-index"), 10);
+            if (isNaN(i)) i = n;
             img.style.cursor = "zoom-in";
             img.addEventListener("click", function () { open(i); });
-
-            if (p.thumbWebp) {
-              // webp where supported, jpeg everywhere else. the <source> has to be
-              // in the DOM before src is set, or the browser commits to the jpeg
-              // and never re-runs picture selection
-              var pic = document.createElement("picture");
-              var srcEl = document.createElement("source");
-              srcEl.type = "image/webp";
-              srcEl.srcset = encodeURI(p.thumbWebp);
-              pic.appendChild(srcEl);
-              pic.appendChild(img);
-              fig.appendChild(pic);
-            } else {
-              fig.appendChild(img);
-            }
-            // src last — picture selection runs off the sources already present
-            img.src = p.thumb || p.src;
-            // where and when, from the exif — the full spec stays in the lightbox
-            var place = [(p.meta && p.meta.location), (p.meta && p.meta.date)]
-              .filter(Boolean).join("  ·  ");
-            if (place) {
-              var cap = document.createElement("figcaption");
-              cap.className = "photo-caption";
-              cap.textContent = place;
-              fig.appendChild(cap);
-            }
-            grid.appendChild(fig);
           });
         }
 
-        render(window.PHOTOS || []);
+        bind(window.PHOTOS || []);
 
         document.getElementById("lbClose").addEventListener("click", close);
         document.getElementById("lbNext").addEventListener("click", function (e) {

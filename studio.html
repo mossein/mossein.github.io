@@ -12,7 +12,11 @@
       }
       window.addEventListener("DOMContentLoaded", function () {
         gtag("js", new Date());
-        gtag("config", "G-40C7CVW886");
+        // /x, /x.html and / vs /index.html are all served, so collapse them
+        // into one path or every page reports as two or three separate rows
+        var p = location.pathname.replace(/\/index\.html$/, "/");
+        if (p !== "/" && !/\.[a-z0-9]+$/i.test(p)) p += ".html";
+        gtag("config", "G-40C7CVW886", { page_path: p + location.search });
       });
     </script>
     <link rel="canonical" href="https://mohammad.page/studio.html" />
@@ -72,7 +76,7 @@
     <site-nav></site-nav>
     <noscript>
       <nav class="nav" aria-label="Primary">
-        <a href="index.html">home</a>
+        <a href="/">home</a>
         <a href="blog.html">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html">photos</a>

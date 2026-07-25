@@ -28,19 +28,27 @@
   nav.className = "nav";
   nav.setAttribute("aria-label", "Primary");
   var links = [
-    { href: "index.html", label: "home" },
+    // "/" not "index.html" — Pages serves both, and linking one form keeps the
+    // canonical, the analytics row, and the crawl path all pointing at one url
+    { href: "/", label: "home" },
     { href: "blog.html", label: "blog" },
     { href: "links.html", label: "links" },
     { href: "photos.html", label: "photos" },
     // { href: "studio.html", label: "studio" }, // hidden for now
     { href: "now.html", label: "now" }
   ];
-  var path = location.pathname.split("/").pop() || "index.html";
+  var path = location.pathname.split("/").pop();
+  var isHome = !path || path === "index.html";
   for (var i = 0; i < links.length; i++) {
     var a = document.createElement("a");
     a.href = links[i].href;
     a.textContent = links[i].label;
-    if (links[i].href === path) {
+    // home is "/", so match it on the resolved page rather than the href; the
+    // rest also answer without their extension, hence the second comparison
+    var current = links[i].href === "/"
+      ? isHome
+      : (path === links[i].href || path === links[i].href.replace(".html", ""));
+    if (current) {
       a.setAttribute("aria-current", "page");
     }
     nav.appendChild(a);
@@ -160,6 +168,7 @@
   }
 
   function setTheme(theme) {
+    if (window.gtag) window.gtag("event", "theme_change", { theme: theme });
     playThemeSound(theme);
     // always clean watercolor state first
     clearWatercolorState();
@@ -442,6 +451,53 @@
       });
     });
   });
+
+  // --- Custom analytics events ---
+  // pageviews alone couldn't answer "which links get clicked" or "does anyone
+  // finish a post", which is most of what's worth knowing on a site this size
+  function track(name, params) {
+    if (window.gtag) window.gtag("event", name, params || {});
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    if (/^mailto:/.test(href)) {
+      track("email_click", { address: href.replace("mailto:", "") });
+      return;
+    }
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.host && url.host !== location.host) {
+      track("outbound_click", {
+        destination: url.host,
+        url: url.href,
+        link_text: (a.textContent || "").trim().slice(0, 60)
+      });
+    }
+  }, true);
+
+  // read depth on posts only — a scroll milestone on the blog index means nothing
+  var post = document.querySelector("article");
+  if (post) {
+    var marks = [25, 50, 75, 100];
+    var hit = {};
+    var slug = location.pathname.split("/").pop().replace(".html", "") || "index";
+    window.addEventListener("scroll", function () {
+      var box = post.getBoundingClientRect();
+      var total = box.height - window.innerHeight;
+      if (total <= 0) return;
+      var pct = Math.min(100, Math.max(0, (-box.top / total) * 100));
+      for (var i = 0; i < marks.length; i++) {
+        var m = marks[i];
+        if (pct >= m && !hit[m]) {
+          hit[m] = true;
+          track("read_depth", { post: slug, percent: m });
+        }
+      }
+    }, { passive: true });
+  }
 
   // --- Keyboard shortcuts ---
   document.addEventListener("keydown", function (e) {
