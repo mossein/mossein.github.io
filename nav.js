@@ -532,44 +532,6 @@
     });
   });
 
-  // --- Clips inside posts ---
-  // they autoplay muted like a moving photograph, but a looping clip you can't
-  // stop is a nuisance while reading, so clicking one holds it still
-  var clips = document.querySelectorAll(".snap--clip video");
-  Array.prototype.forEach.call(clips, function (v) {
-    var frame = v.closest(".snap");
-    v.addEventListener("click", function () {
-      if (v.paused) {
-        v.play();
-      } else {
-        v.pause();
-      }
-    });
-    v.addEventListener("play", function () {
-      if (frame) frame.classList.remove("is-paused");
-    });
-    v.addEventListener("pause", function () {
-      if (frame) frame.classList.add("is-paused");
-    });
-    // don't burn battery on a clip nobody is looking at
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            if (!v.dataset.held) v.play().catch(function () {});
-          } else {
-            v.pause();
-          }
-        });
-      }, { threshold: 0.2 });
-      io.observe(v);
-      // a deliberate pause should survive scrolling away and back
-      v.addEventListener("click", function () {
-        v.dataset.held = v.paused ? "1" : "";
-      });
-    }
-  });
-
   // --- Custom analytics events ---
   // pageviews alone couldn't answer "which links get clicked" or "does anyone
   // finish a post", which is most of what's worth knowing on a site this size
