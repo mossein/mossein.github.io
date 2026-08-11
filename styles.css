@@ -1181,10 +1181,10 @@ footer {
    a dia-browser-style glow, made ours: a row of heavily blurred bars whose
    heights trace the toronto skyline, CN Tower spike and all. every bar
    paints the same vertical gradient over its own height and the blur melts
-   them into one soft field of light. it hides under the end of the page,
-   rises from the floor as the end comes into reach while the page is
-   moving, and settles back the moment the scrolling stops. driven by the
-   scroll glow module in nav.js. */
+   them into one soft field of light. it hides under the end of the page:
+   keep scrolling past the bottom and it rises from the floor while the
+   page lifts, with rubber-band resistance; stop, and everything springs
+   back. driven by the overscroll module in nav.js. */
 .horizon {
   position: fixed;
   left: 0;
