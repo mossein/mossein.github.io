@@ -518,6 +518,70 @@ a:focus {
   }
 }
 
+/* the greeting gets a marker stroke drawn across it once, then lifted. no
+   per-letter animation: splitting the h1 into inline-block letters kills
+   Fraunces' kerning, needs 20 spans and a JS builder, and the wave was the
+   borrowed part anyway. the stroke is the site's own idiom (see .hl). */
+@property --typer-ink {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.typer {
+  --typer-sweep: 620ms; /* time to draw the stroke end to end */
+  --typer-hold: 1120ms; /* how long it sits before lifting */
+  --typer-hue: 255, 255, 0;
+}
+
+.dark .typer {
+  --typer-hue: 255, 210, 0;
+}
+
+/* a background rather than a positioned pseudo-element: with
+   box-decoration-break it survives the headline wrapping on narrow screens */
+.typer-line {
+  /* the resting value; typerLift only takes it to 0 after its delay, and until
+     then the declared value is what applies */
+  --typer-ink: 1;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(var(--typer-hue), 0) 0%,
+    rgba(var(--typer-hue), calc(0.3 * var(--typer-ink))) 16%,
+    rgba(var(--typer-hue), calc(0.4 * var(--typer-ink))) 52%,
+    rgba(var(--typer-hue), calc(0.22 * var(--typer-ink))) 84%,
+    rgba(var(--typer-hue), 0) 100%
+  );
+  background-repeat: no-repeat;
+  /* baseline sits 0.975em below the inline box top in Fraunces, so the stroke
+     runs 0.42–1.04em: over the x-height with a little spill past the baseline */
+  background-position: 0 0.42em;
+  background-size: 0% 0.62em;
+  /* linear, not eased — an eased sweep front-loads and outruns the letters */
+  animation: typerSweepIn var(--typer-sweep) linear forwards,
+    typerLift 420ms var(--ease) var(--typer-hold) forwards;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@keyframes typerSweepIn {
+  from {
+    background-size: 0% 0.62em;
+  }
+  to {
+    background-size: 100% 0.62em;
+  }
+}
+
+@keyframes typerLift {
+  from {
+    --typer-ink: 1;
+  }
+  to {
+    --typer-ink: 0;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -1192,9 +1256,15 @@ blockquote p {
   }
 }
 
-/* the arrow marks external links in prose; in the experience list every single
-   row would carry one, which just reads as noise */
-.experience-list .role a[target="_blank"]::after {
+/* the arrow marks external links in prose. anywhere the link is already an
+   object that reads as "elsewhere" — a résumé row, a stamp, a ticket stub —
+   it's just noise. these need the same specificity as the rule below, hence
+   the :not(.nav a) tacked on. */
+.experience-list .role a[target="_blank"]:not(.nav a)::after,
+a.stamp[target="_blank"]:not(.nav a)::after,
+a.stub[target="_blank"]:not(.nav a)::after,
+.snap figcaption a[target="_blank"]:not(.nav a)::after,
+.filmstrip figcaption a[target="_blank"]:not(.nav a)::after {
   content: none;
 }
 
@@ -1328,13 +1398,18 @@ blockquote::before {
     transform: none;
     animation: none;
   }
-  
+
+  .typer-line {
+    background-image: none;
+    animation: none;
+  }
+
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  
+
   .cursor-blob {
     display: none;
   }
@@ -1855,6 +1930,613 @@ blockquote::before {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+
+
+/* ---------- inline snapshots inside a post ---------- */
+/* the point is that it reads as a physical print dropped onto the page mid-
+   sentence, not as a web image. so: a real print's white margin, a slight
+   rotation, a soft cast shadow, and something holding it down.
+   the print stays warm white in every theme — a photograph you're holding
+   doesn't invert when the lights go off, and that's the whole illusion.
+
+   placement is per-instance via inline custom properties:
+     <figure class="snap snap--tape" style="--rot: 2deg">
+   and --rot / --shift let you nudge any one of them off-grid. */
+.snap {
+  --rot: -1.4deg;
+  --shift: 0px;
+  --paper: #fbf8f2;
+  position: relative;
+  width: min(340px, 100%);
+  margin: 34px auto 40px;
+  padding: 12px 12px 14px;
+  background: var(--paper);
+  transform: rotate(var(--rot)) translateX(var(--shift));
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.09),
+    0 6px 14px rgba(0, 0, 0, 0.13),
+    0 14px 34px rgba(0, 0, 0, 0.09);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+/* straightens a touch when you look at it */
+.snap:hover {
+  transform: rotate(calc(var(--rot) * 0.35)) translateX(var(--shift));
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.1),
+    0 10px 22px rgba(0, 0, 0, 0.16),
+    0 22px 48px rgba(0, 0, 0, 0.11);
+}
+
+.snap img,
+.snap video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;          /* prints don't have rounded corners */
+  box-shadow: none;
+  background: #e8e4dc;
+}
+
+.snap figcaption {
+  margin-top: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6f6a62;            /* pencil on the print margin, not page text */
+}
+
+.snap .snap-loc::before {
+  content: "◦ ";
+  opacity: 0.65;
+}
+
+/* --- how it's held down --- */
+
+/* tape: two translucent strips over the top corners */
+.snap--tape::before,
+.snap--tape::after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  width: 74px;
+  height: 23px;
+  background: linear-gradient(
+    170deg,
+    rgba(255, 252, 236, 0.62),
+    rgba(236, 228, 205, 0.52)
+  );
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.09);
+  /* torn-ish ends */
+  clip-path: polygon(3% 0, 97% 4%, 100% 96%, 1% 100%);
+}
+
+.snap--tape::before {
+  left: -20px;
+  transform: rotate(-26deg);
+}
+
+.snap--tape::after {
+  right: -20px;
+  transform: rotate(24deg);
+}
+
+/* polaroid: caption lives inside the deep bottom band */
+.snap--polaroid {
+  padding: 13px 13px 0;
+}
+
+.snap--polaroid figcaption {
+  margin: 0;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 2px 14px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.7rem;
+}
+
+/* pin: a tack through the top edge */
+.snap--pin::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #e2735a, #a8371f 70%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.34), inset 0 -1px 2px rgba(0, 0, 0, 0.28);
+}
+
+/* --- placement --- */
+
+/* text wraps around it */
+.snap--left {
+  float: left;
+  margin: 12px 34px 24px 0;
+  width: min(270px, 46%);
+}
+
+.snap--right {
+  float: right;
+  margin: 12px 0 24px 34px;
+  width: min(270px, 46%);
+}
+
+/* breaks past the reading measure without leaving the body box (html clips
+   overflow-x at the viewport, so a bleed wider than the screen gets cut) */
+.snap--wide {
+  width: min(560px, 100%);
+}
+
+.snap--bleed {
+  margin-left: -58px;
+  margin-right: -58px;
+  width: auto;
+}
+
+/* a pair side by side, like two frames off the same roll */
+.snap-pair {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 34px 0 40px;
+}
+
+.snap-pair .snap {
+  margin: 6px 0;
+  width: min(255px, 47%);
+}
+
+@media (max-width: 620px) {
+  .snap--left,
+  .snap--right {
+    float: none;
+    width: min(340px, 100%);
+    margin: 30px auto 34px;
+  }
+  .snap--bleed {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* the tilt is charm on a desktop and a nuisance if you've asked for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .snap {
+    transform: none;
+  }
+  .snap:hover {
+    transform: none;
+  }
+}
+
+
+/* --- clips in the same paper frame --- */
+/* a moving photograph: muted, looping, no chrome. it should read as a print
+   that happens to be alive, so the only tell is a small hand-inked mark. */
+.snap--clip video {
+  cursor: pointer;
+}
+
+.snap--clip .snap-mark {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #c8402c;
+  box-shadow: 0 0 0 3px rgba(251, 248, 242, 0.9);
+  opacity: 0.9;
+  animation: snapRec 2.6s ease-in-out infinite;
+}
+
+@keyframes snapRec {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0.35; }
+}
+
+/* paused clips lose the dot and gain a nudge to press play */
+.snap--clip.is-paused .snap-mark {
+  animation: none;
+  background: transparent;
+  box-shadow: none;
+  border-left: 9px solid rgba(40, 36, 32, 0.75);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-radius: 0;
+  width: 0;
+  height: 0;
+}
+
+/* --- the location, as a stamp you can follow --- */
+.snap-loc a,
+a.snap-loc {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(111, 106, 98, 0.55);
+  transition: border-color var(--dur-micro) var(--ease);
+}
+
+.snap-loc a:hover,
+a.snap-loc:hover {
+  border-bottom-color: #b4532a;
+}
+
+/* the external-link arrow is for prose; a stamp doesn't need one */
+.snap figcaption a[target="_blank"]::after {
+  content: none;
+}
+
+/* --- a pinned paper tag: for a link, a track, a thing you read --- */
+/* sits inline in the prose like something tucked between the pages */
+.snap-note {
+  --rot: -0.8deg;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 26px auto 30px;
+  padding: 11px 16px 12px 18px;
+  background: #fbf8f2;
+  color: #4a453e;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  transform: rotate(var(--rot));
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.12);
+  /* a torn left edge, like it came out of a notebook */
+  clip-path: polygon(
+    0% 4%, 100% 0%, 100% 100%, 0% 96%,
+    1.5% 80%, 0% 64%, 1.5% 48%, 0% 32%, 1.5% 16%
+  );
+}
+
+.snap-note .snap-note-label {
+  display: block;
+  font-size: 0.86em;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.5;
+  margin-bottom: 2px;
+}
+
+.snap-note a {
+  color: #a8451f;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 69, 31, 0.4);
+}
+
+.snap-note a:hover {
+  border-bottom-color: #a8451f;
+}
+
+
+.snap-note--left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.snap-note--right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snap-note { transform: none; }
+  .snap--clip .snap-mark { animation: none; }
+}
+
+
+/* ---------- a clip is film, not a print ---------- */
+/* a photograph is paper you can hold; moving footage is a strip of film. so it
+   gets the film's body: dark base, sprocket holes down both edges, a frame
+   number in the margin. no play button — the object already says "this moves". */
+.filmstrip {
+  --rot: -0.7deg;
+  position: relative;
+  width: min(400px, 100%);
+  margin: 36px auto 42px;
+  padding: 17px 13px;
+  background: #1c1a18;
+  transform: rotate(var(--rot));
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.28),
+    0 12px 30px rgba(0, 0, 0, 0.34);
+}
+
+/* sprocket holes — punched along the top and bottom edges */
+.filmstrip::before,
+.filmstrip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 9px;
+  background-image: radial-gradient(
+    closest-side circle,
+    #ded8cc 0 82%,
+    transparent 84%
+  );
+  background-size: 22px 9px;
+  background-repeat: repeat-x;
+  opacity: 0.9;
+}
+
+.filmstrip::before { top: 4px; }
+.filmstrip::after { bottom: 4px; }
+
+.filmstrip video,
+.filmstrip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: #000;
+  cursor: pointer;
+}
+
+/* frame number, stencilled in the film margin like an edge code */
+.filmstrip .film-edge {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  color: #d8823f;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.filmstrip.is-paused .film-edge::after {
+  content: "  \2016";      /* a pause bar appears in the edge code when held */
+}
+
+.filmstrip figcaption {
+  margin-top: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9a9186;
+}
+
+.filmstrip figcaption a {
+  color: inherit;
+  border-bottom: 1px dotted rgba(154, 145, 134, 0.5);
+  text-decoration: none;
+}
+
+.filmstrip figcaption a:hover { border-bottom-color: #d8823f; }
+
+/* ---------- a place is a stamp, not a caption ---------- */
+/* how paper records where it has been: pressed on, slightly crooked, ink a bit
+   uneven, never quite square to the page. sits inline in a sentence or alone. */
+.stamp {
+  --rot: -2deg;
+  display: inline-block;
+  padding: 2px 7px 1px;
+  border: 1.2px solid currentColor;
+  border-radius: 2px;
+  color: #a8451f;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.56rem;
+  /* the whole point: a stamp pressed into a sentence must not disturb the line.
+     zero line-height contribution, so surrounding leading is untouched. */
+  line-height: 1;
+  vertical-align: 0.06em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  transform: rotate(var(--rot));
+  opacity: 0.8;
+  transition: opacity var(--dur-micro) var(--ease), transform var(--dur) var(--ease);
+}
+
+.stamp:hover {
+  opacity: 1;
+  transform: rotate(calc(var(--rot) * 0.25));
+}
+
+.dark .stamp { color: #e0895c; }
+.watercolor .stamp { color: #3b6ea9; }
+
+
+/* the full pressed stamp — place over coordinates, ink slightly uneven.
+   standalone only: it's too tall to sit in a line of prose. */
+.stamp--block {
+  --rot: -3deg;
+  display: block;
+  width: fit-content;
+  margin: 26px auto 30px;
+  padding: 6px 12px 5px;
+  font-size: 0.6rem;
+  line-height: 1.45;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: normal;
+  box-shadow: 0 0 0 1.2px currentColor inset;
+  -webkit-mask-image: radial-gradient(circle at 22% 18%, #000 62%, rgba(0,0,0,0.7) 100%);
+  mask-image: radial-gradient(circle at 22% 18%, #000 62%, rgba(0,0,0,0.7) 100%);
+}
+
+.stamp--block .stamp-coord {
+  display: block;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  margin-top: 1px;
+}
+
+.stamp--left { margin-left: 0; margin-right: auto; }
+.stamp--right { margin-left: auto; margin-right: 0; }
+
+/* ---------- a link is a ticket stub ---------- */
+/* the thing you kept because you were there. torn along a perforation. */
+.stub {
+  --rot: 1.1deg;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 30px auto 34px;
+  padding: 12px 20px 12px 30px;
+  background: #f6f1e6;
+  color: #3f3a33;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transform: rotate(var(--rot));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 5px 14px rgba(0, 0, 0, 0.13);
+  position: relative;
+  /* Perforation: the mask must be OPAQUE everywhere (element visible) with
+     TRANSPARENT circles punched along the left edge. Tiling a mostly-transparent
+     gradient does the opposite and erases the whole ticket.
+     Each 13px tile is opaque except a 4px hole centred on its left edge. */
+  -webkit-mask-image: radial-gradient(circle 4px at 0 6.5px, transparent 0 4px, #000 4.6px);
+  -webkit-mask-size: 100% 13px;
+  -webkit-mask-repeat: repeat-y;
+  mask-image: radial-gradient(circle 4px at 0 6.5px, transparent 0 4px, #000 4.6px);
+  mask-size: 100% 13px;
+  mask-repeat: repeat-y;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+/* the tear line the stub would have been torn along */
+.stub::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 7px;
+  bottom: 7px;
+  width: 1px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(63, 58, 51, 0.42) 0 3px,
+    transparent 3px 7px
+  );
+  background-size: 1px 7px;
+}
+
+.stub .stub-label {
+  display: block;
+  font-size: 0.82em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 3px;
+}
+
+.stub .stub-title {
+  display: block;
+  color: #a8451f;
+  border-bottom: 1px solid rgba(168, 69, 31, 0.35);
+  padding-bottom: 1px;
+}
+
+.stub:hover .stub-title { border-bottom-color: #a8451f; }
+
+.stub--left { margin-left: 0; margin-right: auto; }
+.stub--right { margin-left: auto; margin-right: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .filmstrip, .stamp, .stub { transform: none; }
+  .filmstrip:hover, .stamp:hover, .stub:hover { transform: none; }
+}
+
+
+/* ---------- staggered reading column ---------- */
+/* the post page widens, but the *measure* never does — each block keeps ~62ch
+   and slides across the page instead. so the column drifts left and right as
+   you scroll and the page stops reading as one straight pipe, while the line
+   length that makes the essays readable is untouched.
+   --x is the slide, set per block:  <div class="drift" style="--x: 170px">  */
+body.post-page {
+  max-width: 1120px;
+}
+
+.post-page article {
+  max-width: none;
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+/* title, date and the tail of the post stay anchored at the left rail so the
+   page still has a spine to hang off */
+.post-page article > h1,
+.post-page article > .date,
+.post-page .post-nav,
+.post-page .back-link {
+  max-width: 62ch;
+  margin-left: 0;
+}
+
+.post-page .drift {
+  max-width: 62ch;
+  margin-left: var(--x, 0);
+}
+
+/* a bare block that isn't wrapped still behaves */
+.post-page article > p,
+.post-page article > h2,
+.post-page article > blockquote,
+.post-page article > ul,
+.post-page article > ol {
+  max-width: 62ch;
+  margin-left: var(--x, 0);
+}
+
+/* objects default to centred in the wider page, and can be slid with --x too,
+   which is what lets them fill whichever side the text just vacated */
+.post-page .snap,
+.post-page .filmstrip,
+.post-page .stub,
+.post-page .stamp--block {
+  margin-left: var(--x, auto);
+  margin-right: var(--mx, auto);
+}
+
+/* the drift is a wide-screen luxury — below this there's no room to slide into
+   and everything returns to a single honest column */
+@media (max-width: 1040px) {
+  body.post-page {
+    max-width: 800px;
+  }
+  .post-page .drift,
+  .post-page article > p,
+  .post-page article > h2,
+  .post-page article > blockquote,
+  .post-page article > ul,
+  .post-page article > ol {
+    margin-left: 0;
+    max-width: 100%;
+  }
+  .post-page .snap,
+  .post-page .filmstrip,
+  .post-page .stub,
+  .post-page .stamp--block {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* --- Photos gallery --- */

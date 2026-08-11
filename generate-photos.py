@@ -233,6 +233,9 @@ def extract_meta(img):
         loc = reverse_geocode(coords[0], coords[1])
         if loc:
             meta["location"] = loc
+        # keep the raw fix too — it's what lets a caption link to a map. rounded
+        # to ~11m, which places the shot without publishing a doorstep.
+        meta["coords"] = "%.4f,%.4f" % (coords[0], coords[1])
 
     # drop empty keys
     meta = {k: v for k, v in meta.items() if v}

@@ -410,7 +410,9 @@
     if (hour >= 5 && hour < 12) text = "good morning";
     else if (hour >= 12 && hour < 17) text = "good afternoon";
     else if (hour >= 17 && hour < 21) text = "good evening";
-    greeting.textContent = text + ", i'm mo.";
+    // write into .typer-line so the marker stroke still has something to sit on
+    (greeting.querySelector(".typer-line") || greeting).textContent =
+      text + ", i'm mo.";
   }
 
   // --- Scroll progress ---
@@ -450,6 +452,44 @@
         window.location.href = link.href;
       });
     });
+  });
+
+  // --- Clips inside posts ---
+  // they autoplay muted like a moving photograph, but a looping clip you can't
+  // stop is a nuisance while reading, so clicking one holds it still
+  var clips = document.querySelectorAll(".snap--clip video, .filmstrip video");
+  Array.prototype.forEach.call(clips, function (v) {
+    var frame = v.closest(".snap, .filmstrip");
+    v.addEventListener("click", function () {
+      if (v.paused) {
+        v.play();
+      } else {
+        v.pause();
+      }
+    });
+    v.addEventListener("play", function () {
+      if (frame) frame.classList.remove("is-paused");
+    });
+    v.addEventListener("pause", function () {
+      if (frame) frame.classList.add("is-paused");
+    });
+    // don't burn battery on a clip nobody is looking at
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            if (!v.dataset.held) v.play().catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.2 });
+      io.observe(v);
+      // a deliberate pause should survive scrolling away and back
+      v.addEventListener("click", function () {
+        v.dataset.held = v.paused ? "1" : "";
+      });
+    }
   });
 
   // --- Custom analytics events ---
