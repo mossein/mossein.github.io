@@ -15,7 +15,8 @@ window.PHOTOS = [
       "shutter": "1/12346s",
       "iso": "ISO 64",
       "date": "May 30, 2026",
-      "location": "South Riverdale, Toronto"
+      "location": "South Riverdale, Toronto",
+      "coords": "43.6439,-79.3523"
     }
   },
   {
@@ -34,7 +35,8 @@ window.PHOTOS = [
       "shutter": "1/6944s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "South Riverdale, Toronto"
+      "location": "South Riverdale, Toronto",
+      "coords": "43.6437,-79.3515"
     }
   },
   {
@@ -53,7 +55,8 @@ window.PHOTOS = [
       "shutter": "1/1059s",
       "iso": "ISO 80",
       "date": "May 30, 2026",
-      "location": "South Riverdale, Toronto"
+      "location": "South Riverdale, Toronto",
+      "coords": "43.6535,-79.3245"
     }
   },
   {
@@ -72,7 +75,8 @@ window.PHOTOS = [
       "shutter": "1/2273s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "South Riverdale, Toronto"
+      "location": "South Riverdale, Toronto",
+      "coords": "43.6536,-79.3253"
     }
   },
   {
@@ -91,7 +95,8 @@ window.PHOTOS = [
       "shutter": "1/20000s",
       "iso": "ISO 64",
       "date": "May 30, 2026",
-      "location": "South Riverdale, Toronto"
+      "location": "South Riverdale, Toronto",
+      "coords": "43.6534,-79.3252"
     }
   },
   {
@@ -110,7 +115,8 @@ window.PHOTOS = [
       "shutter": "1/3125s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "South Riverdale, Toronto"
+      "location": "South Riverdale, Toronto",
+      "coords": "43.6532,-79.3248"
     }
   },
   {
@@ -129,7 +135,8 @@ window.PHOTOS = [
       "shutter": "1/15152s",
       "iso": "ISO 64",
       "date": "May 30, 2026",
-      "location": "Beaches\u2014East York, Toronto"
+      "location": "Beaches\u2014East York, Toronto",
+      "coords": "43.6637,-79.3074"
     }
   },
   {
@@ -148,7 +155,8 @@ window.PHOTOS = [
       "shutter": "1/960s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "East York, Toronto"
+      "location": "East York, Toronto",
+      "coords": "43.6749,-79.3519"
     }
   },
   {
@@ -167,7 +175,8 @@ window.PHOTOS = [
       "shutter": "1/927s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "North Riverdale, Toronto"
+      "location": "North Riverdale, Toronto",
+      "coords": "43.6724,-79.3486"
     }
   },
   {
@@ -186,7 +195,8 @@ window.PHOTOS = [
       "shutter": "1/2950s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "North Riverdale, Toronto"
+      "location": "North Riverdale, Toronto",
+      "coords": "43.6708,-79.3543"
     }
   },
   {
@@ -205,7 +215,8 @@ window.PHOTOS = [
       "shutter": "1/1946s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "North Riverdale, Toronto"
+      "location": "North Riverdale, Toronto",
+      "coords": "43.6705,-79.3541"
     }
   },
   {
@@ -224,7 +235,8 @@ window.PHOTOS = [
       "shutter": "1/1575s",
       "iso": "ISO 25",
       "date": "May 30, 2026",
-      "location": "North Riverdale, Toronto"
+      "location": "North Riverdale, Toronto",
+      "coords": "43.6705,-79.3541"
     }
   },
   {
@@ -243,7 +255,8 @@ window.PHOTOS = [
       "shutter": "1/60s",
       "iso": "ISO 250",
       "date": "May 28, 2026",
-      "location": "Harbourfront, Toronto"
+      "location": "Harbourfront, Toronto",
+      "coords": "43.6294,-79.3749"
     }
   },
   {
@@ -262,7 +275,8 @@ window.PHOTOS = [
       "shutter": "1/121s",
       "iso": "ISO 64",
       "date": "May 28, 2026",
-      "location": "Harbourfront, Toronto"
+      "location": "Harbourfront, Toronto",
+      "coords": "43.6283,-79.3892"
     }
   },
   {
@@ -281,7 +295,8 @@ window.PHOTOS = [
       "shutter": "1/121s",
       "iso": "ISO 64",
       "date": "May 28, 2026",
-      "location": "Harbourfront, Toronto"
+      "location": "Harbourfront, Toronto",
+      "coords": "43.6287,-79.3901"
     }
   },
   {
@@ -300,7 +315,8 @@ window.PHOTOS = [
       "shutter": "1/5348s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto"
+      "location": "Spadina\u2014Fort York, Toronto",
+      "coords": "43.6134,-79.3806"
     }
   },
   {
@@ -319,7 +335,8 @@ window.PHOTOS = [
       "shutter": "1/5348s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Algonquin Island, Toronto"
+      "location": "Algonquin Island, Toronto",
+      "coords": "43.6241,-79.3616"
     }
   },
   {
@@ -338,7 +355,8 @@ window.PHOTOS = [
       "shutter": "1/1869s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Ward's Island, Toronto"
+      "location": "Ward's Island, Toronto",
+      "coords": "43.6289,-79.3562"
     }
   },
   {
@@ -357,7 +375,8 @@ window.PHOTOS = [
       "shutter": "1/12346s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Ward's Island, Toronto"
+      "location": "Ward's Island, Toronto",
+      "coords": "43.6338,-79.3527"
     }
   },
   {
@@ -376,7 +395,8 @@ window.PHOTOS = [
       "shutter": "1/121s",
       "iso": "ISO 20",
       "date": "May 28, 2026",
-      "location": "Ward's Island, Toronto"
+      "location": "Ward's Island, Toronto",
+      "coords": "43.6328,-79.3555"
     }
   },
   {
@@ -395,7 +415,8 @@ window.PHOTOS = [
       "shutter": "1/7092s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Ward's Island, Toronto"
+      "location": "Ward's Island, Toronto",
+      "coords": "43.6328,-79.3567"
     }
   },
   {
@@ -414,7 +435,8 @@ window.PHOTOS = [
       "shutter": "1/50000s",
       "iso": "ISO 50",
       "date": "May 28, 2026",
-      "location": "Ward's Island, Toronto"
+      "location": "Ward's Island, Toronto",
+      "coords": "43.6320,-79.3568"
     }
   },
   {
@@ -433,7 +455,8 @@ window.PHOTOS = [
       "shutter": "1/15152s",
       "iso": "ISO 64",
       "date": "May 28, 2026",
-      "location": "Ward's Island, Toronto"
+      "location": "Ward's Island, Toronto",
+      "coords": "43.6316,-79.3578"
     }
   },
   {
@@ -452,7 +475,8 @@ window.PHOTOS = [
       "shutter": "1/28571s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto"
+      "location": "Spadina\u2014Fort York, Toronto",
+      "coords": "43.6157,-79.3711"
     }
   },
   {
@@ -471,7 +495,8 @@ window.PHOTOS = [
       "shutter": "1/20000s",
       "iso": "ISO 64",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto"
+      "location": "Spadina\u2014Fort York, Toronto",
+      "coords": "43.6157,-79.3712"
     }
   },
   {
@@ -490,7 +515,8 @@ window.PHOTOS = [
       "shutter": "1/20000s",
       "iso": "ISO 50",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto"
+      "location": "Spadina\u2014Fort York, Toronto",
+      "coords": "43.6166,-79.3721"
     }
   },
   {
@@ -509,7 +535,8 @@ window.PHOTOS = [
       "shutter": "1/1560s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto"
+      "location": "Spadina\u2014Fort York, Toronto",
+      "coords": "43.6228,-79.3784"
     }
   },
   {
@@ -528,7 +555,8 @@ window.PHOTOS = [
       "shutter": "1/50000s",
       "iso": "ISO 50",
       "date": "May 28, 2026",
-      "location": "Harbourfront, Toronto"
+      "location": "Harbourfront, Toronto",
+      "coords": "43.6311,-79.3751"
     }
   },
   {
@@ -547,7 +575,8 @@ window.PHOTOS = [
       "shutter": "1/3096s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto"
+      "location": "Spadina\u2014Fort York, Toronto",
+      "coords": "43.6404,-79.3754"
     }
   },
   {
@@ -566,7 +595,8 @@ window.PHOTOS = [
       "shutter": "1/9009s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Harbourfront-CityPlace, Toronto"
+      "location": "Harbourfront-CityPlace, Toronto",
+      "coords": "43.6385,-79.3824"
     }
   }
 ];

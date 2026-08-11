@@ -388,6 +388,84 @@
     reveals.forEach(function(el) { observer.observe(el); });
   }
 
+  // --- Horizon overscroll ---
+  // the glow hiding under the end of the page: scrolling past the bottom
+  // pulls it up from the floor while the page lifts (rubber-band
+  // resistance); when the input stops, both spring back. wheel and touch
+  // only — it's a reward for the curious, not content.
+  var horizon = document.querySelector(".horizon");
+  if (horizon && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var horizonSvg = horizon.querySelector("svg");
+    var horizonLifted = [
+      document.querySelector("main"),
+      document.querySelector("footer")
+    ].filter(Boolean);
+    var horizonRaw = 0;
+    var horizonSettle = null;
+    // this page owns its bottom edge: no native rubber band under the pull
+    document.documentElement.style.overscrollBehaviorY = "none";
+
+    var horizonAtBottom = function () {
+      return window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4;
+    };
+    var horizonApply = function (pull, max, springy) {
+      var t = springy ? "transform 500ms cubic-bezier(0.16, 1, 0.3, 1)" : "none";
+      horizonSvg.style.transition = t;
+      horizonSvg.style.transform = "scaleY(" + pull / max + ")";
+      horizonLifted.forEach(function (el) {
+        el.style.transition = t;
+        el.style.transform = pull > 0 ? "translateY(" + -0.35 * pull + "px)" : "";
+      });
+    };
+    var horizonRelease = function () {
+      horizonRaw = 0;
+      horizonApply(0, 1, true);
+    };
+    var horizonPull = function (dy) {
+      if (dy > 0 && horizonAtBottom()) {
+        var max = Math.min(window.innerHeight * 0.55, 520);
+        if (horizonRaw === 0) {
+          // a pull that begins while the spring-back is mid-flight picks up
+          // from where the glow is, instead of snapping to zero and regrowing
+          var m = getComputedStyle(horizonSvg).transform
+            .match(/matrix\(1, 0, 0, ([^,]+),/);
+          var k = m ? Math.min(parseFloat(m[1]) || 0, 0.98) : 0;
+          if (k > 0) horizonRaw = -max * 1.5 * Math.log(1 - k);
+        }
+        horizonRaw += dy;
+        // fast at first, asymptotic near full height — a rubber band
+        var pull = max * (1 - Math.exp(-horizonRaw / (max * 1.5)));
+        horizonApply(pull, max, false);
+        clearTimeout(horizonSettle);
+        horizonSettle = setTimeout(horizonRelease, 150);
+      } else if (horizonRaw > 0) {
+        clearTimeout(horizonSettle);
+        horizonRelease();
+      }
+    };
+    window.addEventListener("wheel", function (e) {
+      horizonPull(e.deltaY);
+    }, { passive: true });
+    var horizonTouchY = null;
+    window.addEventListener("touchstart", function (e) {
+      horizonTouchY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener("touchmove", function (e) {
+      if (horizonTouchY === null) return;
+      var y = e.touches[0].clientY;
+      horizonPull(horizonTouchY - y);
+      horizonTouchY = y;
+    }, { passive: true });
+    window.addEventListener("touchend", function () {
+      horizonTouchY = null;
+      if (horizonRaw > 0) {
+        clearTimeout(horizonSettle);
+        horizonRelease();
+      }
+    }, { passive: true });
+  }
+
   // --- Reading time ---
   var article = document.querySelector("article");
   if (article) {
@@ -410,7 +488,9 @@
     if (hour >= 5 && hour < 12) text = "good morning";
     else if (hour >= 12 && hour < 17) text = "good afternoon";
     else if (hour >= 17 && hour < 21) text = "good evening";
-    greeting.textContent = text + ", i'm mo.";
+    // write into .typer-line so the marker stroke still has something to sit on
+    (greeting.querySelector(".typer-line") || greeting).textContent =
+      text + ", i'm mo.";
   }
 
   // --- Scroll progress ---
