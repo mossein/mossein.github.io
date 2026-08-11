@@ -1326,9 +1326,7 @@ blockquote p {
    the :not(.nav a) tacked on. */
 .experience-list .role a[target="_blank"]:not(.nav a)::after,
 a.stamp[target="_blank"]:not(.nav a)::after,
-a.stub[target="_blank"]:not(.nav a)::after,
-.snap figcaption a[target="_blank"]:not(.nav a)::after,
-.filmstrip figcaption a[target="_blank"]:not(.nav a)::after {
+.snap figcaption a[target="_blank"]:not(.nav a)::after {
   content: none;
 }
 
@@ -2013,7 +2011,8 @@ blockquote::before {
   --shift: 0px;
   --paper: #fbf8f2;
   position: relative;
-  width: min(340px, 100%);
+  width: fit-content; /* the paper shrink-wraps the print */
+  max-width: 100%;
   margin: 34px auto 40px;
   padding: 12px 12px 14px;
   background: var(--paper);
@@ -2037,8 +2036,15 @@ blockquote::before {
 .snap img,
 .snap video {
   display: block;
-  width: 100%;
+  /* both axes capped at the same length so a portrait and a landscape
+     carry the same visual weight instead of the portrait towering.
+     px/vw only: a % here can't resolve inside the shrink-wrapped paper,
+     and the figure would fall back to the media's raw intrinsic width.
+     the 64px is body padding + the paper's own padding. */
+  width: auto;
   height: auto;
+  max-width: min(340px, 100vw - 64px);
+  max-height: 340px;
   margin: 0;
   border-radius: 0;          /* prints don't have rounded corners */
   box-shadow: none;
@@ -2096,13 +2102,13 @@ blockquote::before {
 .snap--left {
   float: left;
   margin: 12px 34px 24px 0;
-  width: min(270px, 46%);
+  max-width: 46%;
 }
 
 .snap--right {
   float: right;
   margin: 12px 0 24px 34px;
-  width: min(270px, 46%);
+  max-width: 46%;
 }
 
 /* breaks past the reading measure without leaving the body box (html clips
@@ -2136,7 +2142,7 @@ blockquote::before {
   .snap--left,
   .snap--right {
     float: none;
-    width: min(340px, 100%);
+    max-width: 100%;
     margin: 30px auto 34px;
   }
   .snap--bleed {
@@ -2275,90 +2281,6 @@ a.snap-loc:hover {
 }
 
 
-/* ---------- a clip is film, not a print ---------- */
-/* a photograph is paper you can hold; moving footage is a strip of film. so it
-   gets the film's body: dark base, sprocket holes down both edges, a frame
-   number in the margin. no play button — the object already says "this moves". */
-.filmstrip {
-  --rot: -0.7deg;
-  position: relative;
-  width: min(400px, 100%);
-  margin: 36px auto 42px;
-  padding: 17px 13px;
-  background: #1c1a18;
-  transform: rotate(var(--rot));
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.28),
-    0 12px 30px rgba(0, 0, 0, 0.34);
-}
-
-/* sprocket holes — punched along the top and bottom edges */
-.filmstrip::before,
-.filmstrip::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 9px;
-  background-image: radial-gradient(
-    closest-side circle,
-    #ded8cc 0 82%,
-    transparent 84%
-  );
-  background-size: 22px 9px;
-  background-repeat: repeat-x;
-  opacity: 0.9;
-}
-
-.filmstrip::before { top: 4px; }
-.filmstrip::after { bottom: 4px; }
-
-.filmstrip video,
-.filmstrip img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  border-radius: 0;
-  box-shadow: none;
-  background: #000;
-  cursor: pointer;
-}
-
-/* frame number, stencilled in the film margin like an edge code */
-.filmstrip .film-edge {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.22em;
-  color: #d8823f;
-  opacity: 0.72;
-  pointer-events: none;
-}
-
-.filmstrip.is-paused .film-edge::after {
-  content: "  \2016";      /* a pause bar appears in the edge code when held */
-}
-
-.filmstrip figcaption {
-  margin-top: 11px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #9a9186;
-}
-
-.filmstrip figcaption a {
-  color: inherit;
-  border-bottom: 1px dotted rgba(154, 145, 134, 0.5);
-  text-decoration: none;
-}
-
-.filmstrip figcaption a:hover { border-bottom-color: #d8823f; }
-
 /* ---------- a place is a stamp, not a caption ---------- */
 /* how paper records where it has been: pressed on, slightly crooked, ink a bit
    uneven, never quite square to the page. sits inline in a sentence or alone. */
@@ -2422,78 +2344,9 @@ a.snap-loc:hover {
 .stamp--left { margin-left: 0; margin-right: auto; }
 .stamp--right { margin-left: auto; margin-right: 0; }
 
-/* ---------- a link is a ticket stub ---------- */
-/* the thing you kept because you were there. torn along a perforation. */
-.stub {
-  --rot: 1.1deg;
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  margin: 30px auto 34px;
-  padding: 12px 20px 12px 30px;
-  background: #f6f1e6;
-  color: #3f3a33;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.7rem;
-  line-height: 1.55;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  transform: rotate(var(--rot));
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 5px 14px rgba(0, 0, 0, 0.13);
-  position: relative;
-  /* Perforation: the mask must be OPAQUE everywhere (element visible) with
-     TRANSPARENT circles punched along the left edge. Tiling a mostly-transparent
-     gradient does the opposite and erases the whole ticket.
-     Each 13px tile is opaque except a 4px hole centred on its left edge. */
-  -webkit-mask-image: radial-gradient(circle 4px at 0 6.5px, transparent 0 4px, #000 4.6px);
-  -webkit-mask-size: 100% 13px;
-  -webkit-mask-repeat: repeat-y;
-  mask-image: radial-gradient(circle 4px at 0 6.5px, transparent 0 4px, #000 4.6px);
-  mask-size: 100% 13px;
-  mask-repeat: repeat-y;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-}
-
-/* the tear line the stub would have been torn along */
-.stub::before {
-  content: "";
-  position: absolute;
-  left: 11px;
-  top: 7px;
-  bottom: 7px;
-  width: 1px;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(63, 58, 51, 0.42) 0 3px,
-    transparent 3px 7px
-  );
-  background-size: 1px 7px;
-}
-
-.stub .stub-label {
-  display: block;
-  font-size: 0.82em;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  opacity: 0.45;
-  margin-bottom: 3px;
-}
-
-.stub .stub-title {
-  display: block;
-  color: #a8451f;
-  border-bottom: 1px solid rgba(168, 69, 31, 0.35);
-  padding-bottom: 1px;
-}
-
-.stub:hover .stub-title { border-bottom-color: #a8451f; }
-
-.stub--left { margin-left: 0; margin-right: auto; }
-.stub--right { margin-left: auto; margin-right: 0; }
-
 @media (prefers-reduced-motion: reduce) {
-  .filmstrip, .stamp, .stub { transform: none; }
-  .filmstrip:hover, .stamp:hover, .stub:hover { transform: none; }
+  .stamp { transform: none; }
+  .stamp:hover { transform: none; }
 }
 
 
@@ -2511,6 +2364,7 @@ body.post-page {
   max-width: none;
   margin: 0;
   font-size: 1.125rem;
+  display: flow-root; /* floated prints stay inside — never past the footer */
 }
 
 /* title, date and the tail of the post stay anchored at the left rail so the
@@ -2541,22 +2395,18 @@ body.post-page {
 /* objects default to centred in the wider page, and can be slid with --x too,
    which is what lets them fill whichever side the text just vacated */
 .post-page .snap,
-.post-page .filmstrip,
-.post-page .stub,
 .post-page .stamp--block {
   margin-left: var(--x, auto);
   margin-right: var(--mx, auto);
 }
 
-/* a floated print keeps its wrap margins (the rule above zeroes them) and
-   can afford more presence in the wide column — text flows up beside it
-   instead of leaving a dead band */
+/* a floated print keeps its wrap margins (the rule above zeroes them) —
+   text flows up beside it instead of leaving a dead band */
 .post-page .snap--left {
   margin: 12px 34px 24px 0;
 }
 
 .post-page .snap--right {
-  width: min(340px, 46%);
   margin: 12px 0 24px 34px;
 }
 
@@ -2576,8 +2426,6 @@ body.post-page {
     max-width: 100%;
   }
   .post-page .snap,
-  .post-page .filmstrip,
-  .post-page .stub,
   .post-page .stamp--block {
     margin-left: auto;
     margin-right: auto;

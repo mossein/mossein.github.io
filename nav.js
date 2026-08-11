@@ -535,9 +535,9 @@
   // --- Clips inside posts ---
   // they autoplay muted like a moving photograph, but a looping clip you can't
   // stop is a nuisance while reading, so clicking one holds it still
-  var clips = document.querySelectorAll(".snap--clip video, .filmstrip video");
+  var clips = document.querySelectorAll(".snap--clip video");
   Array.prototype.forEach.call(clips, function (v) {
-    var frame = v.closest(".snap, .filmstrip");
+    var frame = v.closest(".snap");
     v.addEventListener("click", function () {
       if (v.paused) {
         v.play();
