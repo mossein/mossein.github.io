@@ -29,6 +29,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* clip stray horizontal overflow (watercolor bleeds, fixed layers) at the
+     viewport instead of growing a horizontal scrollbar */
+  overflow-x: hidden;
 }
 
 body {
@@ -881,7 +884,7 @@ a:focus {
 
 .watercolor body {
   position: relative;
-  overflow-x: hidden;
+  /* overflow-x clip lives on html now, so .horizon can bleed past the column */
   animation: wcFlow 60s ease-in-out infinite alternate;
 }
 
@@ -1173,6 +1176,67 @@ footer {
   border-top-color: rgba(31, 36, 40, 0.08);
   color: #8b8e92;
 }
+
+/* --- the horizon ---------------------------------------------------------
+   a dia-browser-style glow, made ours: a row of heavily blurred bars whose
+   heights trace the toronto skyline, CN Tower spike and all. every bar
+   paints the same vertical gradient over its own height and the blur melts
+   them into one soft field of light. it hides under the end of the page:
+   keep scrolling past the bottom and it rises from the floor while the
+   page lifts, with rubber-band resistance; stop, and everything springs
+   back. driven by the overscroll module in nav.js. */
+.horizon {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(55vh, 520px);
+  z-index: -1; /* above the page color (html has no background), below text */
+  pointer-events: none;
+}
+
+.horizon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(0); /* hidden at rest; nav.js drives the pull */
+  transform-origin: bottom;
+}
+
+/* dawn: dia's structure (dark floor, cool band, bright band, saturated
+   warms, fade) recast in the site's colors — ember floor, dusk indigo, a
+   band of warm light, then gold, terracotta and rose thinning into the sky */
+.hg-0 { stop-color: #2e1207; }
+.hg-1 { stop-color: #4a5f8e; }
+.hg-2 { stop-color: #8fa8cc; }
+.hg-3 { stop-color: #fbe4b4; } /* enough pigment to not vanish on white */
+.hg-4 { stop-color: #f6c96b; }
+.hg-5 { stop-color: #d95f2b; }
+.hg-6 { stop-color: #c86a8e; }
+.hg-7 { stop-color: #e8b4c8; stop-opacity: 0; }
+
+/* night: the same sky after dark — deep indigo low, the bright band capped
+   at peach so light text nearby stays readable, embers and plum above */
+.dark .hg-0 { stop-color: #000000; }
+.dark .hg-1 { stop-color: #23324f; }
+.dark .hg-2 { stop-color: #3a5a7e; }
+.dark .hg-3 { stop-color: #f0b18a; }
+.dark .hg-4 { stop-color: #c97a3f; }
+.dark .hg-5 { stop-color: #a8431f; }
+.dark .hg-6 { stop-color: #7e3d5e; }
+.dark .hg-7 { stop-color: #7e3d5e; stop-opacity: 0; }
+
+/* watercolor: the harbour view — deep water, the theme's blue, pale mist
+   for the light band, aqua and lavender above */
+.watercolor .hg-0 { stop-color: #1b2c42; }
+.watercolor .hg-1 { stop-color: #2c5a94; }
+.watercolor .hg-2 { stop-color: #5b8ec2; }
+.watercolor .hg-3 { stop-color: #dbe9f3; }
+.watercolor .hg-4 { stop-color: #a9c9df; }
+.watercolor .hg-5 { stop-color: #7d9fd1; }
+.watercolor .hg-6 { stop-color: #9b8ec4; }
+.watercolor .hg-7 { stop-color: #9b8ec4; stop-opacity: 0; }
+
 
 blockquote {
   margin: 30px 0;
