@@ -388,80 +388,42 @@
     reveals.forEach(function(el) { observer.observe(el); });
   }
 
-  // --- Horizon overscroll ---
-  // the glow hiding under the end of the page: scrolling past the bottom
-  // pulls it up from the floor while the page lifts (rubber-band
-  // resistance); when the input stops, both spring back. wheel and touch
-  // only — it's a reward for the curious, not content.
+  // --- Horizon scroll glow ---
+  // the glow under the end of the page (index.html): it rises as the end
+  // comes into reach while the page is actually moving, and settles back
+  // down the moment the scrolling stops. wheel pushes at the very bottom
+  // count as motion too, so leaning into the end holds the skyline lit.
   var horizon = document.querySelector(".horizon");
   if (horizon && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var horizonSvg = horizon.querySelector("svg");
-    var horizonLifted = [
-      document.querySelector("main"),
-      document.querySelector("footer")
-    ].filter(Boolean);
-    var horizonRaw = 0;
-    var horizonSettle = null;
-    // this page owns its bottom edge: no native rubber band under the pull
-    document.documentElement.style.overscrollBehaviorY = "none";
-
-    var horizonAtBottom = function () {
-      return window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 4;
+    var horizonIdle = null;
+    var horizonApply = function (k, springy) {
+      // short ease while tracking the scroll (also hands off smoothly if a
+      // new scroll interrupts the settle mid-flight); long spring to rest
+      horizonSvg.style.transition = springy
+        ? "transform 650ms cubic-bezier(0.16, 1, 0.3, 1)"
+        : "transform 200ms ease-out";
+      horizonSvg.style.transform = "scaleY(" + k + ")";
     };
-    var horizonApply = function (pull, max, springy) {
-      var t = springy ? "transform 500ms cubic-bezier(0.16, 1, 0.3, 1)" : "none";
-      horizonSvg.style.transition = t;
-      horizonSvg.style.transform = "scaleY(" + pull / max + ")";
-      horizonLifted.forEach(function (el) {
-        el.style.transition = t;
-        el.style.transform = pull > 0 ? "translateY(" + -0.35 * pull + "px)" : "";
-      });
-    };
-    var horizonRelease = function () {
-      horizonRaw = 0;
-      horizonApply(0, 1, true);
-    };
-    var horizonPull = function (dy) {
-      if (dy > 0 && horizonAtBottom()) {
-        var max = Math.min(window.innerHeight * 0.55, 520);
-        if (horizonRaw === 0) {
-          // a pull that begins while the spring-back is mid-flight picks up
-          // from where the glow is, instead of snapping to zero and regrowing
-          var m = getComputedStyle(horizonSvg).transform
-            .match(/matrix\(1, 0, 0, ([^,]+),/);
-          var k = m ? Math.min(parseFloat(m[1]) || 0, 0.98) : 0;
-          if (k > 0) horizonRaw = -max * 1.5 * Math.log(1 - k);
-        }
-        horizonRaw += dy;
-        // fast at first, asymptotic near full height — a rubber band
-        var pull = max * (1 - Math.exp(-horizonRaw / (max * 1.5)));
-        horizonApply(pull, max, false);
-        clearTimeout(horizonSettle);
-        horizonSettle = setTimeout(horizonRelease, 150);
-      } else if (horizonRaw > 0) {
-        clearTimeout(horizonSettle);
-        horizonRelease();
+    var horizonUpdate = function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var zone = Math.min(window.innerHeight * 0.85, 700);
+      var k = max <= 0 ? 1
+        : Math.max(0, Math.min(1, (window.scrollY - (max - zone)) / zone));
+      horizonApply(k, false);
+      clearTimeout(horizonIdle);
+      if (k > 0) {
+        horizonIdle = setTimeout(function () { horizonApply(0, true); }, 180);
       }
     };
+    window.addEventListener("scroll", horizonUpdate, { passive: true });
+    // at the hard bottom, wheel input produces no scroll events — treat the
+    // push itself as scrolling so the glow stays up while you lean on it
     window.addEventListener("wheel", function (e) {
-      horizonPull(e.deltaY);
-    }, { passive: true });
-    var horizonTouchY = null;
-    window.addEventListener("touchstart", function (e) {
-      horizonTouchY = e.touches[0].clientY;
-    }, { passive: true });
-    window.addEventListener("touchmove", function (e) {
-      if (horizonTouchY === null) return;
-      var y = e.touches[0].clientY;
-      horizonPull(horizonTouchY - y);
-      horizonTouchY = y;
-    }, { passive: true });
-    window.addEventListener("touchend", function () {
-      horizonTouchY = null;
-      if (horizonRaw > 0) {
-        clearTimeout(horizonSettle);
-        horizonRelease();
+      if (e.deltaY > 0 &&
+          window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 4) {
+        horizonUpdate();
       }
     }, { passive: true });
   }
