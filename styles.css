@@ -2090,37 +2090,6 @@ blockquote::before {
   transform: rotate(24deg);
 }
 
-/* polaroid: caption lives inside the deep bottom band */
-.snap--polaroid {
-  padding: 13px 13px 0;
-}
-
-.snap--polaroid figcaption {
-  margin: 0;
-  min-height: 62px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px 2px 14px;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  font-size: 0.7rem;
-}
-
-/* pin: a tack through the top edge */
-.snap--pin::before {
-  content: "";
-  position: absolute;
-  top: -7px;
-  left: 50%;
-  width: 15px;
-  height: 15px;
-  margin-left: -7px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, #e2735a, #a8371f 70%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.34), inset 0 -1px 2px rgba(0, 0, 0, 0.28);
-}
-
 /* --- placement --- */
 
 /* text wraps around it */
@@ -2577,6 +2546,18 @@ body.post-page {
 .post-page .stamp--block {
   margin-left: var(--x, auto);
   margin-right: var(--mx, auto);
+}
+
+/* a floated print keeps its wrap margins (the rule above zeroes them) and
+   can afford more presence in the wide column — text flows up beside it
+   instead of leaving a dead band */
+.post-page .snap--left {
+  margin: 12px 34px 24px 0;
+}
+
+.post-page .snap--right {
+  width: min(340px, 46%);
+  margin: 12px 0 24px 34px;
 }
 
 /* the drift is a wide-screen luxury — below this there's no room to slide into
