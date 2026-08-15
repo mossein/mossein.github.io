@@ -1527,51 +1527,33 @@ blockquote::before {
   margin-top: 10vh;
 }
 
-.link-section {
-  margin-bottom: 30px;
+/* the page is a list of places, so it's a list — no labels explaining what
+   github is, and no arrows: when every row leaves the site the marker stops
+   telling you anything (same reasoning as the experience list) */
+.link-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 30px;
 }
 
-.link-item {
-  margin-bottom: 10px;
-  padding: 8px 0;
-  transition: transform 0.2s ease;
-  border-radius: 3px;
+.link-list li {
+  padding: 7px 0;
 }
 
-.link-item:hover {
+.link-list a {
+  display: inline-block;
+  transition: transform var(--dur) var(--ease),
+    text-decoration-color var(--dur-micro) var(--ease);
+}
+
+.link-list a:hover {
   transform: translateX(3px);
 }
 
-.link-item a {
-  display: inline-block;
-  padding: 5px 0;
-}
-
-.link-description {
-  color: #666;
-  font-size: 0.9em;
-  margin-left: 10px;
-  transition: color 0.2s ease;
-}
-
-.link-item:hover .link-description {
-  color: #555;
-}
-
-.dark .link-description {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.dark .link-item:hover .link-description {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.watercolor .link-description {
-  color: #6b6e72;
-}
-
-.watercolor .link-item:hover .link-description {
-  color: #4e5358;
+/* the :not(.nav a) isn't filtering anything here — it's matching the
+   specificity of the rule that paints the arrow, which would otherwise win */
+.link-list a[target="_blank"]:not(.nav a)::after {
+  content: none;
 }
 
 .spotify-content {
