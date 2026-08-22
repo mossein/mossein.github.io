@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-40C7CVW886"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.addEventListener("DOMContentLoaded", function () {
+        gtag("js", new Date());
+        // /x, /x.html and / vs /index.html are all served, so collapse them
+        // into one path or every page reports as two or three separate rows
+        var p = location.pathname.replace(/\/index\.html$/, "/");
+        if (p !== "/" && !/\.[a-z0-9]+$/i.test(p)) p += ".html";
+        gtag("config", "G-40C7CVW886", { page_path: p + location.search });
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>about - mohammad jafari</title>
+    <meta
+      name="description"
+      content="Who Mohammad Jafari is, what he builds, and how to work with him. Founding engineer in Toronto, Canada, building AI products end to end."
+    />
+    <link rel="canonical" href="https://mohammad.page/about.html" />
+    <!-- markdown twin: agents that prefer text/markdown can fetch this directly.
+         github pages can't negotiate on Accept, so the alternate is advertised
+         here and in llms.txt instead. see edge/README.md -->
+    <link rel="alternate" type="text/markdown" href="https://mohammad.page/about.md" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href="fonts/Fraunces.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="About - Mohammad Jafari" />
+    <meta
+      property="og:description"
+      content="Who Mohammad Jafari is, what he builds, and how to work with him. Founding engineer in Toronto, Canada, building AI products end to end."
+    />
+    <meta property="og:url" content="https://mohammad.page/about.html" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:image" content="https://mohammad.page/og.png" />
+    <meta property="og:image:width" content="1268" />
+    <meta property="og:image:height" content="694" />
+    <meta property="og:image:alt" content="Mohammad Jafari" />
+    <meta property="og:site_name" content="Mohammad Jafari" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mojafariii" />
+    <meta name="twitter:creator" content="@mojafariii" />
+    <meta name="twitter:title" content="About - Mohammad Jafari" />
+    <meta
+      name="twitter:description"
+      content="Who Mohammad Jafari is, what he builds, and how to work with him. Founding engineer in Toronto, Canada, building AI products end to end."
+    />
+    <meta name="twitter:image" content="https://mohammad.page/og.png" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+  <body>
+    <site-nav></site-nav>
+    <noscript>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">home</a>
+        <a href="blog.html">blog</a>
+        <a href="links.html">links</a>
+        <a href="photos.html">photos</a>
+        <!-- <a href="studio.html">studio</a> -->
+        <a href="now.html">now</a>
+      </nav>
+    </noscript>
+
+    <main class="content">
+      <article>
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Mohammad Jafari",
+            "url": "https://mohammad.page/about.html",
+            "inLanguage": "en",
+            "dateModified": "2026-08-22",
+            "mainEntity": {
+              "@type": "Person",
+              "@id": "https://mohammad.page/#person",
+              "name": "Mohammad Jafari",
+              "alternateName": ["Mo Jafari", "Mohammadhossein Jafari"],
+              "jobTitle": "Founding Engineer",
+              "email": "mailto:me@mohammad.page",
+              "url": "https://mohammad.page/",
+              "image": "https://mohammad.page/portrait.jpeg",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Verlo",
+                "url": "https://verlo.finance"
+              },
+              "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "Memorial University of Newfoundland"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "ON",
+                "addressCountry": "CA"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/in/mojafarii/",
+                "https://github.com/mossein",
+                "https://x.com/mojafariii"
+              ]
+            }
+          }
+        </script>
+
+        <h1>about</h1>
+
+        <p>
+          i'm mohammad jafari — mo to most people. i'm a software engineer in
+          toronto, ontario, canada, and i build products from zero to
+          production: infrastructure, ai pipelines, and the full stack in
+          between. this site is my own, written by hand, and it's the canonical
+          place to find out what i'm working on.
+        </p>
+
+        <h2>what i do</h2>
+        <p>
+          i'm the founding engineer at
+          <a href="https://verlo.finance" target="_blank" rel="noopener noreferrer">verlo</a>,
+          where we're building an ai crm for wealth management. i own the stack:
+          aws infrastructure, llm and retrieval pipelines, and integrations with
+          schwab, fidelity, and the meeting platforms advisors actually live in.
+          we're soc 2 certified, which mostly means i've learned more about
+          audit evidence than i ever planned to.
+        </p>
+        <p>
+          before verlo i built
+          <a href="https://retellio.com" target="_blank" rel="noopener noreferrer">retellio</a>
+          end to end — the whole platform, from the aws account up through the
+          rag pipelines and the salesforce, hubspot, and gong integrations, at
+          99.9% uptime. before that i was a senior software developer at
+          <a href="https://www.nasdaq.com" target="_blank" rel="noopener noreferrer">nasdaq</a>,
+          where i helped ship their first generative ai product, an entity
+          research copilot now used by more than 2,000 financial institutions. i
+          owned the retrieval and evaluation modules. earlier still, i spent two
+          years at
+          <a href="https://verafin.com" target="_blank" rel="noopener noreferrer">verafin</a>
+          building fraud detection agents and machine learning pipelines in
+          java, starting as an intern and getting promoted twice.
+        </p>
+
+        <h2>background</h2>
+        <p>
+          i studied computer science at
+          <a href="https://www.mun.ca" target="_blank" rel="noopener noreferrer">memorial university of newfoundland</a>
+          in st. john's, graduating in 2023, and worked as a developer the whole
+          way through — including two years rebuilding the student portal for
+          15,000+ users. i work in python, typescript, go, and swift, on aws,
+          docker, kubernetes, and terraform. these days most of my code gets
+          written by directing ai rather than typing, and i
+          <a href="i-havent-coded-in-3-months.html">write about what that's actually like</a>.
+        </p>
+
+        <h2>what i write about</h2>
+        <p>
+          my <a href="blog.html">blog</a> is where i think out loud about
+          shipping llms in production, deleting code, ai hype cycles, and
+          occasionally heidegger. it's not a content strategy; it's whatever i
+          was chewing on that month. if you want the short version of what i'm
+          doing right now, there's a <a href="now.html">now page</a>.
+        </p>
+
+        <h2>getting in touch</h2>
+        <p>
+          the fastest way to reach me is email:
+          <a href="mailto:me@mohammad.page">me@mohammad.page</a>. i read
+          everything, and i answer anything that isn't a template. more ways to
+          find me are on the <a href="contact.html">contact page</a>, and how
+          this site handles your data is on the
+          <a href="privacy.html">privacy page</a>.
+        </p>
+      </article>
+
+      <p><a href="/">&larr; back home</a></p>
+    </main>
+    <footer>&copy; 2026 &middot; toronto &middot; ☾</footer>
+    <script src="nav.js" defer></script>
+  </body>
+</html>

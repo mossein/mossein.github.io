@@ -1,0 +1,6 @@
+{
+  "name": "mohammad-page-edge",
+  "private": true,
+  "type": "module",
+  "description": "Optional Cloudflare Worker that adds Accept: text/markdown negotiation in front of the GitHub Pages origin."
+}

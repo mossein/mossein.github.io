@@ -5,3 +5,5 @@ media/bridge-*
 media/demo-*
 preview-journal.html
 preview-snap.html
+__pycache__/
+*.pyc

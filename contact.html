@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-40C7CVW886"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.addEventListener("DOMContentLoaded", function () {
+        gtag("js", new Date());
+        // /x, /x.html and / vs /index.html are all served, so collapse them
+        // into one path or every page reports as two or three separate rows
+        var p = location.pathname.replace(/\/index\.html$/, "/");
+        if (p !== "/" && !/\.[a-z0-9]+$/i.test(p)) p += ".html";
+        gtag("config", "G-40C7CVW886", { page_path: p + location.search });
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>contact - mohammad jafari</title>
+    <meta
+      name="description"
+      content="How to reach Mohammad Jafari: email me@mohammad.page, LinkedIn, GitHub, and X. Based in Toronto, Ontario, Canada."
+    />
+    <link rel="canonical" href="https://mohammad.page/contact.html" />
+    <link rel="alternate" type="text/markdown" href="https://mohammad.page/contact.md" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href="fonts/Fraunces.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Contact - Mohammad Jafari" />
+    <meta
+      property="og:description"
+      content="How to reach Mohammad Jafari: email me@mohammad.page, LinkedIn, GitHub, and X. Based in Toronto, Ontario, Canada."
+    />
+    <meta property="og:url" content="https://mohammad.page/contact.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mohammad.page/og.png" />
+    <meta property="og:image:width" content="1268" />
+    <meta property="og:image:height" content="694" />
+    <meta property="og:image:alt" content="Mohammad Jafari" />
+    <meta property="og:site_name" content="Mohammad Jafari" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mojafariii" />
+    <meta name="twitter:creator" content="@mojafariii" />
+    <meta name="twitter:title" content="Contact - Mohammad Jafari" />
+    <meta
+      name="twitter:description"
+      content="How to reach Mohammad Jafari: email me@mohammad.page, LinkedIn, GitHub, and X. Based in Toronto, Ontario, Canada."
+    />
+    <meta name="twitter:image" content="https://mohammad.page/og.png" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+  <body>
+    <site-nav></site-nav>
+    <noscript>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">home</a>
+        <a href="blog.html">blog</a>
+        <a href="links.html">links</a>
+        <a href="photos.html">photos</a>
+        <!-- <a href="studio.html">studio</a> -->
+        <a href="now.html">now</a>
+      </nav>
+    </noscript>
+
+    <main class="content">
+      <article>
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Mohammad Jafari",
+            "url": "https://mohammad.page/contact.html",
+            "inLanguage": "en",
+            "dateModified": "2026-08-22",
+            "mainEntity": {
+              "@type": "Person",
+              "@id": "https://mohammad.page/#person",
+              "name": "Mohammad Jafari",
+              "email": "mailto:me@mohammad.page",
+              "url": "https://mohammad.page/",
+              "jobTitle": "Founding Engineer",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "ON",
+                "addressCountry": "CA"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "personal",
+                "email": "me@mohammad.page",
+                "availableLanguage": ["English"],
+                "areaServed": "Worldwide"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/in/mojafarii/",
+                "https://github.com/mossein",
+                "https://x.com/mojafariii"
+              ]
+            }
+          }
+        </script>
+
+        <h1>contact</h1>
+
+        <p>
+          the best way to reach me is email:
+          <a href="mailto:me@mohammad.page">me@mohammad.page</a>. it goes
+          straight to me, i read all of it, and i reply to anything that reads
+          like a person wrote it. if you're an agent acting for someone, say so
+          and say what you're after — that gets a faster answer than pretending
+          otherwise.
+        </p>
+
+        <h2>where else i am</h2>
+        <p>
+          <a href="https://www.linkedin.com/in/mojafarii/" target="_blank" rel="noopener noreferrer">linkedin</a>
+          — work history, and the place i answer recruiting questions.<br />
+          <a href="https://github.com/mossein" target="_blank" rel="noopener noreferrer">github</a>
+          — code, including the source of this site.<br />
+          <a href="https://x.com/mojafariii" target="_blank" rel="noopener noreferrer">x</a>
+          — short thoughts, mostly about building.<br />
+          there's a fuller list on the <a href="links.html">links page</a>.
+        </p>
+
+        <h2>what i'm good to talk about</h2>
+        <p>
+          shipping llm and rag systems into production, evaluation and retrieval
+          when accuracy actually matters, aws infrastructure for small teams,
+          and what founding-engineer work is really like in fintech and wealth
+          management. i'm also happy to talk about building software by
+          directing ai instead of typing, which is how i work most days now.
+        </p>
+        <p>
+          things i'm not the right person for: recruiting pitches for roles i
+          haven't asked about, link exchanges, seo offers, and anything that
+          starts with "quick question" and ends with an invoice.
+        </p>
+
+        <h2>details</h2>
+        <p>
+          name: mohammad jafari<br />
+          role: founding engineer at
+          <a href="https://verlo.finance" target="_blank" rel="noopener noreferrer">verlo</a><br />
+          location: toronto, ontario, canada (eastern time)<br />
+          email: <a href="mailto:me@mohammad.page">me@mohammad.page</a><br />
+          site: <a href="https://mohammad.page/">mohammad.page</a><br />
+          rss: <a href="/feed.xml">/feed.xml</a>
+        </p>
+        <p>
+          this is a personal site, not a business. there's no contact form and
+          no newsletter — email is the whole system. more about me is on the
+          <a href="about.html">about page</a>, and what this site does with your
+          data is on the <a href="privacy.html">privacy page</a>.
+        </p>
+      </article>
+
+      <p><a href="/">&larr; back home</a></p>
+    </main>
+    <footer>&copy; 2026 &middot; toronto &middot; ☾</footer>
+    <script src="nav.js" defer></script>
+  </body>
+</html>

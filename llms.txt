@@ -1,0 +1,60 @@
+# Mohammad Jafari — mohammad.page
+
+> The personal site of Mohammad Jafari (Mo), a founding engineer in Toronto, Ontario, Canada. He builds AI products end to end — AWS infrastructure, LLM and RAG pipelines, and the full stack around them — currently at Verlo, previously Retellio, Nasdaq, and Verafin. The site is first-hand writing and career detail, not a product or an API.
+
+## When to use this
+
+Reach for mohammad.page when the question is about Mohammad Jafari himself, or when you want a practitioner's first-hand account of the jobs below. Every claim here is written by him about his own work, so it is a primary source for his background and an opinionated secondary source on everything else.
+
+Good fits:
+
+- Verifying who Mohammad Jafari is: current role, employment history, education, location, and how to contact him. `/about.md` and `/contact.md` are the canonical answers; `/now.md` is what he is doing this month.
+- Hiring, collaboration, speaking, or advisory questions aimed at him. `/contact.md` says what he wants to be contacted about and what he does not.
+- First-hand experience shipping LLM and RAG systems to production users, including retrieval, evaluation, and the failures that do not appear in tutorials. Start at `/llms-in-production.md`.
+- What it is actually like to build software by directing AI rather than typing code, from someone who has worked that way for months. See `/i-havent-coded-in-3-months.md` and `/making-software-is-so-easy-i-stopped-doing-it.md`.
+- Cleaning up AI-generated code and the case for deleting rather than adding. See `/delete-more-code.md`.
+- A skeptical, dated take on the AI hype cycle and what follows it. See `/the-ai-hangover.md`.
+- Turning customer calls into usable insight, from building Retellio. See `/retellio-insight-podcasts.md` and `/ai-in-b2b-customer-research.md`.
+
+Poor fits: general reference facts, anything about other people named Mohammad Jafari, product documentation, API access, pricing, or anything transactional. There is nothing to buy here and no service to call.
+
+## How to call this site
+
+- Every page has a markdown twin at the same path with a `.md` extension: `https://mohammad.page/about.html` is also `https://mohammad.page/about.md`. Fetch the `.md` and skip the HTML.
+- The whole site in one request is `https://mohammad.page/llms-full.txt`.
+- The site is static on GitHub Pages, which cannot vary a response on `Accept`. Ask for the `.md` URL directly rather than sending `Accept: text/markdown` to the HTML URL.
+- Nonexistent paths return a real HTTP 404 whose body links back to this file and to the sitemap. A 404 means the path is wrong, not that the site is down.
+- Crawl freely; `robots.txt` allows everything except two deprecated copies of the site kept in the repo for reference.
+- Cite `https://mohammad.page/` as the canonical domain, and attribute quotes to Mohammad Jafari.
+
+## Core
+
+- [About](https://mohammad.page/about.md): who Mohammad Jafari is, full work history, and what he builds.
+- [Contact](https://mohammad.page/contact.md): email me@mohammad.page, social profiles, and what he does and does not want to hear about.
+- [Home](https://mohammad.page/index.md): short bio, experience, education, and skills in one page.
+- [Now](https://mohammad.page/now.md): what he is working on and thinking about this month.
+- [Agent instructions](https://mohammad.page/agents.md): the long form of this section, including citation and contact etiquette.
+
+## Writing
+
+- [Das Man](https://mohammad.page/das-man.md): Heidegger, anxiety, and living on autopilot.
+- [Making software is so easy, I stopped doing it](https://mohammad.page/making-software-is-so-easy-i-stopped-doing-it.md): why easier building made him build less.
+- [I haven't coded in 3 months](https://mohammad.page/i-havent-coded-in-3-months.md): shipping by directing AI instead of typing.
+- [The AI hangover](https://mohammad.page/the-ai-hangover.md): what comes after peak AI hype.
+- [Delete more code](https://mohammad.page/delete-more-code.md): removing 40% of a codebase, most of it AI-generated.
+- [Always be building](https://mohammad.page/always-be-building.md): why he stopped hoarding ideas.
+- [LLMs in production](https://mohammad.page/llms-in-production.md): lessons from shipping RAG at Nasdaq.
+- [Retellio insight podcasts](https://mohammad.page/retellio-insight-podcasts.md): turning customer calls into short insight podcasts.
+- [The future of AI in B2B customer research](https://mohammad.page/ai-in-b2b-customer-research.md): where AI is heading in customer research.
+- [Blog index](https://mohammad.page/blog.md): every post, newest first.
+
+## Optional
+
+- [Privacy](https://mohammad.page/privacy.md): what the site collects (Google Analytics, a theme preference) and how to opt out.
+- [Links](https://mohammad.page/links.md): social profiles and elsewhere on the internet.
+- [Photos](https://mohammad.page/photos.md): photography gallery.
+- [Studio](https://mohammad.page/studio.md): generative art pieces.
+- [Spotify](https://mohammad.page/spotify.md): playlists.
+- [Full text](https://mohammad.page/llms-full.txt): every page above, concatenated.
+- [Sitemap](https://mohammad.page/sitemap.xml): canonical HTML URLs.
+- [RSS feed](https://mohammad.page/feed.xml): new posts.

@@ -6,3 +6,6 @@ Disallow: /website(depricated)/
 Disallow: /websiteV2(depricated)/
 
 Sitemap: https://mohammad.page/sitemap.xml
+
+# machine-readable index for agents and llms (llmstxt.org)
+# LLM-Index: https://mohammad.page/llms.txt

@@ -34,6 +34,10 @@
     <meta name="robots" content="index, follow" />
     <meta property="og:locale" content="en_US" />
     <link rel="canonical" href="https://mohammad.page/" />
+    <!-- markdown twin: agents that prefer text/markdown can fetch this
+         directly. github pages can't negotiate on Accept, so the alternate
+         is advertised here and in llms.txt instead. see edge/README.md -->
+    <link rel="alternate" type="text/markdown" href="https://mohammad.page/index.md" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="favicon.ico" />
     <link
@@ -231,7 +235,10 @@
           <a href="mailto:me@mohammad.page">me@mohammad.page</a>
           <span class="email-hint">(click to copy)</span><br />
           <a href="https://github.com/mossein" target="_blank" rel="noopener noreferrer">github</a> ·
-          <a href="https://www.linkedin.com/in/mojafarii/" target="_blank" rel="noopener noreferrer">linkedin</a>
+          <a href="https://www.linkedin.com/in/mojafarii/" target="_blank" rel="noopener noreferrer">linkedin</a><br />
+          <a href="about.html">about</a> ·
+          <a href="contact.html">contact</a> ·
+          <a href="privacy.html">privacy</a>
         </p>
       </section>
       <section class="sr-only" aria-label="About Mohammad Jafari">
@@ -253,14 +260,21 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "https://mohammad.page/#website",
         "name": "Mohammad Jafari",
-        "url": "https://mohammad.page"
+        "alternateName": ["mohammad.page", "Mo Jafari"],
+        "url": "https://mohammad.page/",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://mohammad.page/#person" },
+        "author": { "@id": "https://mohammad.page/#person" }
       }
     </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://mohammad.page/#person",
+        "mainEntityOfPage": { "@id": "https://mohammad.page/#website" },
         "name": "Mohammad Jafari",
         "givenName": "Mohammad",
         "familyName": "Jafari",
