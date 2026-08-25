@@ -26,6 +26,15 @@ import urllib.parse
 import urllib.request
 from PIL import Image, ImageOps, ExifTags
 
+# iphones shoot heic, so read it natively rather than making everyone convert
+# on the way in. it decodes to the same pixels and carries the same exif, and
+# the original stays roughly half the weight of the equivalent jpeg
+try:
+    import pillow_heif
+    pillow_heif.register_heif_opener()
+except ImportError:
+    pass
+
 PHOTOS_DIR = "photos"
 THUMBS_DIR = os.path.join(PHOTOS_DIR, "thumbs")
 DISPLAY_DIR = os.path.join(PHOTOS_DIR, "display")
@@ -39,7 +48,7 @@ WEBP_QUALITY = 76         # webp holds up better than jpeg at the same number
 DISPLAY_MAX = 1600        # lightbox tier — the originals are 4032px/4mb each,
                           # far more than any screen shows
 DISPLAY_QUALITY = 82
-EXTS = (".jpg", ".jpeg", ".png", ".webp")
+EXTS = (".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif")
 
 # name -> EXIF tag id
 TAG = {name: tid for tid, name in ExifTags.TAGS.items()}
