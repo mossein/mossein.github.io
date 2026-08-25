@@ -171,9 +171,15 @@ def reverse_geocode(lat, lon):
 
     addr = data.get("address", {})
     hood = (addr.get("neighbourhood") or addr.get("suburb")
-            or addr.get("quarter") or addr.get("city_district"))
+            or addr.get("quarter") or addr.get("city_district")
+            or addr.get("village") or addr.get("hamlet"))
     city = (addr.get("city") or addr.get("town") or addr.get("village")
             or addr.get("municipality") or addr.get("county"))
+    # out in the country there's no neighbourhood, but there is often a village
+    # or hamlet inside the city — that's the name worth printing. when the
+    # village is all there is, it fills both slots, so don't say it twice
+    if hood == city:
+        hood = None
     parts = [p for p in (hood, city) if p]
     loc = ", ".join(parts) if parts else None
     cache[key] = loc

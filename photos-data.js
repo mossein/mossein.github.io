@@ -1,5 +1,25 @@
 window.PHOTOS = [
   {
+    "src": "photos/kilbride-xp-lane.jpg",
+    "thumb": "photos/thumbs/kilbride-xp-lane.jpg",
+    "thumbWebp": "photos/thumbs/kilbride-xp-lane.webp",
+    "display": "photos/display/kilbride-xp-lane.jpg",
+    "displayWebp": "photos/display/kilbride-xp-lane.webp",
+    "width": 4032,
+    "height": 3024,
+    "alt": "Kilbride, Burlington, Jul 24, 2026",
+    "meta": {
+      "camera": "Apple iPhone 15 Pro",
+      "focal": "9mm",
+      "aperture": "f/2.8",
+      "shutter": "1/99s",
+      "iso": "ISO 80",
+      "date": "Jul 24, 2026",
+      "location": "Kilbride, Burlington",
+      "coords": "43.4264,-79.9299"
+    }
+  },
+  {
     "src": "photos/fxn 2026-05-30 2020069696758114B7.jpg",
     "thumb": "photos/thumbs/fxn 2026-05-30 2020069696758114B7.jpg",
     "thumbWebp": "photos/thumbs/fxn 2026-05-30 2020069696758114B7.webp",

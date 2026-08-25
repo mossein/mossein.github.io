@@ -142,21 +142,15 @@ a:focus {
   color: #6b6e72;
 }
 
-.now-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.now-list li {
-  padding: 6px 0;
-}
-
+/* section lead-ins on the now page. the paragraphs are quiet Georgia, so the
+   labels carry only letterspacing and the accent — enough to break the scroll
+   into sections without competing with the text they introduce */
 .now-label {
-  display: inline-block;
-  font-weight: 600;
-  min-width: 80px;
+  font-size: 0.78em;
+  letter-spacing: 0.16em;
   color: #b4532a;
-  font-size: 0.9em;
+  margin-top: 16px;
+  margin-bottom: 10px;
 }
 
 .dark .now-label {
@@ -321,6 +315,49 @@ a:focus {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* the then/now pair on the now page. the two sources are different shapes and
+   wildly different eras, so both crop to one aspect box — the whole point is
+   that the framing lines up and only the season changed */
+.now-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 480px;
+  margin: -20px 0 48px;
+}
+
+.now-pair figure {
+  margin: 0;
+}
+
+.now-pair img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}
+
+.now-pair figcaption {
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+  color: #8a8a8a;
+  margin-top: 7px;
+  line-height: 1.5;
+}
+
+.dark .now-pair figcaption {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 480px) {
+  .now-pair {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 
 .now-footer {
   margin-top: 60px;

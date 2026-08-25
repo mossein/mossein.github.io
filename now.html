@@ -88,47 +88,101 @@
     <main class="content now-content">
       <div class="now-hero">
         <h1 class="now-heading">now</h1>
-        <p class="now-season">june 2026. toronto is tipping into summer.</p>
+        <p class="now-season">august 2026. toronto is running out of summer.</p>
       </div>
 
       <div class="now-scroll">
+        <p class="now-label now-reveal">thinking about</p>
+
         <p class="now-p now-reveal">
-          working on <a href="https://verlo.finance">verlo</a>, and it's going
-          well. we're scaling, and the problems are getting bigger in the good
-          way.
+          models are getting smart enough that the usual benchmarks miss the
+          thing i actually care about. my working definition of intelligence is
+          pattern recognition plus saying the useful thing unprompted, like
+          connecting something i mentioned a few weeks ago to what i'm asking
+          now, without being told to. so i'm building my own benchmark out of my
+          own conversation history, to measure exactly that.
         </p>
 
         <p class="now-p now-reveal">
-          i think i tweaked a tendon climbing. it's been humbling. but i can't
-          wait to heal up and go all in again.
+          and ai is here to stay, so we may as well get good at using it. what
+          that really does is put taste in all-time demand. everyone can make a
+          website now, an app, working code. that used to be the hard part and
+          it isn't anymore. so what separates people is whether they can tell
+          what's actually good.
         </p>
 
-        <p class="now-p now-reveal">
-          summer is almost here and i'm here for it. turns out i do some of my
-          best work outdoors, so i'm outside as much as i can be.
-        </p>
+        <p class="now-label now-reveal">reading</p>
 
         <p class="now-p now-reveal">
-          i'm in a full michael jackson phase. i grew up on him, drifted for a
-          few years, and now i'm back stronger than ever. he's on 24/7. i even
-          rebuilt a <a href="spotify.html">playlist</a> around him. if he isn't
-          my top artist this year i'll be shocked.
+          bruno munari,
+          <a
+            href="https://www.penguinrandomhouse.ca/books/276505/design-as-art-by-bruno-munari/9780141035819"
+            target="_blank"
+            rel="noopener noreferrer"
+            >design as art</a
+          >. written in 1966 and it reads like last week. short chapters, mostly
+          about ordinary objects. there's one where he takes apart why an
+          orange is a nearly perfect piece of design. given everything above, it
+          is landing hard.
         </p>
 
-        <p class="now-p now-reveal">
-          i've been valuing human made things more and more. not because ai is
-          bad at making stuff, it's genuinely good now. but there's a feeling in
-          something a person made that i don't think gets replaced.
-        </p>
+        <p class="now-label now-reveal">home</p>
 
         <p class="now-p now-reveal">
-          and i've been reading heidegger. heavy, slow, occasionally baffling.
-          but it's the kind of thinking that rearranges how you look at ordinary
-          things, and i can't get enough of it.
+          finally bought an espresso machine. the era of brewed coffee is over,
+          for now.
+        </p>
+
+        <p class="now-label now-reveal">day trips</p>
+
+        <p class="now-p now-reveal">
+          this has been the summer of the day trip. hamilton for dundas peak,
+          then over to kilbride to stand in the spot where the windows xp
+          "autumn" wallpaper was shot. same fence, same barn at the end, just
+          green instead of orange. elora, tubing the gorge through actual
+          rapids, the best $55 i spent all summer. rockwood, kayaking the
+          eramosa past limestone caves. the scarborough bluffs. further out,
+          nova scotia and montreal. the formula is short walks, big payoffs, and
+          good food on the way home.
+        </p>
+
+        <div class="now-pair now-reveal">
+          <figure>
+            <img
+              src="xp-autumn.jpg"
+              alt="The Windows XP Autumn wallpaper: a gravel lane under maples in full orange, a split-rail fence on the left."
+              width="640"
+              height="426"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>&ldquo;autumn&rdquo;, windows xp &middot; &copy; microsoft</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="kilbride-july-2026.jpg"
+              alt="The same lane in summer: the same fence and maples, green, the barn still at the end."
+              width="1000"
+              height="750"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              the same lane &middot;
+              <a href="photos.html">july 2026</a>
+            </figcaption>
+          </figure>
+        </div>
+
+        <p class="now-label now-reveal">listening</p>
+
+        <p class="now-p now-reveal">
+          all over the place. fleetwood mac, heartbeat city, part time, naked
+          eyes. seal? chaka khan? aphex fucking twin?
         </p>
 
         <div class="now-footer now-reveal">
-          <p class="now-timestamp">last updated june 4, 2026</p>
+          <p class="now-timestamp">last updated august 24, 2026</p>
           <p class="now-footnote">
             this is a <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a>.
             if you have one, let me know.
@@ -151,7 +205,7 @@
           });
         }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
         nowEls.forEach(function (el, i) {
-          el.style.transitionDelay = (i * 0.12) + "s";
+          el.style.transitionDelay = Math.min(i * 0.12, 0.48) + "s";
           nowObs.observe(el);
         });
       } else {
