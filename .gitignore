@@ -5,3 +5,13 @@ media/bridge-*
 media/demo-*
 preview-journal.html
 preview-snap.html
+
+# photo originals stay on disk, not in the repo. nothing ever fetches them:
+# the grid loads photos/thumbs/ and the lightbox loads photos/display/, so
+# shipping the full-res frames would just spend the pages size cap on bytes
+# no visitor receives. generate-photos.py rebuilds both tiers from them.
+photos/*
+!photos/thumbs/
+!photos/display/
+!photos/README.md
+!photos/.geocode-cache.json

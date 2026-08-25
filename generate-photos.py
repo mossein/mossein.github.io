@@ -411,6 +411,15 @@ def main():
     for it in items:
         it.pop("_sort", None)
 
+    # the originals are gitignored, so a fresh clone has the derived tiers but
+    # no sources. without this the scan would come back empty, read every
+    # thumbnail as orphaned, and delete the whole gallery
+    if not items and (os.listdir(THUMBS_DIR) or os.listdir(DISPLAY_DIR)):
+        print("\nno source photos found, but photos/thumbs/ and photos/display/")
+        print("still hold a gallery. refusing to prune it.")
+        print("the originals live outside git: copy them back into photos/ first.")
+        return
+
     # prune derived images whose source photo no longer exists
     pruned = 0
     for d, keep in ((THUMBS_DIR, kept_thumbs), (DISPLAY_DIR, kept_display)):
