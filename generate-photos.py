@@ -49,6 +49,10 @@ DISPLAY_MAX = 1600        # lightbox tier — the originals are 4032px/4mb each,
                           # far more than any screen shows
 DISPLAY_QUALITY = 82
 EXTS = (".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif")
+# shown in place of the neighbourhood when a frame carries no gps, usually
+# because location services were off. the caption keeps its two-part shape
+# instead of collapsing to a bare date that reads like a missing field
+NO_LOCATION = "photo location not available"
 
 # name -> EXIF tag id
 TAG = {name: tid for tid, name in ExifTags.TAGS.items()}
@@ -391,6 +395,11 @@ def main():
             alt = "photo taken %s" % meta["date"]
         else:
             alt = stem.replace("_", " ").replace("-", " ").strip()
+
+        # after alt, so a screen reader hears "photo taken Jun 18, 2026" rather
+        # than being read a notice about metadata it has no use for
+        if not meta.get("location"):
+            meta["location"] = NO_LOCATION
 
         items.append({
             "src": path,

@@ -614,7 +614,8 @@ window.PHOTOS = [
       "aperture": "f/1.6",
       "shutter": "1/87s",
       "iso": "ISO 125",
-      "date": "Jun 22, 2026"
+      "date": "Jun 22, 2026",
+      "location": "photo location not available"
     }
   },
   {
@@ -912,7 +913,8 @@ window.PHOTOS = [
       "aperture": "f/1.6",
       "shutter": "1/4608s",
       "iso": "ISO 64",
-      "date": "Jun 18, 2026"
+      "date": "Jun 18, 2026",
+      "location": "photo location not available"
     }
   },
   {
@@ -990,7 +992,8 @@ window.PHOTOS = [
       "aperture": "f/2.2",
       "shutter": "1/121s",
       "iso": "ISO 64",
-      "date": "Jun 17, 2026"
+      "date": "Jun 17, 2026",
+      "location": "photo location not available"
     }
   },
   {
@@ -1188,7 +1191,8 @@ window.PHOTOS = [
       "aperture": "f/1.6",
       "shutter": "1/25000s",
       "iso": "ISO 64",
-      "date": "Jun 16, 2026"
+      "date": "Jun 16, 2026",
+      "location": "photo location not available"
     }
   },
   {
