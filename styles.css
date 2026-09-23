@@ -394,6 +394,17 @@ a:focus {
   color: #aaa;
 }
 
+.skills-group {
+  line-height: 1.9;
+}
+
+.skills-note {
+  margin-top: 14px;
+  color: #888;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
 /* easter egg: the claude code mascot peeks out from behind the words on hover */
 .cc-trigger {
   position: relative;       /* positioning context only — no stacking context,
@@ -436,6 +447,14 @@ a:focus {
 .cc-trigger.cc-peek .cc-mascot {
   opacity: 1;
   transform: translate(-50%, -88%);
+}
+
+.dark .skills-note {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.watercolor .skills-note {
+  color: #6b6e72;
 }
 
 .nav {
@@ -1506,49 +1525,7 @@ blockquote::before {
 }
 
 .home-content {
-  margin-top: 8vh;
-}
-
-/* intro beside a modest portrait: who you are and what you've done land on
-   the first screen, and the photo backs them up instead of pushing them down */
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 230px;
-  column-gap: 44px;
-  align-items: start;
-}
-
-.hero h1 {
-  margin-top: 0;
-}
-
-.hero .portrait-wrap {
-  margin-top: 8px;
-  margin-bottom: 0;
-}
-
-@media (max-width: 640px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-  .hero .portrait-wrap {
-    max-width: 240px;
-    margin-top: 8px;
-  }
-}
-
-/* "(formerly retellio)" is context, not title */
-.experience-list .role-aka {
-  font-weight: normal;
-  color: #777;
-}
-
-.dark .experience-list .role-aka {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.watercolor .experience-list .role-aka {
-  color: #6b6e72;
+  margin-top: 15vh;
 }
 
 .post {
