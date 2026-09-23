@@ -62,20 +62,6 @@
       <pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate>
       <description>I've spent the last few years building LLM features at two companies. First at Nasdaq on an entity research copilot, then at Retellio where I built the entire AI pipeline from scratch. Here's what I wish someone had told me before I started.</description>
     </item>
-    <item>
-      <title>From Calls to Clarity: Shipping Insight Podcasts at Retellio</title>
-      <link>https://mohammad.page/retellio-insight-podcasts.html</link>
-      <guid>https://mohammad.page/retellio-insight-podcasts.html</guid>
-      <pubDate>Thu, 14 Nov 2024 00:00:00 GMT</pubDate>
-      <description>How Retellio turns long customer calls into short, insight-rich podcasts delivered where teams work; integrating with Salesforce, HubSpot, Gong, and Zoom.</description>
-    </item>
-    <item>
-      <title>The Future of AI in B2B Customer Research</title>
-      <link>https://mohammad.page/ai-in-b2b-customer-research.html</link>
-      <guid>https://mohammad.page/ai-in-b2b-customer-research.html</guid>
-      <pubDate>Wed, 28 Aug 2024 00:00:00 GMT</pubDate>
-      <description>Reflections on the evolving role of AI in B2B customer research and where it's heading.</description>
-    </item>
   </channel>
 </rss>
 

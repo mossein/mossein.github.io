@@ -67,6 +67,8 @@ h1 {
   margin-bottom: 10px;
   letter-spacing: -0.03em;
   font-optical-sizing: auto;
+  /* body's 1.65 leaves a gap you could park in when a heading wraps */
+  line-height: 1.15;
 }
 
 h2 {
@@ -273,14 +275,14 @@ a:focus {
   font-style: italic;
   margin-bottom: 16px;
   letter-spacing: -0.05em;
-  opacity: 0.12;
+  opacity: 0.35;
   line-height: 1;
 }
 
-/* on black, 0.12 of #e6e6e6 disappears entirely — lift it enough to read as a
-   ghost rather than as nothing */
+/* still a ghost, but a readable one — it's the page's heading. black needs a
+   touch more lift than white for the same effect */
 .dark .now-heading {
-  opacity: 0.2;
+  opacity: 0.42;
 }
 
 .now-season {
@@ -308,17 +310,6 @@ a:focus {
   line-height: 1.9;
   margin-bottom: 48px;
   max-width: 480px;
-}
-
-.now-reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.now-reveal.now-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* the then/now pair on the now page. the two sources are different shapes and
@@ -403,17 +394,6 @@ a:focus {
   color: #aaa;
 }
 
-.skills-group {
-  line-height: 1.9;
-}
-
-.skills-note {
-  margin-top: 14px;
-  color: #888;
-  font-style: italic;
-  font-size: 0.95em;
-}
-
 /* easter egg: the claude code mascot peeks out from behind the words on hover */
 .cc-trigger {
   position: relative;       /* positioning context only — no stacking context,
@@ -458,14 +438,6 @@ a:focus {
   transform: translate(-50%, -88%);
 }
 
-.dark .skills-note {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.watercolor .skills-note {
-  color: #6b6e72;
-}
-
 .nav {
   display: flex;
   justify-content: center;
@@ -499,8 +471,16 @@ a:focus {
   border-bottom: 0;
 }
 
+/* mouse clicks stay clean; keyboard users get a ring so they can see where
+   they are */
 .nav a:focus {
   outline: none;
+}
+
+.nav a:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 .theme-toggle {
@@ -625,18 +605,6 @@ a:focus {
   to {
     --typer-ink: 0;
   }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--dur-entrance) var(--ease),
-    transform var(--dur-entrance) var(--ease);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 
@@ -1402,7 +1370,7 @@ a[target="_blank"]:not(.nav a):hover::after {
 }
 
 blockquote::before {
-  content: """;
+  content: "\201C";
   position: absolute;
   left: -8px;
   top: -10px;
@@ -1504,12 +1472,6 @@ blockquote::before {
     animation: none;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
   .cursor-blob {
     display: none;
   }
@@ -1544,7 +1506,49 @@ blockquote::before {
 }
 
 .home-content {
-  margin-top: 15vh;
+  margin-top: 8vh;
+}
+
+/* intro beside a modest portrait: who you are and what you've done land on
+   the first screen, and the photo backs them up instead of pushing them down */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  column-gap: 44px;
+  align-items: start;
+}
+
+.hero h1 {
+  margin-top: 0;
+}
+
+.hero .portrait-wrap {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero .portrait-wrap {
+    max-width: 240px;
+    margin-top: 8px;
+  }
+}
+
+/* "(formerly retellio)" is context, not title */
+.experience-list .role-aka {
+  font-weight: normal;
+  color: #777;
+}
+
+.dark .experience-list .role-aka {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.watercolor .experience-list .role-aka {
+  color: #6b6e72;
 }
 
 .post {
@@ -1555,6 +1559,25 @@ blockquote::before {
 
 .post:last-child {
   border-bottom: none;
+}
+
+/* the title is the link — one target per post, instead of nine identical
+   "read more"s. it stays ink-coloured and only underlines on hover */
+.post h2 a {
+  text-decoration: none;
+}
+
+.post h2 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
+/* the rest of the site is lowercase, so the post titles are too */
+.post h2,
+article h1,
+.post-nav a {
+  text-transform: lowercase;
 }
 
 .dark .post {

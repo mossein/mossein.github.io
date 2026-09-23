@@ -29,6 +29,17 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- theme before first paint: nav.js loads at the end of body, so leaving
+         this to it painted every page white before a dark visitor's black -->
+    <script>
+      (function () {
+        var r = document.documentElement, t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t === "dark" || t === "watercolor") r.classList.add(t);
+        else if (t !== "light" && window.matchMedia &&
+          matchMedia("(prefers-color-scheme: dark)").matches) r.classList.add("dark");
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -86,7 +97,6 @@
         <a href="blog.html" aria-current="page">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html">photos</a>
-        <!-- <a href="studio.html">studio</a> -->
         <a href="now.html">now</a>
       </nav>
     </noscript>
@@ -109,18 +119,17 @@
       <p class="personal-note"><a href="/feed.xml">rss</a></p>
 
       <div class="post">
-        <h2>das man <span class="post-flag">pinned</span></h2>
-        <p class="date">June 8, 2026 <span class="reading-time">· 5 min read</span><span class="post-tags"> · philosophy, life</span></p>
+        <h2><a href="das-man.html">das man</a> <span class="post-flag">pinned</span></h2>
+        <p class="date">June 8, 2026 <span class="reading-time">· 4 min read</span><span class="post-tags"> · philosophy, life</span></p>
         <p>
           my therapist told me i'm a das man. i went in talking about anxiety and
           came out reading heidegger on my phone for weeks. the they, angst,
           ownedness, enframing, and trying to let the evening just be an evening.
         </p>
-        <a href="das-man.html">read more</a>
       </div>
 
       <div class="post">
-        <h2>Making Software Is So Easy, I Stopped Doing It</h2>
+        <h2><a href="making-software-is-so-easy-i-stopped-doing-it.html">Making Software Is So Easy, I Stopped Doing It</a></h2>
         <p class="date">May 31, 2026 <span class="reading-time">· 4 min read</span><span class="post-tags"> · ai, building</span></p>
         <p>
           making software has never been easier. with opus 4.8 and the cloud,
@@ -128,44 +137,40 @@
           for a while i built something new every week. then i stopped, and
           started thinking about what's actually worth building at all.
         </p>
-        <a href="making-software-is-so-easy-i-stopped-doing-it.html">read more</a>
       </div>
 
       <div class="post">
-        <h2>I Haven't Coded in 3 Months</h2>
+        <h2><a href="i-havent-coded-in-3-months.html">I Haven't Coded in 3 Months</a></h2>
         <p class="date">March 14, 2026 <span class="reading-time">· 4 min read</span><span class="post-tags"> · ai, building</span></p>
         <p>
           i haven't written a line of code by hand in three months. not a
           function, not a variable, not even a css property. and i've shipped
           more in those three months than i did in all of 2024.
         </p>
-        <a href="i-havent-coded-in-3-months.html">read more</a>
       </div>
 
       <div class="post">
-        <h2>The AI Hangover</h2>
+        <h2><a href="the-ai-hangover.html">The AI Hangover</a></h2>
         <p class="date">January 1, 2026 <span class="reading-time">· 2 min read</span><span class="post-tags"> · ai, industry</span></p>
         <p>
           it’s january 1, 2026. if 2024 was the year of "holy shit, ai can do that?" 
           and 2025 was the year of "let’s shove ai into everything," then 2026 is 
           officially the start of the hangover.
         </p>
-        <a href="the-ai-hangover.html">read more</a>
       </div>
 
       <div class="post">
-        <h2>Delete More Code (and Clean Up AI Slop)</h2>
-        <p class="date">November 25, 2025 <span class="reading-time">· 5 min read</span><span class="post-tags"> · ai, engineering</span></p>
+        <h2><a href="delete-more-code.html">Delete More Code (and Clean Up AI Slop)</a></h2>
+        <p class="date">November 25, 2025 <span class="reading-time">· 4 min read</span><span class="post-tags"> · ai, engineering</span></p>
         <p>
           last month i deleted about 40% of our codebase. not refactored. deleted. 
           most of it was ai-generated code that worked fine but nobody understood 
           anymore.
         </p>
-        <a href="delete-more-code.html">read more</a>
       </div>
 
       <div class="post">
-        <h2>Always Be Building</h2>
+        <h2><a href="always-be-building.html">Always Be Building</a></h2>
         <p class="date">November 24, 2025 <span class="reading-time">· 3 min read</span><span class="post-tags"> · building</span></p>
         <p>
           i have 47 ideas in my notes app right now. a social app where you scroll 
@@ -174,11 +179,10 @@
           fit your proportions. some are good. most are probably not. i used to think 
           i needed to figure out which ones were worth building before i started.
         </p>
-        <a href="always-be-building.html">read more</a>
       </div>
 
       <div class="post">
-        <h2>LLMs in Production: What Nobody Tells You</h2>
+        <h2><a href="llms-in-production.html">LLMs in Production: What Nobody Tells You</a></h2>
         <p class="date">November 11, 2025 <span class="reading-time">· 3 min read</span><span class="post-tags"> · ai, engineering</span></p>
         <p>
           i've spent the last few years building llm features at two companies. first 
@@ -186,30 +190,8 @@
           the entire ai pipeline from scratch. here's what i wish someone had told 
           me before i started.
         </p>
-        <a href="llms-in-production.html">read more</a>
       </div>
 
-      <div class="post">
-        <h2>From Calls to Clarity: Shipping Insight Podcasts at Retellio</h2>
-        <p class="date">August 14, 2025 <span class="reading-time">· 2 min read</span><span class="post-tags"> · retellio, product</span></p>
-        <p>
-          Retellio turns long customer calls into short, insight-rich podcasts
-          delivered to your stack; with source-linked quotes and integrations
-          with Salesforce, HubSpot, Gong, and Zoom.
-        </p>
-        <a href="retellio-insight-podcasts.html">read more</a>
-      </div>
-
-      <div class="post">
-        <h2>The Future of AI in B2B Customer Research</h2>
-        <p class="date">August 28, 2024 <span class="reading-time">· 2 min read</span><span class="post-tags"> · ai, product</span></p>
-        <p>
-          As we continue to develop AI-powered solutions for B2B customer
-          research at Retellio, I've been reflecting on the transformative
-          potential of these technologies...
-        </p>
-        <a href="ai-in-b2b-customer-research.html">read more</a>
-      </div>
     </main>
     <footer>© 2026 · toronto · ☾</footer>
     <script src="nav.js" defer></script>

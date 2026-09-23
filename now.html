@@ -29,6 +29,17 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- theme before first paint: nav.js loads at the end of body, so leaving
+         this to it painted every page white before a dark visitor's black -->
+    <script>
+      (function () {
+        var r = document.documentElement, t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t === "dark" || t === "watercolor") r.classList.add(t);
+        else if (t !== "light" && window.matchMedia &&
+          matchMedia("(prefers-color-scheme: dark)").matches) r.classList.add("dark");
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Now - Mohammad Jafari" />
@@ -78,7 +89,6 @@
         <a href="blog.html">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html">photos</a>
-        <!-- <a href="studio.html">studio</a> -->
         <a href="now.html" aria-current="page">now</a>
       </nav>
     </noscript>
@@ -92,9 +102,9 @@
       </div>
 
       <div class="now-scroll">
-        <p class="now-label now-reveal">thinking about</p>
+        <p class="now-label">thinking about</p>
 
-        <p class="now-p now-reveal">
+        <p class="now-p">
           models are getting smart enough that the usual benchmarks miss the
           thing i actually care about. my working definition of intelligence is
           pattern recognition plus saying the useful thing unprompted, like
@@ -103,7 +113,7 @@
           own conversation history, to measure exactly that.
         </p>
 
-        <p class="now-p now-reveal">
+        <p class="now-p">
           and ai is here to stay, so we may as well get good at using it. what
           that really does is put taste in all-time demand. everyone can make a
           website now, an app, working code. that used to be the hard part and
@@ -111,9 +121,9 @@
           what's actually good.
         </p>
 
-        <p class="now-label now-reveal">reading</p>
+        <p class="now-label">reading</p>
 
-        <p class="now-p now-reveal">
+        <p class="now-p">
           bruno munari,
           <a
             href="https://www.penguinrandomhouse.ca/books/276505/design-as-art-by-bruno-munari/9780141035819"
@@ -126,16 +136,16 @@
           is landing hard.
         </p>
 
-        <p class="now-label now-reveal">home</p>
+        <p class="now-label">home</p>
 
-        <p class="now-p now-reveal">
+        <p class="now-p">
           finally bought an espresso machine. the era of brewed coffee is over,
           for now.
         </p>
 
-        <p class="now-label now-reveal">day trips</p>
+        <p class="now-label">day trips</p>
 
-        <p class="now-p now-reveal">
+        <p class="now-p">
           this has been the summer of the day trip. hamilton for dundas peak,
           then over to kilbride to stand in the spot where the windows xp
           "autumn" wallpaper was shot. same fence, same barn at the end, just
@@ -146,7 +156,7 @@
           good food on the way home.
         </p>
 
-        <div class="now-pair now-reveal">
+        <div class="now-pair">
           <figure>
             <img
               src="xp-autumn.jpg"
@@ -174,14 +184,14 @@
           </figure>
         </div>
 
-        <p class="now-label now-reveal">listening</p>
+        <p class="now-label">listening</p>
 
-        <p class="now-p now-reveal">
+        <p class="now-p">
           all over the place. fleetwood mac, heartbeat city, part time, naked
           eyes. seal? chaka khan? aphex fucking twin?
         </p>
 
-        <div class="now-footer now-reveal">
+        <div class="now-footer">
           <p class="now-timestamp">last updated august 24, 2026</p>
           <p class="now-footnote">
             this is a <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page</a>.
@@ -193,25 +203,6 @@
     <footer>&copy; 2026 &middot; toronto &middot; ☾</footer>
     <script src="nav.js" defer></script>
     <script>
-      // stagger paragraphs in on scroll
-      var nowEls = document.querySelectorAll(".now-reveal");
-      if ("IntersectionObserver" in window) {
-        var nowObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("now-visible");
-              nowObs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
-        nowEls.forEach(function (el, i) {
-          el.style.transitionDelay = Math.min(i * 0.12, 0.48) + "s";
-          nowObs.observe(el);
-        });
-      } else {
-        nowEls.forEach(function (el) { el.classList.add("now-visible"); });
-      }
-
       // time-of-day ambient gradient
       (function () {
         var ambient = document.querySelector(".now-ambient");

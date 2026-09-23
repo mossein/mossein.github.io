@@ -54,6 +54,48 @@ EXTS = (".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif")
 # instead of collapsing to a bare date that reads like a missing field
 NO_LOCATION = "photo location not available"
 
+# captions read "place, city" — or "place, province" out where there's no city.
+# nominatim sometimes answers with a federal riding ("Spadina—Fort York"), an
+# official name ("City of Charlottetown") or a bare village, so a few known
+# answers are pinned here and tidy_location() handles the general cases
+PLACE_FIXES = {
+    "Toronto Centre, Toronto": "Downtown, Toronto",
+    "Spadina—Fort York, Toronto": "Harbourfront, Toronto",
+    "Toronto—St. Paul's, Toronto": "Midtown, Toronto",
+    "Beaches—East York, Toronto": "East End, Toronto",
+    "Guelph/Eramosa": "Guelph/Eramosa, ON",
+    "Old Town of Lunenburg, Lunenburg": "Old Town, Lunenburg",
+    "Bayfield, Paroisse de Botsford": "Bayfield, NB",
+    "Cape Breton Highlands National Park": "Cape Breton Highlands, NS",
+    "Cheticamp": "Chéticamp, NS",
+    "Antigonish": "Antigonish, NS",
+    "Blue Rocks": "Blue Rocks, NS",
+    "Feltzen South": "Feltzen South, NS",
+    "Mount Thom": "Mount Thom, NS",
+    "Peggys Cove": "Peggys Cove, NS",
+    "South Lake Ainslie": "South Lake Ainslie, NS",
+    "Wallbrook": "Wallbrook, NS",
+    "Cavendish": "Cavendish, PEI",
+    "North Rustico": "North Rustico, PEI",
+}
+
+
+def tidy_location(loc):
+    if not loc or loc == NO_LOCATION:
+        return loc
+    if loc in PLACE_FIXES:
+        return PLACE_FIXES[loc]
+    parts = [p.strip() for p in loc.split(",")]
+    for prefix in ("City of ", "Town of ", "Municipality of "):
+        parts = [p[len(prefix):] if p.startswith(prefix) else p for p in parts]
+    # ridings join two areas with an em dash; the second is the more local one
+    parts = [p.split("—")[-1] for p in parts]
+    # "Downtown Halifax, Halifax" -> "Downtown, Halifax"
+    if len(parts) == 2 and parts[0].endswith(" " + parts[1]):
+        parts[0] = parts[0][: -len(parts[1]) - 1]
+    return ", ".join(parts)
+
+
 # name -> EXIF tag id
 TAG = {name: tid for tid, name in ExifTags.TAGS.items()}
 GPS_TAG = {name: tid for tid, name in ExifTags.GPSTAGS.items()}
@@ -251,7 +293,7 @@ def extract_meta(img):
     if coords:
         loc = reverse_geocode(coords[0], coords[1])
         if loc:
-            meta["location"] = loc
+            meta["location"] = tidy_location(loc)
         # keep the raw fix too — it's what lets a caption link to a map. rounded
         # to ~11m, which places the shot without publishing a doorstep.
         meta["coords"] = "%.4f,%.4f" % (coords[0], coords[1])

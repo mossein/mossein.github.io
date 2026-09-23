@@ -20,6 +20,9 @@
       });
     </script>
     <meta charset="UTF-8" />
+    <!-- retired from the blog list, feed and sitemap: company-voice posts from
+         the retellio days. the url stays up so old links still land -->
+    <meta name="robots" content="noindex, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>the future of ai in b2b customer research</title>
     <link rel="canonical" href="https://mohammad.page/ai-in-b2b-customer-research.html" />
@@ -32,6 +35,17 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- theme before first paint: nav.js loads at the end of body, so leaving
+         this to it painted every page white before a dark visitor's black -->
+    <script>
+      (function () {
+        var r = document.documentElement, t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t === "dark" || t === "watercolor") r.classList.add(t);
+        else if (t !== "light" && window.matchMedia &&
+          matchMedia("(prefers-color-scheme: dark)").matches) r.classList.add("dark");
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -89,7 +103,6 @@
         <a href="blog.html" aria-current="page">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html">photos</a>
-        <!-- <a href="studio.html">studio</a> -->
         <a href="now.html">now</a>
       </nav>
     </noscript>

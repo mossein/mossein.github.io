@@ -15,3 +15,5 @@ photos/*
 !photos/display/
 !photos/README.md
 !photos/.geocode-cache.json
+
+__pycache__/

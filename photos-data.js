@@ -27,7 +27,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/IMG_3041.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Toronto Centre, Toronto, Aug 19, 2026",
+    "alt": "Downtown, Toronto, Aug 19, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -35,7 +35,7 @@ window.PHOTOS = [
       "shutter": "1/196s",
       "iso": "ISO 25",
       "date": "Aug 19, 2026",
-      "location": "Toronto Centre, Toronto",
+      "location": "Downtown, Toronto",
       "coords": "43.6698,-79.3796"
     }
   },
@@ -67,7 +67,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/IMG_5774.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Spadina\u2014Fort York, Toronto, Aug 16, 2026",
+    "alt": "Harbourfront, Toronto, Aug 16, 2026",
     "meta": {
       "camera": "Apple iPhone 17",
       "focal": "6mm",
@@ -75,7 +75,7 @@ window.PHOTOS = [
       "shutter": "1/60s",
       "iso": "ISO 160",
       "date": "Aug 16, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6442,-79.3690"
     }
   },
@@ -247,7 +247,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/IMG_1125.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Guelph/Eramosa, Jul 29, 2026",
+    "alt": "Guelph/Eramosa, ON, Jul 29, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -255,7 +255,7 @@ window.PHOTOS = [
       "shutter": "1/943s",
       "iso": "ISO 25",
       "date": "Jul 29, 2026",
-      "location": "Guelph/Eramosa",
+      "location": "Guelph/Eramosa, ON",
       "coords": "43.6311,-80.2577"
     }
   },
@@ -626,7 +626,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-22 213926A70F38A901DA.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Downtown Halifax, Halifax, Jun 22, 2026",
+    "alt": "Downtown, Halifax, Jun 22, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -634,7 +634,7 @@ window.PHOTOS = [
       "shutter": "1/15s",
       "iso": "ISO 400",
       "date": "Jun 22, 2026",
-      "location": "Downtown Halifax, Halifax",
+      "location": "Downtown, Halifax",
       "coords": "44.6489,-63.5703"
     }
   },
@@ -646,7 +646,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-22 2133484B40C5FCEC8C.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Downtown Halifax, Halifax, Jun 22, 2026",
+    "alt": "Downtown, Halifax, Jun 22, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -654,7 +654,7 @@ window.PHOTOS = [
       "shutter": "1/24s",
       "iso": "ISO 400",
       "date": "Jun 22, 2026",
-      "location": "Downtown Halifax, Halifax",
+      "location": "Downtown, Halifax",
       "coords": "44.6495,-63.5714"
     }
   },
@@ -666,7 +666,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-22 14371618A47AADFC9B.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Wallbrook, Jun 22, 2026",
+    "alt": "Wallbrook, NS, Jun 22, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -674,7 +674,7 @@ window.PHOTOS = [
       "shutter": "1/1119s",
       "iso": "ISO 25",
       "date": "Jun 22, 2026",
-      "location": "Wallbrook",
+      "location": "Wallbrook, NS",
       "coords": "45.0723,-64.2958"
     }
   },
@@ -686,7 +686,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-22 13150090C4503313AB.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Wallbrook, Jun 22, 2026",
+    "alt": "Wallbrook, NS, Jun 22, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -694,7 +694,7 @@ window.PHOTOS = [
       "shutter": "1/10417s",
       "iso": "ISO 80",
       "date": "Jun 22, 2026",
-      "location": "Wallbrook",
+      "location": "Wallbrook, NS",
       "coords": "45.0719,-64.2960"
     }
   },
@@ -706,7 +706,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-22 100538F91E794D5FEB.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Old Town of Lunenburg, Lunenburg, Jun 22, 2026",
+    "alt": "Old Town, Lunenburg, Jun 22, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -714,7 +714,7 @@ window.PHOTOS = [
       "shutter": "1/1277s",
       "iso": "ISO 25",
       "date": "Jun 22, 2026",
-      "location": "Old Town of Lunenburg, Lunenburg",
+      "location": "Old Town, Lunenburg",
       "coords": "44.3764,-64.3096"
     }
   },
@@ -726,7 +726,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/IMG_6973.webp",
     "width": 5712,
     "height": 4284,
-    "alt": "Blue Rocks, Jun 21, 2026",
+    "alt": "Blue Rocks, NS, Jun 21, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -734,7 +734,7 @@ window.PHOTOS = [
       "shutter": "1/1923s",
       "iso": "ISO 80",
       "date": "Jun 21, 2026",
-      "location": "Blue Rocks",
+      "location": "Blue Rocks, NS",
       "coords": "44.3631,-64.2362"
     }
   },
@@ -746,7 +746,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-21 1951524A68FD93C25B.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Feltzen South, Jun 21, 2026",
+    "alt": "Feltzen South, NS, Jun 21, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -754,7 +754,7 @@ window.PHOTOS = [
       "shutter": "1/179s",
       "iso": "ISO 20",
       "date": "Jun 21, 2026",
-      "location": "Feltzen South",
+      "location": "Feltzen South, NS",
       "coords": "44.3237,-64.2570"
     }
   },
@@ -766,7 +766,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-21 1940111F17592FB029.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Feltzen South, Jun 21, 2026",
+    "alt": "Feltzen South, NS, Jun 21, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -774,7 +774,7 @@ window.PHOTOS = [
       "shutter": "1/121s",
       "iso": "ISO 160",
       "date": "Jun 21, 2026",
-      "location": "Feltzen South",
+      "location": "Feltzen South, NS",
       "coords": "44.3209,-64.2573"
     }
   },
@@ -786,7 +786,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-21 145109192D730517E4.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Peggys Cove, Jun 21, 2026",
+    "alt": "Peggys Cove, NS, Jun 21, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -794,7 +794,7 @@ window.PHOTOS = [
       "shutter": "1/50000s",
       "iso": "ISO 50",
       "date": "Jun 21, 2026",
-      "location": "Peggys Cove",
+      "location": "Peggys Cove, NS",
       "coords": "44.4907,-63.9173"
     }
   },
@@ -806,7 +806,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-21 144633F977216331AB.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Peggys Cove, Jun 21, 2026",
+    "alt": "Peggys Cove, NS, Jun 21, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -814,7 +814,7 @@ window.PHOTOS = [
       "shutter": "1/50000s",
       "iso": "ISO 64",
       "date": "Jun 21, 2026",
-      "location": "Peggys Cove",
+      "location": "Peggys Cove, NS",
       "coords": "44.4907,-63.9173"
     }
   },
@@ -826,7 +826,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-21 1407036D977F754D8B.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Peggys Cove, Jun 21, 2026",
+    "alt": "Peggys Cove, NS, Jun 21, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -834,7 +834,7 @@ window.PHOTOS = [
       "shutter": "1/28571s",
       "iso": "ISO 64",
       "date": "Jun 21, 2026",
-      "location": "Peggys Cove",
+      "location": "Peggys Cove, NS",
       "coords": "44.4930,-63.9116"
     }
   },
@@ -846,7 +846,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-19 140308821F74EA1390.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Mount Thom, Jun 19, 2026",
+    "alt": "Mount Thom, NS, Jun 19, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "2mm",
@@ -854,7 +854,7 @@ window.PHOTOS = [
       "shutter": "1/17241s",
       "iso": "ISO 32",
       "date": "Jun 19, 2026",
-      "location": "Mount Thom",
+      "location": "Mount Thom, NS",
       "coords": "45.5436,-62.9781"
     }
   },
@@ -866,7 +866,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-19 140153AB83FD5177E3.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Mount Thom, Jun 19, 2026",
+    "alt": "Mount Thom, NS, Jun 19, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "2mm",
@@ -874,7 +874,7 @@ window.PHOTOS = [
       "shutter": "1/22222s",
       "iso": "ISO 32",
       "date": "Jun 19, 2026",
-      "location": "Mount Thom",
+      "location": "Mount Thom, NS",
       "coords": "45.5434,-62.9783"
     }
   },
@@ -886,7 +886,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-19 132618FC7EA685C9DE.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Mount Thom, Jun 19, 2026",
+    "alt": "Mount Thom, NS, Jun 19, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -894,7 +894,7 @@ window.PHOTOS = [
       "shutter": "1/15152s",
       "iso": "ISO 50",
       "date": "Jun 19, 2026",
-      "location": "Mount Thom",
+      "location": "Mount Thom, NS",
       "coords": "45.5450,-62.9704"
     }
   },
@@ -925,7 +925,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-18 1459089F564CBA51D0.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Cape Breton Highlands National Park, Jun 18, 2026",
+    "alt": "Cape Breton Highlands, NS, Jun 18, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -933,7 +933,7 @@ window.PHOTOS = [
       "shutter": "1/6944s",
       "iso": "ISO 25",
       "date": "Jun 18, 2026",
-      "location": "Cape Breton Highlands National Park",
+      "location": "Cape Breton Highlands, NS",
       "coords": "46.7491,-60.9081"
     }
   },
@@ -945,7 +945,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-18 125308F3676C6AF9E9.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Cheticamp, Jun 18, 2026",
+    "alt": "Ch\u00e9ticamp, NS, Jun 18, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -953,7 +953,7 @@ window.PHOTOS = [
       "shutter": "1/15152s",
       "iso": "ISO 64",
       "date": "Jun 18, 2026",
-      "location": "Cheticamp",
+      "location": "Ch\u00e9ticamp, NS",
       "coords": "46.6442,-61.0005"
     }
   },
@@ -965,7 +965,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-18 120358F0892ED68A95.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Cape Breton Highlands National Park, Jun 18, 2026",
+    "alt": "Cape Breton Highlands, NS, Jun 18, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -973,7 +973,7 @@ window.PHOTOS = [
       "shutter": "1/6410s",
       "iso": "ISO 80",
       "date": "Jun 18, 2026",
-      "location": "Cape Breton Highlands National Park",
+      "location": "Cape Breton Highlands, NS",
       "coords": "46.6439,-60.9485"
     }
   },
@@ -1004,7 +1004,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 203754399D2D7C3669.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "South Lake Ainslie, Jun 17, 2026",
+    "alt": "South Lake Ainslie, NS, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -1012,7 +1012,7 @@ window.PHOTOS = [
       "shutter": "1/12346s",
       "iso": "ISO 64",
       "date": "Jun 17, 2026",
-      "location": "South Lake Ainslie",
+      "location": "South Lake Ainslie, NS",
       "coords": "46.0494,-61.1084"
     }
   },
@@ -1024,7 +1024,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 1927158BAE1465B538.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Antigonish, Jun 17, 2026",
+    "alt": "Antigonish, NS, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -1032,7 +1032,7 @@ window.PHOTOS = [
       "shutter": "1/12346s",
       "iso": "ISO 80",
       "date": "Jun 17, 2026",
-      "location": "Antigonish",
+      "location": "Antigonish, NS",
       "coords": "45.6152,-62.0027"
     }
   },
@@ -1044,7 +1044,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 190516546538BBFFB9.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Antigonish, Jun 17, 2026",
+    "alt": "Antigonish, NS, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1052,7 +1052,7 @@ window.PHOTOS = [
       "shutter": "1/120s",
       "iso": "ISO 40",
       "date": "Jun 17, 2026",
-      "location": "Antigonish",
+      "location": "Antigonish, NS",
       "coords": "45.6152,-62.0024"
     }
   },
@@ -1064,7 +1064,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 1438191CBD49EF765B.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "North Rustico, Jun 17, 2026",
+    "alt": "North Rustico, PEI, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1072,7 +1072,7 @@ window.PHOTOS = [
       "shutter": "1/3311s",
       "iso": "ISO 25",
       "date": "Jun 17, 2026",
-      "location": "North Rustico",
+      "location": "North Rustico, PEI",
       "coords": "46.4970,-63.3531"
     }
   },
@@ -1084,7 +1084,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 12241941253BA04BA3.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Cavendish, Jun 17, 2026",
+    "alt": "Cavendish, PEI, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1092,7 +1092,7 @@ window.PHOTOS = [
       "shutter": "1/4785s",
       "iso": "ISO 25",
       "date": "Jun 17, 2026",
-      "location": "Cavendish",
+      "location": "Cavendish, PEI",
       "coords": "46.4993,-63.3928"
     }
   },
@@ -1104,7 +1104,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 12235731A317A6CA8D.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Cavendish, Jun 17, 2026",
+    "alt": "Cavendish, PEI, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1112,7 +1112,7 @@ window.PHOTOS = [
       "shutter": "1/5236s",
       "iso": "ISO 25",
       "date": "Jun 17, 2026",
-      "location": "Cavendish",
+      "location": "Cavendish, PEI",
       "coords": "46.4990,-63.3927"
     }
   },
@@ -1124,7 +1124,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 12201473912437465A.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Cavendish, Jun 17, 2026",
+    "alt": "Cavendish, PEI, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1132,7 +1132,7 @@ window.PHOTOS = [
       "shutter": "1/287s",
       "iso": "ISO 25",
       "date": "Jun 17, 2026",
-      "location": "Cavendish",
+      "location": "Cavendish, PEI",
       "coords": "46.4981,-63.3915"
     }
   },
@@ -1144,7 +1144,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-17 093356B8CEEA43DD5E.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Downtown, City of Charlottetown, Jun 17, 2026",
+    "alt": "Downtown, Charlottetown, Jun 17, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "50mm",
@@ -1152,7 +1152,7 @@ window.PHOTOS = [
       "shutter": "1/5814s",
       "iso": "ISO 80",
       "date": "Jun 17, 2026",
-      "location": "Downtown, City of Charlottetown",
+      "location": "Downtown, Charlottetown",
       "coords": "46.2401,-63.1198"
     }
   },
@@ -1164,7 +1164,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-16 192740D29C7F6EECBF.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Bayfield, Paroisse de Botsford, Jun 16, 2026",
+    "alt": "Bayfield, NB, Jun 16, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1172,7 +1172,7 @@ window.PHOTOS = [
       "shutter": "1/2137s",
       "iso": "ISO 25",
       "date": "Jun 16, 2026",
-      "location": "Bayfield, Paroisse de Botsford",
+      "location": "Bayfield, NB",
       "coords": "46.1646,-63.8139"
     }
   },
@@ -1303,7 +1303,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-16 0657246ADFF305AC3A.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Spadina\u2014Fort York, Toronto, Jun 16, 2026",
+    "alt": "Harbourfront, Toronto, Jun 16, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -1311,7 +1311,7 @@ window.PHOTOS = [
       "shutter": "1/1980s",
       "iso": "ISO 80",
       "date": "Jun 16, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6451,-79.3740"
     }
   },
@@ -1343,7 +1343,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-14 16290131B8A997EEA0.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Toronto Centre, Toronto, Jun 14, 2026",
+    "alt": "Downtown, Toronto, Jun 14, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1351,7 +1351,7 @@ window.PHOTOS = [
       "shutter": "1/199s",
       "iso": "ISO 20",
       "date": "Jun 14, 2026",
-      "location": "Toronto Centre, Toronto",
+      "location": "Downtown, Toronto",
       "coords": "43.6551,-79.3750"
     }
   },
@@ -1363,7 +1363,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-14 16222212E94E6D09B6.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Toronto Centre, Toronto, Jun 14, 2026",
+    "alt": "Downtown, Toronto, Jun 14, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1371,7 +1371,7 @@ window.PHOTOS = [
       "shutter": "1/121s",
       "iso": "ISO 32",
       "date": "Jun 14, 2026",
-      "location": "Toronto Centre, Toronto",
+      "location": "Downtown, Toronto",
       "coords": "43.6541,-79.3784"
     }
   },
@@ -1403,7 +1403,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-13 1328540C913EB45D2A.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Toronto\u2014St. Paul's, Toronto, Jun 13, 2026",
+    "alt": "Midtown, Toronto, Jun 13, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "9mm",
@@ -1411,7 +1411,7 @@ window.PHOTOS = [
       "shutter": "1/550s",
       "iso": "ISO 25",
       "date": "Jun 13, 2026",
-      "location": "Toronto\u2014St. Paul's, Toronto",
+      "location": "Midtown, Toronto",
       "coords": "43.6967,-79.4002"
     }
   },
@@ -1423,7 +1423,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-06-13 1309247CB350937316.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Toronto\u2014St. Paul's, Toronto, Jun 13, 2026",
+    "alt": "Midtown, Toronto, Jun 13, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -1431,7 +1431,7 @@ window.PHOTOS = [
       "shutter": "1/12346s",
       "iso": "ISO 50",
       "date": "Jun 13, 2026",
-      "location": "Toronto\u2014St. Paul's, Toronto",
+      "location": "Midtown, Toronto",
       "coords": "43.7068,-79.3978"
     }
   },
@@ -1763,7 +1763,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-05-30 1920377CEBF74C0D39.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Beaches\u2014East York, Toronto, May 30, 2026",
+    "alt": "East End, Toronto, May 30, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -1771,7 +1771,7 @@ window.PHOTOS = [
       "shutter": "1/15152s",
       "iso": "ISO 64",
       "date": "May 30, 2026",
-      "location": "Beaches\u2014East York, Toronto",
+      "location": "East End, Toronto",
       "coords": "43.6637,-79.3074"
     }
   },
@@ -1943,7 +1943,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-05-28 200540333A4D9BD0BB.webp",
     "width": 3024,
     "height": 4032,
-    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "35mm",
@@ -1951,7 +1951,7 @@ window.PHOTOS = [
       "shutter": "1/5348s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6134,-79.3806"
     }
   },
@@ -2103,7 +2103,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-05-28 184236B9BE03EC2F25.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "33mm",
@@ -2111,7 +2111,7 @@ window.PHOTOS = [
       "shutter": "1/28571s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6157,-79.3711"
     }
   },
@@ -2123,7 +2123,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-05-28 1841291343703336D1.webp",
     "width": 4030,
     "height": 3021,
-    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "133mm",
@@ -2131,7 +2131,7 @@ window.PHOTOS = [
       "shutter": "1/20000s",
       "iso": "ISO 64",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6157,-79.3712"
     }
   },
@@ -2143,7 +2143,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-05-28 183935E9086DA918E0.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -2151,7 +2151,7 @@ window.PHOTOS = [
       "shutter": "1/20000s",
       "iso": "ISO 50",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6166,-79.3721"
     }
   },
@@ -2163,7 +2163,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-05-28 1831104B921702A9B3.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "50mm",
@@ -2171,7 +2171,7 @@ window.PHOTOS = [
       "shutter": "1/1560s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6228,-79.3784"
     }
   },
@@ -2203,7 +2203,7 @@ window.PHOTOS = [
     "displayWebp": "photos/display/fxn 2026-05-28 17561442FE2D27B01E.webp",
     "width": 4032,
     "height": 3024,
-    "alt": "Spadina\u2014Fort York, Toronto, May 28, 2026",
+    "alt": "Harbourfront, Toronto, May 28, 2026",
     "meta": {
       "camera": "Apple iPhone 15 Pro",
       "focal": "7mm",
@@ -2211,7 +2211,7 @@ window.PHOTOS = [
       "shutter": "1/3096s",
       "iso": "ISO 80",
       "date": "May 28, 2026",
-      "location": "Spadina\u2014Fort York, Toronto",
+      "location": "Harbourfront, Toronto",
       "coords": "43.6404,-79.3754"
     }
   },

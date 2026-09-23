@@ -32,6 +32,17 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- theme before first paint: nav.js loads at the end of body, so leaving
+         this to it painted every page white before a dark visitor's black -->
+    <script>
+      (function () {
+        var r = document.documentElement, t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t === "dark" || t === "watercolor") r.classList.add(t);
+        else if (t !== "light" && window.matchMedia &&
+          matchMedia("(prefers-color-scheme: dark)").matches) r.classList.add("dark");
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -89,7 +100,6 @@
         <a href="blog.html" aria-current="page">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html">photos</a>
-        <!-- <a href="studio.html">studio</a> -->
         <a href="now.html">now</a>
       </nav>
     </noscript>
@@ -228,7 +238,6 @@
       </article>
 
       <nav class="post-nav" aria-label="More posts">
-        <a class="post-nav-prev" href="retellio-insight-podcasts.html"><span class="post-nav-label">&larr; older</span>From Calls to Clarity: Shipping Insight Podcasts at Retellio</a>
         <a class="post-nav-next" href="always-be-building.html"><span class="post-nav-label">newer &rarr;</span>Always Be Building</a>
       </nav>
 

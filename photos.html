@@ -29,6 +29,17 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- theme before first paint: nav.js loads at the end of body, so leaving
+         this to it painted every page white before a dark visitor's black -->
+    <script>
+      (function () {
+        var r = document.documentElement, t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t === "dark" || t === "watercolor") r.classList.add(t);
+        else if (t !== "light" && window.matchMedia &&
+          matchMedia("(prefers-color-scheme: dark)").matches) r.classList.add("dark");
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -80,7 +91,6 @@
         <a href="blog.html">blog</a>
         <a href="links.html">links</a>
         <a href="photos.html" aria-current="page">photos</a>
-        <!-- <a href="studio.html">studio</a> -->
         <a href="now.html">now</a>
       </nav>
     </noscript>
@@ -108,9 +118,9 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/IMG_3041.webp" />
-            <img src="photos/thumbs/IMG_3041.jpg" alt="Toronto Centre, Toronto, Aug 19, 2026" width="3024" height="4032" loading="eager" decoding="async" data-index="1" />
+            <img src="photos/thumbs/IMG_3041.jpg" alt="Downtown, Toronto, Aug 19, 2026" width="3024" height="4032" loading="eager" decoding="async" data-index="1" />
           </picture>
-          <figcaption class="photo-caption">Toronto Centre, Toronto  ·  Aug 19, 2026</figcaption>
+          <figcaption class="photo-caption">Downtown, Toronto  ·  Aug 19, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -122,9 +132,9 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/IMG_5774.webp" />
-            <img src="photos/thumbs/IMG_5774.jpg" alt="Spadina—Fort York, Toronto, Aug 16, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="3" />
+            <img src="photos/thumbs/IMG_5774.jpg" alt="Harbourfront, Toronto, Aug 16, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="3" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  Aug 16, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  Aug 16, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -185,9 +195,9 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/IMG_1125.webp" />
-            <img src="photos/thumbs/IMG_1125.jpg" alt="Guelph/Eramosa, Jul 29, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="12" />
+            <img src="photos/thumbs/IMG_1125.jpg" alt="Guelph/Eramosa, ON, ON, ON, Jul 29, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="12" />
           </picture>
-          <figcaption class="photo-caption">Guelph/Eramosa  ·  Jul 29, 2026</figcaption>
+          <figcaption class="photo-caption">Guelph/Eramosa, ON, ON, ON  ·  Jul 29, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -318,100 +328,100 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-22%20213926A70F38A901DA.webp" />
-            <img src="photos/thumbs/fxn%202026-06-22%20213926A70F38A901DA.jpg" alt="Downtown Halifax, Halifax, Jun 22, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="31" />
+            <img src="photos/thumbs/fxn%202026-06-22%20213926A70F38A901DA.jpg" alt="Downtown, Halifax, Jun 22, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="31" />
           </picture>
-          <figcaption class="photo-caption">Downtown Halifax, Halifax  ·  Jun 22, 2026</figcaption>
+          <figcaption class="photo-caption">Downtown, Halifax  ·  Jun 22, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-22%202133484B40C5FCEC8C.webp" />
-            <img src="photos/thumbs/fxn%202026-06-22%202133484B40C5FCEC8C.jpg" alt="Downtown Halifax, Halifax, Jun 22, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="32" />
+            <img src="photos/thumbs/fxn%202026-06-22%202133484B40C5FCEC8C.jpg" alt="Downtown, Halifax, Jun 22, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="32" />
           </picture>
-          <figcaption class="photo-caption">Downtown Halifax, Halifax  ·  Jun 22, 2026</figcaption>
+          <figcaption class="photo-caption">Downtown, Halifax  ·  Jun 22, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-22%2014371618A47AADFC9B.webp" />
-            <img src="photos/thumbs/fxn%202026-06-22%2014371618A47AADFC9B.jpg" alt="Wallbrook, Jun 22, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="33" />
+            <img src="photos/thumbs/fxn%202026-06-22%2014371618A47AADFC9B.jpg" alt="Wallbrook, NS, NS, NS, Jun 22, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="33" />
           </picture>
-          <figcaption class="photo-caption">Wallbrook  ·  Jun 22, 2026</figcaption>
+          <figcaption class="photo-caption">Wallbrook, NS, NS, NS  ·  Jun 22, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-22%2013150090C4503313AB.webp" />
-            <img src="photos/thumbs/fxn%202026-06-22%2013150090C4503313AB.jpg" alt="Wallbrook, Jun 22, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="34" />
+            <img src="photos/thumbs/fxn%202026-06-22%2013150090C4503313AB.jpg" alt="Wallbrook, NS, NS, NS, Jun 22, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="34" />
           </picture>
-          <figcaption class="photo-caption">Wallbrook  ·  Jun 22, 2026</figcaption>
+          <figcaption class="photo-caption">Wallbrook, NS, NS, NS  ·  Jun 22, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-22%20100538F91E794D5FEB.webp" />
-            <img src="photos/thumbs/fxn%202026-06-22%20100538F91E794D5FEB.jpg" alt="Old Town of Lunenburg, Lunenburg, Jun 22, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="35" />
+            <img src="photos/thumbs/fxn%202026-06-22%20100538F91E794D5FEB.jpg" alt="Old Town, Lunenburg, Jun 22, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="35" />
           </picture>
-          <figcaption class="photo-caption">Old Town of Lunenburg, Lunenburg  ·  Jun 22, 2026</figcaption>
+          <figcaption class="photo-caption">Old Town, Lunenburg  ·  Jun 22, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/IMG_6973.webp" />
-            <img src="photos/thumbs/IMG_6973.jpg" alt="Blue Rocks, Jun 21, 2026" width="5712" height="4284" loading="lazy" decoding="async" data-index="36" />
+            <img src="photos/thumbs/IMG_6973.jpg" alt="Blue Rocks, NS, NS, NS, Jun 21, 2026" width="5712" height="4284" loading="lazy" decoding="async" data-index="36" />
           </picture>
-          <figcaption class="photo-caption">Blue Rocks  ·  Jun 21, 2026</figcaption>
+          <figcaption class="photo-caption">Blue Rocks, NS, NS, NS  ·  Jun 21, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-21%201951524A68FD93C25B.webp" />
-            <img src="photos/thumbs/fxn%202026-06-21%201951524A68FD93C25B.jpg" alt="Feltzen South, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="37" />
+            <img src="photos/thumbs/fxn%202026-06-21%201951524A68FD93C25B.jpg" alt="Feltzen South, NS, NS, NS, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="37" />
           </picture>
-          <figcaption class="photo-caption">Feltzen South  ·  Jun 21, 2026</figcaption>
+          <figcaption class="photo-caption">Feltzen South, NS, NS, NS  ·  Jun 21, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-21%201940111F17592FB029.webp" />
-            <img src="photos/thumbs/fxn%202026-06-21%201940111F17592FB029.jpg" alt="Feltzen South, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="38" />
+            <img src="photos/thumbs/fxn%202026-06-21%201940111F17592FB029.jpg" alt="Feltzen South, NS, NS, NS, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="38" />
           </picture>
-          <figcaption class="photo-caption">Feltzen South  ·  Jun 21, 2026</figcaption>
+          <figcaption class="photo-caption">Feltzen South, NS, NS, NS  ·  Jun 21, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-21%20145109192D730517E4.webp" />
-            <img src="photos/thumbs/fxn%202026-06-21%20145109192D730517E4.jpg" alt="Peggys Cove, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="39" />
+            <img src="photos/thumbs/fxn%202026-06-21%20145109192D730517E4.jpg" alt="Peggys Cove, NS, NS, NS, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="39" />
           </picture>
-          <figcaption class="photo-caption">Peggys Cove  ·  Jun 21, 2026</figcaption>
+          <figcaption class="photo-caption">Peggys Cove, NS, NS, NS  ·  Jun 21, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-21%20144633F977216331AB.webp" />
-            <img src="photos/thumbs/fxn%202026-06-21%20144633F977216331AB.jpg" alt="Peggys Cove, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="40" />
+            <img src="photos/thumbs/fxn%202026-06-21%20144633F977216331AB.jpg" alt="Peggys Cove, NS, NS, NS, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="40" />
           </picture>
-          <figcaption class="photo-caption">Peggys Cove  ·  Jun 21, 2026</figcaption>
+          <figcaption class="photo-caption">Peggys Cove, NS, NS, NS  ·  Jun 21, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-21%201407036D977F754D8B.webp" />
-            <img src="photos/thumbs/fxn%202026-06-21%201407036D977F754D8B.jpg" alt="Peggys Cove, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="41" />
+            <img src="photos/thumbs/fxn%202026-06-21%201407036D977F754D8B.jpg" alt="Peggys Cove, NS, NS, NS, Jun 21, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="41" />
           </picture>
-          <figcaption class="photo-caption">Peggys Cove  ·  Jun 21, 2026</figcaption>
+          <figcaption class="photo-caption">Peggys Cove, NS, NS, NS  ·  Jun 21, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-19%20140308821F74EA1390.webp" />
-            <img src="photos/thumbs/fxn%202026-06-19%20140308821F74EA1390.jpg" alt="Mount Thom, Jun 19, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="42" />
+            <img src="photos/thumbs/fxn%202026-06-19%20140308821F74EA1390.jpg" alt="Mount Thom, NS, NS, NS, Jun 19, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="42" />
           </picture>
-          <figcaption class="photo-caption">Mount Thom  ·  Jun 19, 2026</figcaption>
+          <figcaption class="photo-caption">Mount Thom, NS, NS, NS  ·  Jun 19, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-19%20140153AB83FD5177E3.webp" />
-            <img src="photos/thumbs/fxn%202026-06-19%20140153AB83FD5177E3.jpg" alt="Mount Thom, Jun 19, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="43" />
+            <img src="photos/thumbs/fxn%202026-06-19%20140153AB83FD5177E3.jpg" alt="Mount Thom, NS, NS, NS, Jun 19, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="43" />
           </picture>
-          <figcaption class="photo-caption">Mount Thom  ·  Jun 19, 2026</figcaption>
+          <figcaption class="photo-caption">Mount Thom, NS, NS, NS  ·  Jun 19, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-19%20132618FC7EA685C9DE.webp" />
-            <img src="photos/thumbs/fxn%202026-06-19%20132618FC7EA685C9DE.jpg" alt="Mount Thom, Jun 19, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="44" />
+            <img src="photos/thumbs/fxn%202026-06-19%20132618FC7EA685C9DE.jpg" alt="Mount Thom, NS, NS, NS, Jun 19, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="44" />
           </picture>
-          <figcaption class="photo-caption">Mount Thom  ·  Jun 19, 2026</figcaption>
+          <figcaption class="photo-caption">Mount Thom, NS, NS, NS  ·  Jun 19, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -423,23 +433,23 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-18%201459089F564CBA51D0.webp" />
-            <img src="photos/thumbs/fxn%202026-06-18%201459089F564CBA51D0.jpg" alt="Cape Breton Highlands National Park, Jun 18, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="46" />
+            <img src="photos/thumbs/fxn%202026-06-18%201459089F564CBA51D0.jpg" alt="Cape Breton Highlands, NS, Jun 18, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="46" />
           </picture>
-          <figcaption class="photo-caption">Cape Breton Highlands National Park  ·  Jun 18, 2026</figcaption>
+          <figcaption class="photo-caption">Cape Breton Highlands, NS  ·  Jun 18, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-18%20125308F3676C6AF9E9.webp" />
-            <img src="photos/thumbs/fxn%202026-06-18%20125308F3676C6AF9E9.jpg" alt="Cheticamp, Jun 18, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="47" />
+            <img src="photos/thumbs/fxn%202026-06-18%20125308F3676C6AF9E9.jpg" alt="Chéticamp, NS, Jun 18, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="47" />
           </picture>
-          <figcaption class="photo-caption">Cheticamp  ·  Jun 18, 2026</figcaption>
+          <figcaption class="photo-caption">Chéticamp, NS  ·  Jun 18, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-18%20120358F0892ED68A95.webp" />
-            <img src="photos/thumbs/fxn%202026-06-18%20120358F0892ED68A95.jpg" alt="Cape Breton Highlands National Park, Jun 18, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="48" />
+            <img src="photos/thumbs/fxn%202026-06-18%20120358F0892ED68A95.jpg" alt="Cape Breton Highlands, NS, Jun 18, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="48" />
           </picture>
-          <figcaption class="photo-caption">Cape Breton Highlands National Park  ·  Jun 18, 2026</figcaption>
+          <figcaption class="photo-caption">Cape Breton Highlands, NS  ·  Jun 18, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -451,65 +461,65 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%20203754399D2D7C3669.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%20203754399D2D7C3669.jpg" alt="South Lake Ainslie, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="50" />
+            <img src="photos/thumbs/fxn%202026-06-17%20203754399D2D7C3669.jpg" alt="South Lake Ainslie, NS, NS, NS, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="50" />
           </picture>
-          <figcaption class="photo-caption">South Lake Ainslie  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">South Lake Ainslie, NS, NS, NS  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%201927158BAE1465B538.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%201927158BAE1465B538.jpg" alt="Antigonish, Jun 17, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="51" />
+            <img src="photos/thumbs/fxn%202026-06-17%201927158BAE1465B538.jpg" alt="Antigonish, NS, NS, NS, Jun 17, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="51" />
           </picture>
-          <figcaption class="photo-caption">Antigonish  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">Antigonish, NS, NS, NS  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%20190516546538BBFFB9.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%20190516546538BBFFB9.jpg" alt="Antigonish, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="52" />
+            <img src="photos/thumbs/fxn%202026-06-17%20190516546538BBFFB9.jpg" alt="Antigonish, NS, NS, NS, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="52" />
           </picture>
-          <figcaption class="photo-caption">Antigonish  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">Antigonish, NS, NS, NS  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%201438191CBD49EF765B.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%201438191CBD49EF765B.jpg" alt="North Rustico, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="53" />
+            <img src="photos/thumbs/fxn%202026-06-17%201438191CBD49EF765B.jpg" alt="North Rustico, PEI, PEI, PEI, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="53" />
           </picture>
-          <figcaption class="photo-caption">North Rustico  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">North Rustico, PEI, PEI, PEI  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%2012241941253BA04BA3.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%2012241941253BA04BA3.jpg" alt="Cavendish, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="54" />
+            <img src="photos/thumbs/fxn%202026-06-17%2012241941253BA04BA3.jpg" alt="Cavendish, PEI, PEI, PEI, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="54" />
           </picture>
-          <figcaption class="photo-caption">Cavendish  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">Cavendish, PEI, PEI, PEI  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%2012235731A317A6CA8D.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%2012235731A317A6CA8D.jpg" alt="Cavendish, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="55" />
+            <img src="photos/thumbs/fxn%202026-06-17%2012235731A317A6CA8D.jpg" alt="Cavendish, PEI, PEI, PEI, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="55" />
           </picture>
-          <figcaption class="photo-caption">Cavendish  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">Cavendish, PEI, PEI, PEI  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%2012201473912437465A.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%2012201473912437465A.jpg" alt="Cavendish, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="56" />
+            <img src="photos/thumbs/fxn%202026-06-17%2012201473912437465A.jpg" alt="Cavendish, PEI, PEI, PEI, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="56" />
           </picture>
-          <figcaption class="photo-caption">Cavendish  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">Cavendish, PEI, PEI, PEI  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-17%20093356B8CEEA43DD5E.webp" />
-            <img src="photos/thumbs/fxn%202026-06-17%20093356B8CEEA43DD5E.jpg" alt="Downtown, City of Charlottetown, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="57" />
+            <img src="photos/thumbs/fxn%202026-06-17%20093356B8CEEA43DD5E.jpg" alt="Downtown, Charlottetown, Jun 17, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="57" />
           </picture>
-          <figcaption class="photo-caption">Downtown, City of Charlottetown  ·  Jun 17, 2026</figcaption>
+          <figcaption class="photo-caption">Downtown, Charlottetown  ·  Jun 17, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-16%20192740D29C7F6EECBF.webp" />
-            <img src="photos/thumbs/fxn%202026-06-16%20192740D29C7F6EECBF.jpg" alt="Bayfield, Paroisse de Botsford, Jun 16, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="58" />
+            <img src="photos/thumbs/fxn%202026-06-16%20192740D29C7F6EECBF.jpg" alt="Bayfield, NB, Jun 16, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="58" />
           </picture>
-          <figcaption class="photo-caption">Bayfield, Paroisse de Botsford  ·  Jun 16, 2026</figcaption>
+          <figcaption class="photo-caption">Bayfield, NB  ·  Jun 16, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -556,9 +566,9 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-16%200657246ADFF305AC3A.webp" />
-            <img src="photos/thumbs/fxn%202026-06-16%200657246ADFF305AC3A.jpg" alt="Spadina—Fort York, Toronto, Jun 16, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="65" />
+            <img src="photos/thumbs/fxn%202026-06-16%200657246ADFF305AC3A.jpg" alt="Harbourfront, Toronto, Jun 16, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="65" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  Jun 16, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  Jun 16, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -570,16 +580,16 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-14%2016290131B8A997EEA0.webp" />
-            <img src="photos/thumbs/fxn%202026-06-14%2016290131B8A997EEA0.jpg" alt="Toronto Centre, Toronto, Jun 14, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="67" />
+            <img src="photos/thumbs/fxn%202026-06-14%2016290131B8A997EEA0.jpg" alt="Downtown, Toronto, Jun 14, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="67" />
           </picture>
-          <figcaption class="photo-caption">Toronto Centre, Toronto  ·  Jun 14, 2026</figcaption>
+          <figcaption class="photo-caption">Downtown, Toronto  ·  Jun 14, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-14%2016222212E94E6D09B6.webp" />
-            <img src="photos/thumbs/fxn%202026-06-14%2016222212E94E6D09B6.jpg" alt="Toronto Centre, Toronto, Jun 14, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="68" />
+            <img src="photos/thumbs/fxn%202026-06-14%2016222212E94E6D09B6.jpg" alt="Downtown, Toronto, Jun 14, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="68" />
           </picture>
-          <figcaption class="photo-caption">Toronto Centre, Toronto  ·  Jun 14, 2026</figcaption>
+          <figcaption class="photo-caption">Downtown, Toronto  ·  Jun 14, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -591,16 +601,16 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-13%201328540C913EB45D2A.webp" />
-            <img src="photos/thumbs/fxn%202026-06-13%201328540C913EB45D2A.jpg" alt="Toronto—St. Paul's, Toronto, Jun 13, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="70" />
+            <img src="photos/thumbs/fxn%202026-06-13%201328540C913EB45D2A.jpg" alt="Midtown, Toronto, Jun 13, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="70" />
           </picture>
-          <figcaption class="photo-caption">Toronto—St. Paul's, Toronto  ·  Jun 13, 2026</figcaption>
+          <figcaption class="photo-caption">Midtown, Toronto  ·  Jun 13, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-06-13%201309247CB350937316.webp" />
-            <img src="photos/thumbs/fxn%202026-06-13%201309247CB350937316.jpg" alt="Toronto—St. Paul's, Toronto, Jun 13, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="71" />
+            <img src="photos/thumbs/fxn%202026-06-13%201309247CB350937316.jpg" alt="Midtown, Toronto, Jun 13, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="71" />
           </picture>
-          <figcaption class="photo-caption">Toronto—St. Paul's, Toronto  ·  Jun 13, 2026</figcaption>
+          <figcaption class="photo-caption">Midtown, Toronto  ·  Jun 13, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -717,9 +727,9 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-30%201920377CEBF74C0D39.webp" />
-            <img src="photos/thumbs/fxn%202026-05-30%201920377CEBF74C0D39.jpg" alt="Beaches—East York, Toronto, May 30, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="88" />
+            <img src="photos/thumbs/fxn%202026-05-30%201920377CEBF74C0D39.jpg" alt="East End, Toronto, May 30, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="88" />
           </picture>
-          <figcaption class="photo-caption">Beaches—East York, Toronto  ·  May 30, 2026</figcaption>
+          <figcaption class="photo-caption">East End, Toronto  ·  May 30, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -780,9 +790,9 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20200540333A4D9BD0BB.webp" />
-            <img src="photos/thumbs/fxn%202026-05-28%20200540333A4D9BD0BB.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="97" />
+            <img src="photos/thumbs/fxn%202026-05-28%20200540333A4D9BD0BB.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="3024" height="4032" loading="lazy" decoding="async" data-index="97" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -836,30 +846,30 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20184236B9BE03EC2F25.webp" />
-            <img src="photos/thumbs/fxn%202026-05-28%20184236B9BE03EC2F25.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="105" />
+            <img src="photos/thumbs/fxn%202026-05-28%20184236B9BE03EC2F25.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="105" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201841291343703336D1.webp" />
-            <img src="photos/thumbs/fxn%202026-05-28%201841291343703336D1.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4030" height="3021" loading="lazy" decoding="async" data-index="106" />
+            <img src="photos/thumbs/fxn%202026-05-28%201841291343703336D1.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4030" height="3021" loading="lazy" decoding="async" data-index="106" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%20183935E9086DA918E0.webp" />
-            <img src="photos/thumbs/fxn%202026-05-28%20183935E9086DA918E0.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="107" />
+            <img src="photos/thumbs/fxn%202026-05-28%20183935E9086DA918E0.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="107" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%201831104B921702A9B3.webp" />
-            <img src="photos/thumbs/fxn%202026-05-28%201831104B921702A9B3.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="108" />
+            <img src="photos/thumbs/fxn%202026-05-28%201831104B921702A9B3.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="108" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
@@ -871,9 +881,9 @@
         <figure class="photo-item">
           <picture>
             <source type="image/webp" srcset="photos/thumbs/fxn%202026-05-28%2017561442FE2D27B01E.webp" />
-            <img src="photos/thumbs/fxn%202026-05-28%2017561442FE2D27B01E.jpg" alt="Spadina—Fort York, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="110" />
+            <img src="photos/thumbs/fxn%202026-05-28%2017561442FE2D27B01E.jpg" alt="Harbourfront, Toronto, May 28, 2026" width="4032" height="3024" loading="lazy" decoding="async" data-index="110" />
           </picture>
-          <figcaption class="photo-caption">Spadina—Fort York, Toronto  ·  May 28, 2026</figcaption>
+          <figcaption class="photo-caption">Harbourfront, Toronto  ·  May 28, 2026</figcaption>
         </figure>
         <figure class="photo-item">
           <picture>
